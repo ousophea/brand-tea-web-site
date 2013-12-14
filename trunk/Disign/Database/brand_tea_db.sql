@@ -15,10 +15,10 @@ DROP TABLE IF EXISTS `usergroup` ;
 
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `usergroup` (
-  `useg_id` INT NULL AUTO_INCREMENT ,
-  `useg_name` VARCHAR(45) NULL ,
-  `useg_description` VARCHAR(45) NULL ,
-  PRIMARY KEY (`useg_id`) )
+  `usg_id` INT NULL AUTO_INCREMENT ,
+  `usg_name` VARCHAR(45) NULL ,
+  `usg_description` VARCHAR(45) NULL ,
+  PRIMARY KEY (`usg_id`) )
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -33,10 +33,9 @@ CREATE  TABLE IF NOT EXISTS `users` (
   `use_id` INT NOT NULL ,
   `use_name` VARCHAR(45) NULL ,
   `use_password` VARCHAR(45) NULL ,
-  `useg_id` VARCHAR(45) NULL ,
-  `usergroup_useg_id` INT NOT NULL ,
   `use_date_create` DATETIME NULL ,
-  PRIMARY KEY (`use_id`, `usergroup_useg_id`) )
+  `usg_id` INT NOT NULL ,
+  PRIMARY KEY (`use_id`) )
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -67,9 +66,8 @@ CREATE  TABLE IF NOT EXISTS `groups` (
   `gro_name` VARCHAR(45) NULL ,
   `gro_description` VARCHAR(45) NULL ,
   `cate_id` INT NULL ,
-  `lang_id` SMALLINT NULL ,
-  `languages_lang_id` SMALLINT NOT NULL ,
-  PRIMARY KEY (`gro_id`, `languages_lang_id`) )
+  `lang_id` SMALLINT NOT NULL ,
+  PRIMARY KEY (`gro_id`) )
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -85,12 +83,10 @@ CREATE  TABLE IF NOT EXISTS `products` (
   `pro_name` VARCHAR(45) NULL ,
   `pro_price` INT NULL ,
   `pro_qty` SMALLINT NULL ,
-  `gro_id` INT NULL ,
-  `pro_fields` TEXT NULL ,
-  `lang_id` SMALLINT NULL ,
-  `groups_gro_id` INT NOT NULL ,
-  `languages_lang_id` SMALLINT NOT NULL ,
-  PRIMARY KEY (`pro_id`, `groups_gro_id`, `languages_lang_id`) )
+  `fields` TEXT NULL ,
+  `gro_id` INT NOT NULL ,
+  `lang_id` SMALLINT NOT NULL ,
+  PRIMARY KEY (`pro_id`) )
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -105,9 +101,8 @@ CREATE  TABLE IF NOT EXISTS `menus` (
   `men_id` INT NOT NULL ,
   `men_name` VARCHAR(45) NULL ,
   `men_order` VARCHAR(45) NULL ,
-  `lang_id` SMALLINT NULL ,
-  `languages_lang_id` SMALLINT NOT NULL ,
-  PRIMARY KEY (`men_id`, `languages_lang_id`) )
+  `lang_id` SMALLINT NOT NULL ,
+  PRIMARY KEY (`men_id`) )
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -122,12 +117,9 @@ CREATE  TABLE IF NOT EXISTS `contents` (
   `cont_id` INT NULL AUTO_INCREMENT ,
   `cont_name` VARCHAR(45) NULL ,
   `cont_description` VARCHAR(45) NULL ,
-  `men_id` VARCHAR(45) NULL ,
-  `lang_id` SMALLINT NULL ,
-  `languages_lang_id` SMALLINT NOT NULL ,
-  `menus_men_id` INT NOT NULL ,
-  `menus_languages_lang_id` SMALLINT NOT NULL ,
-  PRIMARY KEY (`cont_id`, `languages_lang_id`, `menus_men_id`, `menus_languages_lang_id`) )
+  `men_id` INT NOT NULL ,
+  `lang_id` SMALLINT NOT NULL ,
+  PRIMARY KEY (`cont_id`) )
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -142,10 +134,9 @@ CREATE  TABLE IF NOT EXISTS `categories` (
   `cate_id` INT NULL AUTO_INCREMENT ,
   `cate_name` VARCHAR(45) NULL ,
   `cate_description` VARCHAR(45) NULL ,
-  `cate_field` VARCHAR(45) NULL ,
-  `lang_id` SMALLINT NULL ,
-  `languages_lang_id` SMALLINT NOT NULL ,
-  PRIMARY KEY (`cate_id`, `languages_lang_id`) )
+  `field` TEXT NULL ,
+  `lang_id` SMALLINT NOT NULL ,
+  PRIMARY KEY (`cate_id`) )
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
