@@ -55,6 +55,13 @@
                                 <li>&#8250; <a href="">Lock users</a></li>
                             </ul>-->
                         </li>
+                        <li class="upp"><a href="<?php echo site_url('admin/slideshow'); ?>">Slideshow</a>
+<!--                            <ul>
+                                <li>&#8250; <a href="">Show all uses</a></li>
+                                <li>&#8250; <a href="">Add new user</a></li>
+                                <li>&#8250; <a href="">Lock users</a></li>
+                            </ul>-->
+                        </li>
 <!--                        <li class="upp"><a href="#">Settings</a>
                             <ul>
                                 <li>&#8250; <a href="">Site configuration</a></li>
@@ -101,6 +108,13 @@
                             <li class="b1"><a class="icon users" href="">Show all users</a></li>
                             <li class="b2"><a class="icon add_user" href="">Add new user</a></li>
                             <li class="b1"><a class="icon block_users" href="">Lock users</a></li>
+                        </ul>
+                    </div>
+                    <div class="box">
+                        <div class="h_title">&#8250; Slideshow</div>
+                        <ul>
+                            <li class="b1"><a class="icon page" href="<?php echo site_url('admin/slideshow/listSlide'); ?>">Show all slideshow</a></li>
+                            <li class="b2"><a class="icon add_page" href="<?php echo site_url('admin/slideshow/newSlide'); ?>">Add new slideshow</a></li>
                         </ul>
                     </div>
 <!--                    <div class="box">
