@@ -26,13 +26,13 @@
                     </div>
                     <div class="right">
                         <div class="align-right">
-                            <p><?php echo $this->lang->line('welcome');?>: <strong><?php echo $this->session->userdata('username');?></strong></p>
+                            <p><?php echo $this->lang->line('welcome');?>: <strong><?php echo $this->session->userdata('userName');?></strong> | <?php echo anchor('authentication/logout', $this->lang->line('logout'));?></p>
                         </div>
                     </div>
                 </div>
                 <div id="nav">
                     <ul>
-                        <li class="upp"><a href="#">Product</a>
+                        <li class="upp"><?php echo anchor('product', $this->lang->line('men_product'));?>
 <!--                            <ul>
                                 <li>&#8250; <a href="">Visit site</a></li>
                                 <li>&#8250; <a href="">Reports</a></li>
@@ -40,7 +40,7 @@
                                 <li>&#8250; <a href="">Site config</a></li>
                             </ul>-->
                         </li>
-                        <li class="upp"><a href="#">Category</a>
+                        <li class="upp"><?php echo anchor('category', $this->lang->line('men_category'));?>
 <!--                            <ul>
                                 <li>&#8250; <a href="">Show all pages</a></li>
                                 <li>&#8250; <a href="">Add new page</a></li>
@@ -48,14 +48,14 @@
                                 <li>&#8250; <a href="">Categories</a></li>
                             </ul>-->
                         </li>
-                        <li class="upp"><a href="#">Group</a>
+                        <li class="upp"><?php echo anchor('group', $this->lang->line('men_group'));?>
 <!--                            <ul>
                                 <li>&#8250; <a href="">Show all uses</a></li>
                                 <li>&#8250; <a href="">Add new user</a></li>
                                 <li>&#8250; <a href="">Lock users</a></li>
                             </ul>-->
                         </li>
-                        <li class="upp"><a href="<?php echo site_url('admin/slideshow'); ?>">Slideshow</a>
+                        <li class="upp"><?php echo anchor('slideshow', $this->lang->line('men_slideshow'));?>
 <!--                            <ul>
                                 <li>&#8250; <a href="">Show all uses</a></li>
                                 <li>&#8250; <a href="">Add new user</a></li>

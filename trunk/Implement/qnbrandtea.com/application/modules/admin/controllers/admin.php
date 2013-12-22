@@ -4,9 +4,22 @@ class Admin extends Admin_Controller {
 
 	public function index()
 	{
+            if(!$this->checkSession()){
+                redirect('authentication/login');
+                exit();
+            }
             $data['title']="Welcome to Tea";
             $data['page']='admin/dashboard';
             $data['action']='Dashboard';
             $this->load->view('master',$data);
 	}
+        
+        public function checkSession(){
+            if($this->session->userdata('admin')){
+                return TRUE;
+            }else{
+                return FALSE;
+            }
+            
+        }
 }
