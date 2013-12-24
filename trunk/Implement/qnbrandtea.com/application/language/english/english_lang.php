@@ -9,6 +9,7 @@ $lang['require']='<span class="require">*</span>';
 $lang['description']='Description';
 $lang['field']='Fields';
 $lang['save']='Save';
+$lang['update']='Update';
 $lang['cancel']='Cancel';
 
 
