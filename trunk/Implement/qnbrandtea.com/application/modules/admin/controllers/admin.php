@@ -11,7 +11,7 @@ class Admin extends Admin_Controller {
             $data['title']="Welcome to Tea";
             $data['page']='admin/dashboard';
             $data['action']='Dashboard';
-            $this->load->view('master',$data);
+            $this->load->view('masterpage/master',$data);
 	}
         
         public function checkSession(){

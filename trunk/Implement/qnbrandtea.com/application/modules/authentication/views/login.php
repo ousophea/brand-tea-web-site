@@ -301,6 +301,5 @@
                 </div><!-- button -->
             </section><!-- content -->
         </div><!-- container -->
-        <?php echo field('useName')?>
     </body>
 </html>

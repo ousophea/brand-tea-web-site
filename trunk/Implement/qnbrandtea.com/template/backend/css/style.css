@@ -21,7 +21,7 @@ a{
 a:hover{
 	text-decoration: underline;
 }
-button, .button{
+button, .button, input[type=submit]{
 	background: #F3F3F3;
 	border: 1px solid #DCDCDC;
 	border-radius: 2px;
@@ -35,13 +35,13 @@ button, .button{
 	text-decoration: none;
 	text-shadow: 0px 1px 0px #FFFFFF;
 }
-button:hover, .button:hover{
-	border-bottom-color: #999999;
-	border-left-color: #999999;
-	border-right-color: #999999;
-	border-top-color: #999999;
-	color: #333333;
-	text-decoration: none;
+button:hover, .button:hover, input[type=submit]:hover{
+	border-bottom-color: #999999!important;
+	border-left-color: #999999!important;
+	border-right-color: #999999!important;
+	border-top-color: #999999!important;
+	color: #333333!important;
+	text-decoration: none!important;
 }
 
 .wrap{
@@ -365,7 +365,7 @@ table .chb{
 /* HELPERS START */
 
 .entry{ color: #444; margin: 5px 0; padding: 5px 15px; text-shadow: 0px 1px #ffffff; }
-.add{ background: #F3F3F3 url(../img/i_add.png) no-repeat 4px center;	padding-left: 25px;}
+.add{ background: #F3F3F3 url(../img/i_add.png) no-repeat 4px center!important;	padding-left: 25px!important;}
 .cancel{ background: #F3F3F3 url(../img/i_delete.png) no-repeat 4px center;	padding-left: 25px;}
 .sep{ border-bottom: 1px dashed #DDDDDD; margin: 10px 0;}
 
@@ -377,3 +377,19 @@ table .chb{
 .align-left{ text-align: left; }
 .align-right{ text-align: right; }
 .align-center{ text-align: center; }
+.sub-title{
+    float:left;
+    width: 150px;
+}
+.action{
+    float:right;
+    width: 300px;
+    text-align: right;
+}
+.holder{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.require{
+    color: #f00!important;
+}

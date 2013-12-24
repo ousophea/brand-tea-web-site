@@ -15,7 +15,7 @@ if (!function_exists('table')) {
         $table['content'] = 'contents';
         $table['menu'] = 'menus';
         $table['group'] = 'groups';
-        $table['cagetory'] = 'categories';
+        $table['category'] = 'categories';
         $table['language'] = 'languages';
 
         if (array_key_exists($key, $table)) {

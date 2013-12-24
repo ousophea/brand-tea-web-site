@@ -7,8 +7,10 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() . BACKEND_TEMPLATE; ?>css/style.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() . BACKEND_TEMPLATE; ?>css/navi.css" media="screen" />
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/category.js"></script>
+
         <script type="text/javascript">
-            $(function() {
+            jQuery(document).ready(function($) {
                 $(".box .h_title").not(this).next("ul").hide("normal");
                 $(".box .h_title").not(this).next("#home").show("normal");
                 $(".box").children(".h_title").click(function() {
