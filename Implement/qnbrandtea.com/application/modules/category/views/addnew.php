@@ -1,6 +1,10 @@
 <?php echo form_open('category/addnew'); ?>
 <div class="holder">
-    <div class="sub-title"></div>
+    <div class="sub-title">
+        <?php
+            echo validation_errors();
+        ?>
+    </div>
 
     <div class="action">
         <?php echo form_submit('save', $this->lang->line('save'), 'class="add"'); ?>
