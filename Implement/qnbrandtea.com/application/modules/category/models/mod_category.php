@@ -43,9 +43,13 @@ class mod_category extends CI_Model {
         $this->db->from(table('category'));
         $this->db->join(table('language'), table('category') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
         $this->db->where(field('lanDes'), $this->lang->line('lang'));
-        return $this->db->get()->num_rows();
+        return $this->db->get();
     }
 
+    public function getCatNum(){
+        $objDb = $this->getAllCat();
+        return $objDb->num_rows();
+    }
     public function delete($catId) {
         $this->db->where(field('catId'), $catId);
         if ($this->db->delete(table('category'))) {

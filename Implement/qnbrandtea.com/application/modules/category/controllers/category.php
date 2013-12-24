@@ -30,7 +30,7 @@ class Category extends Admin_Controller {
      */
     public function viewCategory() {
         $config['base_url'] = base_url() . $this->uri->segment(1) . '/viewCategory/';
-        $config['total_rows'] = $this->mod_category->getAllCat();
+        $config['total_rows'] = $this->mod_category->getCatNum();
         $config['per_page'] = 25;
 
         $this->pagination->initialize($config);

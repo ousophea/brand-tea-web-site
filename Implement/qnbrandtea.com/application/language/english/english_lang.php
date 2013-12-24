@@ -16,12 +16,17 @@ $lang['cancel']='Cancel';
 // Category
 $lang['cate_name']='Category Name';
 
+// Group
+$lang['group_name']='Group Name';
 
 // Menu
 $lang['men_category']='Category';
 $lang['men_product']='Product';
 $lang['men_group']='Group';
 $lang['men_slideshow']='Slideshow';
+
+// Message
+$lang['ms_success']='Success!';
 
 
 
