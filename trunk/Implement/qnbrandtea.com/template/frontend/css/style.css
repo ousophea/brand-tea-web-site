@@ -1,0 +1,99 @@
+body{
+	background-color: #343434;	
+	background: url(../img/template/footer-bg.png) bottom repeat-x #343434;
+}
+
+.well {
+	background-color: #F0E9E3;
+	padding:0;
+	padding-bottom: 20px;
+	margin-top: -10px;	
+	margin-bottom: 0px;
+}
+
+hr {
+	margin: 5px 0 15px 0;	
+	border: 2px solid #B7AB9A;
+}
+
+.span7 {
+	width: 650px;
+}
+
+.support {
+	background-color: #C1B6A3;
+	margin-bottom: 7px;
+}
+
+.product-row {
+	background: #FFFFFF;
+	margin-bottom:18px;
+	padding: 20px 0;
+}
+
+.product-row .product {
+	width: 210px;
+	text-align:center;
+	float:left;	
+}
+
+[class*="span"] {
+	margin-left: 0;
+}
+
+.navbar-inner{
+	background: url(../img/template/header-bg.png) repeat-x;
+	/*background-color: #60090A;*/	
+}
+
+.navbar-inner {
+	margin-top: 15px;
+}
+
+.navbar .brand{
+	opacity: 1;
+	padding: 5px 0;	
+}
+
+.navbar .nav{
+	margin: 35px 10px 0 0;
+}
+/* -------------------- menu -------------------- */
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
+	background: none !important;	
+	text-decoration: underline;
+	color: #DF9D29;
+}
+
+.navbar .nav > li > a {
+	color: #DF9D29;
+}
+
+/* --------------- footer ---------------------- */
+.footer .container {
+	background: url(../img/template/footer-tran-bg.png) top repeat-x;
+	margin-top:2px;
+	padding:15px 1px;
+	min-height: 75px;
+	/*width: 1150px;*/
+}
+
+.footer {
+	/*background-color: #4F3C32;*/
+	min-height: 100px;	
+	text-align:center;
+}
+
+.footer-menu li {    
+	border-right: 1px solid #FFFFFF;
+    display: inline;
+    padding: 0 12px 0 30px;
+}
+
+.footer-menu li:last-child {    
+	border-right: 0px;
+}
+
+.footer-menu li a{
+	color: #FFFFFF;
+}
