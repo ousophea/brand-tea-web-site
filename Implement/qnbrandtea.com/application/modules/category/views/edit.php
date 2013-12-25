@@ -45,8 +45,8 @@ foreach ($cats->result_array() as $cat) {
 //                            print_r($field);
                             ?>
                             <div>
-                                <br /><label>Label <input type="text" name="label[]" value="<?php echo $fields['label'][$k] ?>"></label>
-                                <label>Name <input type="text" name="field[]" value="<?php echo $fields['field'][$k] ?>"></label>
+                                <br /><label><?php echo $this->lang->line('name');?> <input type="text" name="label[]" value="<?php echo $fields['label'][$k] ?>"></label>
+                                <label><?php echo $this->lang->line('value');?> <input type="text" name="field[]" value="<?php echo $fields['field'][$k] ?>"></label>
                                 <input type="button" class="delete button" value="Delete">
                             </div>
                             <?php

@@ -27,7 +27,7 @@ class group extends Admin_Controller{
      */
     public function viewGroup() {
         $config['base_url'] = base_url() . $this->uri->segment(1) . '/viewGroup/';
-        $config['total_rows'] = $this->mod_group->getAllGro();
+        $config['total_rows'] = $this->mod_group->getGroNum();
         $config['per_page'] = 25;
 
         $this->pagination->initialize($config);
