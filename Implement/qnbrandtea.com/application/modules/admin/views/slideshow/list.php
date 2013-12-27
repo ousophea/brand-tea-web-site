@@ -1,32 +1,35 @@
-<h3>Slideshow Management</h3>
+<div class="holder">
+    <div class="sub-title"> <?php echo $this->session->userdata('ms')?$this->session->userdata('ms'):''; $this->session->unset_userdata('ms');?></div>
+
+    <div class="action"><?php echo anchor('admin/slideshow/addnew', $this->lang->line('new'), 'class="button add"'); ?></div>
+    <div style="clear:both"></div>
+</div>
 <table class="tablesorter" cellspacing="0"> 
     <thead> 
         <tr> 
             <th width="30">Nº</th> 
-            <th>Imange</th>
-            <th>New</th> 
+            <th>Image</th>
+            <th>Action</th> 
         </tr> 
     </thead> 
     <tbody> 
-        <tr> 
-            <td>1</td> 
-            <td>Imange 1</td> 
-            <td width="100"><a href="" class="button cancel">New</a></td> 
-        </tr> 
-         <tr> 
-            <td>2</td> 
-            <td>Imange 2</td> 
-            <td><a href="" class="button cancel">New</a></td> 
-        </tr>
-        <tr> 
-            <td>3</td> 
-            <td>Imange 3</td> 
-            <td><a href="" class="button cancel">New</a></td> 
-        </tr>
-        <tr> 
-            <td>4</td> 
-            <td>Imange 4</td> 
-            <td><a href="" class="button cancel">New</a></td> 
-        </tr>
+        <?php
+        $i=0;
+        foreach ($slideshow->result_array() as $v) {
+            $i++;
+            ?>
+            <tr> 
+                <td><?php echo $i;?></td> 
+                <td><img src="<?php echo base_url().'template/frontend/img/slideshow/'.$v[field('sliImage')];?>" alt="<?php echo $v[field('sliImage')];?>" height="40" /></td>
+                <td width="100" align="center">
+                    <?php echo anchor('admin/slideshow/edit/'.$v[field('sliId')],'Edit'); ?>
+                    |
+                    <?php echo anchor('admin/slideshow/delete/'.$v[field('sliId')],'Delete','onclick="return confirm(\'Are you sure want to delete?\n Data can not return back!\');"'); ?>
+                </td>
+            </tr> 
+            <?php
+        }
+        ?>
     </tbody> 
 </table>
+<div class="pagination"><?php echo $this->pagination->create_links(); ?></div>
