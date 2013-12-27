@@ -58,7 +58,7 @@
                                                             <li>&#8250; <a href="">Lock users</a></li>
                                                         </ul>-->
                         </li>
-                        <li class="upp"><?php echo anchor('slideshow', $this->lang->line('men_slideshow')); ?>
+                        <li class="upp"><?php echo anchor('admin/slideshow', $this->lang->line('men_slideshow')); ?>
                             <!--                            <ul>
                                                             <li>&#8250; <a href="">Show all uses</a></li>
                                                             <li>&#8250; <a href="">Add new user</a></li>
@@ -116,8 +116,8 @@
                     <div class="box">
                         <div class="h_title">&#8250; Slideshow</div>
                         <ul>
-                            <li class="b1"><a class="icon page" href="<?php echo site_url('admin/slideshow/listSlide'); ?>">Show all slideshow</a></li>
-                            <li class="b2"><a class="icon add_page" href="<?php echo site_url('admin/slideshow/newSlide'); ?>">Add new slideshow</a></li>
+                            <li class="b1"><a class="icon page" href="<?php echo site_url('admin/slideshow/listslide'); ?>">Show all slideshow</a></li>
+                            <li class="b2"><a class="icon add_page" href="<?php echo site_url('admin/slideshow/addnew'); ?>">Add new slideshow</a></li>
                         </ul>
                     </div>
                     <!--                    <div class="box">

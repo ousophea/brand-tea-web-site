@@ -17,6 +17,7 @@ if (!function_exists('table')) {
         $table['group'] = 'groups';
         $table['category'] = 'categories';
         $table['language'] = 'languages';
+        $table['slideshow'] = 'slideshow';
 
         if (array_key_exists($key, $table)) {
             return $table[$key];
@@ -66,6 +67,10 @@ if (!function_exists('field')) {
         $field['catDes'] = 'cate_description';
         $field['catField'] = 'cate_fields';
 
+        $field['sliId'] = 'sli_id';
+        $field['sliImage'] = 'sli_image';
+        $field['sliDes'] = 'sli_description';
+		
         if (array_key_exists($key, $field)) {
             return $field[$key];
         } else {
