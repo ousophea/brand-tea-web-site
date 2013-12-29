@@ -32,9 +32,13 @@ $lang['men_category']='Category';
 $lang['men_product']='Product';
 $lang['men_group']='Group';
 $lang['men_slideshow']='Slideshow';
+$lang['men_tea_related']='Tea Related';
 
 // Message
 $lang['ms_success']='Success!';
+$lang['ms_error']='Fail!';
+$lang['ms_upload_fail']='File(s) can not upload!<br /> Please check your file\'s type, and type size';
+$lang['ms_confirm_delete']='Are you sure want to remove?\n Data can not return back!';
 
 
 

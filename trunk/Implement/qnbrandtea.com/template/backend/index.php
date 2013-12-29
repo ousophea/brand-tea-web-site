@@ -21,6 +21,9 @@
         </script>
     </head>
     <body>
+        <?php echo form_open(); ?>
+        <input type="hidden" value="<?php echo base_url();?>" id="base_url" />
+        <?php echo form_close(); ?>
         <div class="wrap">
             <div id="header">
                 <div id="top">
