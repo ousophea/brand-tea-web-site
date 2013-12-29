@@ -17,8 +17,8 @@ if (!function_exists('table')) {
         $table['group'] = 'groups';
         $table['category'] = 'categories';
         $table['language'] = 'languages';
+        $table['photo'] = 'photos';
         $table['slideshow'] = 'slideshow';
-
         if (array_key_exists($key, $table)) {
             return $table[$key];
         } else {
@@ -44,7 +44,10 @@ if (!function_exists('field')) {
         $field['proName'] = 'pro_name';
         $field['proPrice'] = 'pro_price';
         $field['proQty'] = 'pro_qty';
+        $field['proDes'] = 'pro_des';
         $field['proField'] = 'pro_fields';
+        $field['proRelated'] = 'pro_related';
+        
 
         $field['menId'] = 'men_id';
         $field['menName'] = 'men_name';
@@ -66,6 +69,10 @@ if (!function_exists('field')) {
         $field['catName'] = 'cate_name';
         $field['catDes'] = 'cate_description';
         $field['catField'] = 'cate_fields';
+        
+        $field['phoId']='pho_id';
+        $field['phoUrl']='pho_url';
+        $field['phoDes']='pho_des';
 
         $field['sliId'] = 'sli_id';
         $field['sliImage'] = 'sli_image';
