@@ -11,6 +11,7 @@
     <link href="<?php echo base_url() . FRONTEND_TEMPLATE; ?>css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url() . FRONTEND_TEMPLATE; ?>css/bootstrap-responsive.css" rel="stylesheet">
     <link href="<?php echo base_url() . FRONTEND_TEMPLATE; ?>css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url() . FRONTEND_TEMPLATE; ?>css/jssor-slider.css" rel="stylesheet"  />
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -37,7 +38,7 @@
             <span class="icon-bar"></span>
           </a>
             <div class="span3">
-                <a class="brand" href="index.php"><img width="200" src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/template/logo.png" alt="logo"/></a>
+                <a class="brand" href="<?php echo base_url(); ?>"><img width="200" src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/template/logo.png" alt="logo"/></a>
             </div>
           
           <div class="nav-collapse">
@@ -89,10 +90,14 @@
 	<script src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>js/jquery-ui-1.8.18.custom.min.js"></script>
 	<script src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>js/jquery.smooth-scroll.min.js"></script>
 	<script src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>js/lightbox.js"></script>
-		<script>
-$('.carousel').carousel({
-  interval: 5000
-})
-</script>
+    <script src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>js/jssor-slider.js" /></script>
+	<script>
+	$('.carousel').carousel({
+	  interval: 5000
+	})
+	</script>
+	<script>
+		$Z$t3_starter("$Z$t3");
+	</script>
   </body>
 </html>
