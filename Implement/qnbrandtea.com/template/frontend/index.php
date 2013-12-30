@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title><?php echo $title;?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="<?php echo isset($meta_des)?$meta_des:''; ?>">
+    <meta name="keyword" content="<?php echo isset($meta_keyword)?$meta_des:''; ?>">
 
     <!-- Le styles -->
     <link href="<?php echo base_url() . FRONTEND_TEMPLATE; ?>css/bootstrap.css" rel="stylesheet">
@@ -25,11 +25,6 @@
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
 	<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
 	
-        <style type="text/css">
-            .brand img{
-                max-width: 200px!important;
-            }
-        </style>
             
   </head>
 
@@ -61,9 +56,7 @@
       </div>
     </div>
 	<div class="container well">
-		<?php
-            $this->load->view('home.php');
-        ?>    
+		<?php $this->load->view($page); ?>
     </div><!-- /container -->
     <footer class="footer">
     	<div class="container">
