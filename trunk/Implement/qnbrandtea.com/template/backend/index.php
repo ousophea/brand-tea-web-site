@@ -9,6 +9,7 @@
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jquery-1.7.2.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/category.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/product.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/tinymce/tinymce.min.js"></script>
 
         <script type="text/javascript">
             jQuery(document).ready(function($) {
@@ -61,7 +62,14 @@
                                                             <li>&#8250; <a href="">Lock users</a></li>
                                                         </ul>-->
                         </li>
-                        <li class="upp"><?php echo anchor('admin/slideshow', $this->lang->line('men_slideshow')); ?>
+                        <li class="upp"><?php echo anchor('slideshow', $this->lang->line('men_slideshow')); ?>
+                            <!--                            <ul>
+                                                            <li>&#8250; <a href="">Show all uses</a></li>
+                                                            <li>&#8250; <a href="">Add new user</a></li>
+                                                            <li>&#8250; <a href="">Lock users</a></li>
+                                                        </ul>-->
+                        </li>
+                        <li class="upp"><?php echo anchor('content/home', $this->lang->line('men_content')); ?>
                             <!--                            <ul>
                                                             <li>&#8250; <a href="">Show all uses</a></li>
                                                             <li>&#8250; <a href="">Add new user</a></li>
@@ -119,8 +127,14 @@
                     <div class="box">
                         <div class="h_title">&#8250; Slideshow</div>
                         <ul>
-                            <li class="b1"><a class="icon page" href="<?php echo site_url('admin/slideshow/listslide'); ?>">Show all slideshow</a></li>
-                            <li class="b2"><a class="icon add_page" href="<?php echo site_url('admin/slideshow/addnew'); ?>">Add new slideshow</a></li>
+                            <li class="b1"><a class="icon page" href="<?php echo site_url('slideshow/listslide'); ?>">Show all slideshow</a></li>
+                            <li class="b2"><a class="icon add_page" href="<?php echo site_url('slideshow/addnew'); ?>">Add new slideshow</a></li>
+                        </ul>
+                    </div>
+                    <div class="box">
+                        <div class="h_title">&#8250; Content</div>
+                        <ul>
+                            <li class="b1"><a class="icon page" href="<?php echo site_url('content/home/listhome'); ?>">Home Page</a></li>
                         </ul>
                     </div>
                     <!--                    <div class="box">

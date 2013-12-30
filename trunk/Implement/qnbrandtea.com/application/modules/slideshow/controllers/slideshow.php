@@ -36,15 +36,17 @@ class Slideshow extends Admin_Controller {
 	
 			if ( ! $this->upload->do_upload('image'))
 			{			
-				$data['error'] = $this->upload->display_errors();				
+				$this->session->set_userdata('ms', $this->upload->display_errors());			
 			} else {				
 				$image = $this->upload->data();
 				$imageName = $image['file_name'];
 				
 				if($this->mod_slideshow->addSlideshow($imageName) > 0){
-					$this->session->set_userdata('ms', 'Success!');
-					redirect('admin/slideshow/listSlide');
-				}
+					$this->session->set_userdata('ms', $this->lang->line('ms_success'));
+					redirect('slideshow/listSlide');
+				} else {
+                    $this->session->set_userdata('ms', $this->lang->line('ms_error'));
+                }
 			}	
 		}
 		
@@ -55,7 +57,7 @@ class Slideshow extends Admin_Controller {
 	}
 	
 	public function edit(){
-		$id = $this->uri->segment(4);
+		$id = $this->uri->segment(3);
 		
 		if($this->input->post('btnUpload')){		
 			$config['upload_path'] = './template/frontend/img/slideshow/';
@@ -66,7 +68,7 @@ class Slideshow extends Admin_Controller {
 	
 			if ( ! $this->upload->do_upload('image'))
 			{			
-				$data['error'] = $this->upload->display_errors();				
+				$this->session->set_userdata('ms', $this->upload->display_errors());				
 			} else {				
 				$image = $this->upload->data();
 				$imageName = $image['file_name'];
@@ -74,10 +76,12 @@ class Slideshow extends Admin_Controller {
 				$oldData = $this->mod_slideshow->getSlideshowById($id);
 				
 				if($this->mod_slideshow->updateSlideshow($imageName, $id) > 0){
-					$this->session->set_userdata('ms', 'Success!');
+					$this->session->set_userdata('ms', $this->lang->line('ms_success'));
 					@unlink('./template/frontend/img/slideshow/'.$oldData->row()->sli_image);
-					redirect('admin/slideshow/listslide');
-				}
+					redirect('slideshow/listslide');
+				} else {
+                    $this->session->set_userdata('ms', $this->lang->line('ms_error'));
+                }
 			}	
 		}
 		
@@ -88,15 +92,15 @@ class Slideshow extends Admin_Controller {
 	}
 	
     public function delete(){
-		$id = $this->uri->segment(4);
+		$id = $this->uri->segment(3);
 		$oldData = $this->mod_slideshow->getSlideshowById($id);
 		
         if ($this->mod_slideshow->delete($id) > 0) {
-            $this->session->set_userdata('ms', 'Success!');
-			unlink('./template/frontend/img/slideshow/'.$oldData->row()->sli_image);
+            $this->session->set_userdata('ms', $this->lang->line('ms_success'));
+			@unlink('./template/frontend/img/slideshow/'.$oldData->row()->sli_image);
         }else{
-            $this->session->set_userdata('ms', 'Delete fail, please try again!');
+            $this->session->set_userdata('ms', $this->lang->line('ms_error'));
 		}
-        redirect('admin/slideshow/listslide');
+        redirect('slideshow/listslide');
     }
 }

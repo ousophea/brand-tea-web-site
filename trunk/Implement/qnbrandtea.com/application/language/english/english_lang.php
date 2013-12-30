@@ -6,6 +6,7 @@ $lang['lang']='en'; // Do not change this
 $lang['welcome']='Welcome';
 $lang['logout']='Logout';
 $lang['new']='New';
+$lang['edit']='Edit';
 $lang['require']='<span class="require">*</span>';
 $lang['description']='Description';
 $lang['field']='Fields';
@@ -33,6 +34,7 @@ $lang['men_product']='Product';
 $lang['men_group']='Group';
 $lang['men_slideshow']='Slideshow';
 $lang['men_tea_related']='Tea Related';
+$lang['men_content']='Content';
 
 // Message
 $lang['ms_success']='Success!';

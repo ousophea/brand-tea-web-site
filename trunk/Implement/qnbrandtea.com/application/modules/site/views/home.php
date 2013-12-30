@@ -75,7 +75,20 @@
                 <div class="span4" style="padding:15px;">
                     <h3>&gt; Gallery</h3>
                     <hr>
-                    <img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/slideshow.png" />
+                                        
+                    <!--Jssor Slider Begin-->
+                    <div id="focus">
+                        <ul>
+                            <li>
+                                <div style="left:0; top:0;width:100%; height:300px;"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/slideshow/001.jpg" alt="" /></div>
+                			</li>
+                            <li>
+                                <div style="left:0; top:0;width:100%; height:300px;"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/slideshow/002.jpg" alt="" /></div>
+                			</li>
+                        </ul>
+                    </div>
+                    <!--Jssor Slider End-->
+                    <div style="clear:both"></div>
                 </div>
                 <div class="span2" style="padding:15px;width:220px;">
                     <h3>Support</h3>

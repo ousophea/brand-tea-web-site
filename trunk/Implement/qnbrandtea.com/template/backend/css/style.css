@@ -383,6 +383,7 @@ table .chb{
 .add{ background: #F3F3F3 url(../img/i_add.png) no-repeat 4px center!important;	padding-left: 25px!important;}
 .cancel{ background: #F3F3F3 url(../img/i_delete.png) no-repeat 4px center;	padding-left: 25px;}
 .sep{ border-bottom: 1px dashed #DDDDDD; margin: 10px 0;}
+.edit { background: url(../img/i_edit.png) no-repeat 4px center!important;	padding-left: 25px!important;}
 
 .clear{ clear: both; }
 
