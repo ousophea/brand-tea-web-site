@@ -6,9 +6,9 @@ body{
 .well {
 	background-color: #F0E9E3;
 	padding:0;
-	padding-bottom: 20px;
-	margin-top: -10px;	
+	padding-bottom: 20px;	
 	margin-bottom: 0px;
+        margin-top: 68px;
 }
 
 hr {
@@ -47,7 +47,7 @@ hr {
 }
 
 .navbar-inner {
-	margin-top: 15px;
+	margin-top: 0px;
 }
 
 .navbar .brand{
@@ -96,4 +96,23 @@ hr {
 
 .footer-menu li a{
 	color: #FFFFFF;
+}
+/*overide style*/
+@font-face{
+    font-family: OCRAEXT;
+    src: url(../fonts/OCRAEXT.TTF);
+}
+body{
+}
+.navbar-inner{
+    box-shadow: 0px 3px 10px #000;
+}
+.nav-collapse ul{
+    margin: 0px!important;
+    padding:0px;
+    top: 15px;
+}
+.nav-collapse ul a{
+    font-family: OCRAEXT!important;
+    font-size: 12pt!important; 
 }
