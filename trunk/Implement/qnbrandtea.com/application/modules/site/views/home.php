@@ -17,7 +17,7 @@
           </div>
 	<!--End Carousel-->
     <div>  
-        <div>
+        <div class="row-fluid">
         	<div class="span5" style="padding:15px;">
                   <h3>&gt; Welcome <span style="float: right; margin-right:25px;">Date</span></h3>
                   <hr>
