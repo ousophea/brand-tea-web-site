@@ -25,6 +25,12 @@
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
 	<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
 	
+        <style type="text/css">
+            .brand img{
+                max-width: 200px!important;
+            }
+        </style>
+            
   </head>
 
   <body>
@@ -38,7 +44,7 @@
             <span class="icon-bar"></span>
           </a>
             <div class="span3">
-                <a class="brand" href="<?php echo base_url(); ?>"><img width="200" src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/template/logo.png" alt="logo"/></a>
+                <a class="brand" href="<?php echo base_url(); ?>"><img width="150" src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/template/logo.png" alt="logo"/></a>
             </div>
           
           <div class="nav-collapse">
