@@ -1,7 +1,7 @@
 <?php
 // Language code
 $lang['lang']='en'; // Do not change this
-
+$lang['currency']='$';
 // General
 $lang['welcome']='Welcome';
 $lang['logout']='Logout';
@@ -17,6 +17,7 @@ $lang['price']='Price';
 $lang['qty']='Quantity';
 $lang['name']='Name';
 $lang['value']='Value';
+$lang['find_us']='Find us';
 
 // Category
 $lang['cate_name']='Category Name';

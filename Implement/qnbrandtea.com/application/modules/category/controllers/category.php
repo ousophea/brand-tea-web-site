@@ -14,7 +14,7 @@ class Category extends Admin_Controller {
 
     public function __construct() {
         parent::__construct();
-        if ($this->checkSession()) {
+        if (!$this->checkSession()) {
             redirect('authentication/login');
         }
         $this->load->model('mod_category');
