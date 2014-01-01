@@ -5,7 +5,7 @@ class Home extends Base_Controller {
 	public function index()
 	{
             $data['title']="Welcome to Tea home page";
-            $data['page']='admin/dashboard';
+            $data['page']='home';
             $data['action']='Dashboard';
             $this->load->view('master',$data);
 	}
