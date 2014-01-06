@@ -11,7 +11,7 @@
                     <?php
                     $photo = Products::getPhoto($row[field('proId')], 1)->result_array();
                     $att = array(
-                        'src' => PRODUCT_PHOTO_PATH . $photo[0][field('phoUrl')],
+                        'src' => PRODUCT_PHOTO_PATH .'250x250/'. $photo[0][field('phoUrl')],
                         'width' => 110,
                         'class' => 'img'
                     );

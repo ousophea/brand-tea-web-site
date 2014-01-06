@@ -67,10 +67,9 @@
                 <?php
                 foreach ($photos->result_array() as $row) {
                     $att = array(
-                        'src' => 'uploads/products/' . $row[field('phoUrl')],
-                        'width' => 100
+                        'src' => 'uploads/products/100x100/' . $row[field('phoUrl')]
                     );
-                    echo '<label class="./uploads/products/' . $row[field('phoUrl')] . '" id=' . $row[field('phoId')] . '>' . img($att) . '<input class="button remove" type="button" value="Remove" /></label>';
+                    echo '<label class="' . $row[field('phoUrl')] . '" id=' . $row[field('phoId')] . '>' . img($att) . '<input class="button remove" type="button" value="Remove" /></label>';
                 }
                 ?>
             </td>
