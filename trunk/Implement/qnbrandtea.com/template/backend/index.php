@@ -10,7 +10,7 @@
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/category.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/product.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/tinymce/tinymce.min.js"></script>
-
+        <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jquery.min.js"></script>
         <script type="text/javascript">
             jQuery(document).ready(function($) {
                 $(".box .h_title").not(this).next("ul").hide("normal");
@@ -69,6 +69,15 @@
                                                             <li>&#8250; <a href="">Lock users</a></li>
                                                         </ul>-->
                         </li>
+
+						<li class="upp"><?php echo anchor('tearelated', $this->lang->line('men_tearelated')); ?>
+                            <!--                            <ul>
+                                                            <li>&#8250; <a href="">Show all uses</a></li>
+                                                            <li>&#8250; <a href="">Add new user</a></li>
+                                                            <li>&#8250; <a href="">Lock users</a></li>
+                                                        </ul>-->
+                        </li>
+
                         <li class="upp"><?php echo anchor('content/home', $this->lang->line('men_content')); ?>
                             <!--                            <ul>
                                                             <li>&#8250; <a href="">Show all uses</a></li>
@@ -76,6 +85,7 @@
                                                             <li>&#8250; <a href="">Lock users</a></li>
                                                         </ul>-->
                         </li>
+
                         <!--                        <li class="upp"><a href="#">Settings</a>
                                                     <ul>
                                                         <li>&#8250; <a href="">Site configuration</a></li>
@@ -131,12 +141,22 @@
                             <li class="b2"><a class="icon add_page" href="<?php echo site_url('slideshow/addnew'); ?>">Add new slideshow</a></li>
                         </ul>
                     </div>
+
+					<div class="box">
+                        <div class="h_title">&#8250; Tearelated</div>
+                        <ul>
+                            <li class="b1"><a class="icon page" href="<?php echo site_url('tearelated/listtea'); ?>">Show all tearelated</a></li>
+                            <li class="b2"><a class="icon add_page" href="<?php echo site_url('tearelated/addnewtea'); ?>">Add new Tearelated</a></li>
+                        </ul>
+                    </div>
+
                     <div class="box">
                         <div class="h_title">&#8250; Content</div>
                         <ul>
                             <li class="b1"><a class="icon page" href="<?php echo site_url('content/home/listhome'); ?>">Home Page</a></li>
                         </ul>
                     </div>
+
                     <!--                    <div class="box">
                                             <div class="h_title">&#8250; Settings</div>
                                             <ul>
