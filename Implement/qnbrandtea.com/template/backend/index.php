@@ -393,7 +393,6 @@
                 </div>
                 <div class="clear"></div>
             </div>
-            <textarea class="tinyMCE"></textarea>
             <div id="footer">
                 <div class="left">
                     <p>Power by: <a href="http://pichnil.com">Pichnil</a> | For: <a href="">qnbrandtea.com</a></p>
