@@ -18,9 +18,9 @@ mb_internal_encoding('UTF-8');
 //    |   |   |- plugins
 //    |   |   |   |- responsivefilemanager
 //    |   |   |   |   |- plugin.min.js
-$base_url="http://".$_SERVER['HTTP_HOST'];  // DON'T TOUCH (base url (only domain) of site (without final /)).
-    
-$upload_dir = '/tea/Implement/qnbrandtea.com/uploads/tinymce/uploads/'; // path from base_url to base of upload folder (with start and final /)
+$base_url="http://".$_SERVER['HTTP_HOST'].'/tea/Implement/qnbrandtea.com/';  // DON'T TOUCH (base url (only domain) of site (without final /)).
+//die($base_url);
+$upload_dir = 'uploads/tinymce/uploads/'; // path from base_url to base of upload folder (with start and final /)
 $current_path = '../../../../../../uploads/tinymce/uploads/'; // relative path from filemanager folder to upload folder (with final /)
 //thumbs folder can't put inside upload folder
 $thumbs_base_path = '../../../../../../uploads/tinymce/thumbs/'; // relative path from filemanager folder to thumbs folder (with final /)

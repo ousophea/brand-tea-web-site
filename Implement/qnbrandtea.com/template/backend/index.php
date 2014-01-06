@@ -29,7 +29,7 @@
             tinymce.init({
                 selector: "textarea.tinyMCE",
                 theme: "modern",
-                external_filemanager_path:'addon/tinymce/js/tinymce/plugins/filemanager/',
+                external_filemanager_path:'<?php echo base_url(); ?>addon/tinymce/js/tinymce/plugins/filemanager/',
                 width: 680,
                 height: 300,
                 subfolder: "",
@@ -393,7 +393,7 @@
                 </div>
                 <div class="clear"></div>
             </div>
-
+            <textarea class="tinyMCE"></textarea>
             <div id="footer">
                 <div class="left">
                     <p>Power by: <a href="http://pichnil.com">Pichnil</a> | For: <a href="">qnbrandtea.com</a></p>
