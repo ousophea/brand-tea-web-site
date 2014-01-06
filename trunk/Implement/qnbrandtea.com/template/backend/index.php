@@ -20,8 +20,34 @@
                 });
             });
         </script>
+        
+        <!--TinyMCE-->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>addon/tinymce/js/tinymce/skins/lightgray/skin.min.css" media="all" />
+        <script type="text/javascript" src="<?php echo base_url(); ?>addon/tinymce/js/tinymce/tinymce.min.js"></script>
+        <script>
+//            Do not foget to config some paths in addon/tinymce/js/tinymce/plugins/filemanager/config/config.php
+            tinymce.init({
+                selector: "textarea.tinyMCE",
+                theme: "modern",
+                external_filemanager_path:'addon/tinymce/js/tinymce/plugins/filemanager/',
+                width: 680,
+                height: 300,
+                subfolder: "",
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+                    "searchreplace wordcount visualblocks visualchars code insertdatetime media nonbreaking",
+                    "table contextmenu directionality emoticons paste textcolor filemanager"
+                ],
+                image_advtab: true,
+                toolbar: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect forecolor backcolor | link unlink anchor | image media | print preview code"
+            });
+        </script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>addon/tinymce/js/tinymce/plugins/filemanager/plugin.min.js"></script>
+        <!--End TinyMCE-->
+        
     </head>
     <body>
+        
         <?php echo form_open(); ?>
         <input type="hidden" value="<?php echo base_url();?>" id="base_url" />
         <?php echo form_close(); ?>
