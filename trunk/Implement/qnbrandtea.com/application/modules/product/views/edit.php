@@ -57,7 +57,7 @@
         <tr> 
             <td width="100" valign="middle">
                 <label for="name-1"><?php echo $this->lang->line('description'); ?></label>
-                <?php echo form_textarea('txt_pro_dec', $this->input->post('txt_pro_dec') ? $this->input->post('txt_pro_dec') : $currentPro[field('proDes')], 'id="name-1"'); ?>
+                <?php echo form_textarea('txt_pro_dec', $this->input->post('txt_pro_dec') ? $this->input->post('txt_pro_dec') : $currentPro[field('proDes')], 'id="name-1" class="tinyMCE"'); ?>
             </td>
         </tr>
         <tr>
