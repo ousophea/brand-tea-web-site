@@ -27,15 +27,18 @@ $lang['group_name']='Group Name';
 
 // Product
 $lang['pro_name']='Product Name';
-
-
+//Tea
+$lang['tea_name']='Tea Title';
+$lang['tea_lang']='Language';
 // Menu
 $lang['men_category']='Category';
 $lang['men_product']='Product';
 $lang['men_group']='Group';
 $lang['men_slideshow']='Slideshow';
-$lang['men_tea_related']='Tea Related';
 $lang['men_content']='Content';
+
+$lang['men_tearelated']='Tea Related';
+
 
 // Message
 $lang['ms_success']='Success!';
