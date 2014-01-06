@@ -23,7 +23,7 @@ while($cycle && $i<$max_cycles){
     $path=fix_dirname($path)."/";
 }
 
-$path="../".$current_path.$_GET['path'];
+$path=$current_path.$_GET['path'];
 
 if(strpos($_GET['path'],'../')!==FALSE || strpos($_GET['path'],'./')!==FALSE || strpos($_GET['path'],'/')===0) die ('path error');
 

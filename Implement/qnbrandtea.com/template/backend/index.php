@@ -32,6 +32,8 @@
                 external_filemanager_path:'<?php echo base_url(); ?>addon/tinymce/js/tinymce/plugins/filemanager/',
                 width: 680,
                 height: 300,
+                relative_urls: false,
+                remove_script_host: false,
                 subfolder: "",
                 plugins: [
                     "advlist autolink link image lists charmap print preview hr anchor pagebreak",
