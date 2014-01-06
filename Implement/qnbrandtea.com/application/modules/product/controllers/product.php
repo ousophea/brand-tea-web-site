@@ -18,6 +18,7 @@ class product extends Admin_Controller {
         $this->load->model('mod_product');
         $this->load->model('category/mod_category');
         $this->load->model('group/mod_group');
+        $this->load->library('image_lib');
     }
 
     public function index() {
@@ -70,6 +71,9 @@ class product extends Admin_Controller {
 
             // Check upload photo first
             if ($this->uploadPhoto('photo')) {
+                // Resize image
+                $this->configResizePhoto($this->photo);
+
                 if ($this->mod_product->addNew($proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $serielizeFields, $this->photo)) {
                     $this->session->set_userdata('ms', $this->lang->line('ms_success'));
                     $this->photo = '';
@@ -117,6 +121,9 @@ class product extends Admin_Controller {
             // Check upload photo first
             if (!$this->uploadPhoto('photo')) {
                 $this->photo = '';
+            } else {
+                // Resize image
+                $this->configResizePhoto($this->photo);
             }
             if ($this->mod_product->update($this->uri->segment(3), $proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $serielizeFields, $this->photo)) {
                 $this->session->set_userdata('ms', $this->lang->line('ms_success'));
@@ -135,9 +142,9 @@ class product extends Admin_Controller {
         $data['pros'] = $this->mod_product->getAllPro();
         $this->load->view('masterpage/master', $data);
     }
-    
+
     /**
-     * Remove product and all related record
+     * Remove product and all related records
      */
     public function delete() {
         if ($this->mod_product->delete($this->uri->segment(3))) {
@@ -198,6 +205,47 @@ class product extends Admin_Controller {
      */
     public function getProFields() {
         echo $this->mod_product->getProField($this->input->post('pro_id'));
+    }
+
+    public function configResizePhoto($photos) {
+        $widths = array(100, 250, 500);
+        $heights = array(100, 250, 500);
+        $sorucePath = './uploads/products/';
+        $resizePath = array($sorucePath . 100 . 'x' . 100 . '/', $sorucePath . 250 . 'x' . 250 . '/', $sorucePath . 500 . 'x' . 500 . '/');
+
+        // Loop all photos  uploaded
+        foreach ($photos as $photo) {
+            $i = 0;
+            // Loop all sizes of image to resize
+            foreach ($widths as $val) {
+                $photoName = $photo['file_name'];
+                $width = $photo['image_width'] >= $widths[$i] ? $widths[$i] : $photo['image_width'];
+                $height = $photo['image_height'] >= $heights[$i] ? $heights[$i] : $photo['image_height'];
+                $this->resizePhoto($sorucePath, $photoName, $resizePath[$i], $width, $height);
+                $i++;
+            }
+        }
+    }
+
+    /**
+     * Resize image
+     */
+    public function resizePhoto($sourcePath, $image, $resizePath, $width, $height) {
+
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = $sourcePath . $image;
+        $config['new_image'] = $resizePath . $image;
+        $config['create_thumb'] = FALSE;
+        $config['maintain_ratio'] = TRUE;
+        $config['width'] = $width;
+        $config['height'] = $height;
+
+        $this->image_lib->clear();
+        $this->image_lib->initialize($config);
+
+        if (!$this->image_lib->resize()) {
+            $this->session->set_userdata('ms_error', $this->lang->line('ms_error'));
+        }
     }
 
 }

@@ -18,7 +18,7 @@ class Products extends Base_Controller {
     public function allproducts() {
         $config['base_url'] = base_url() . $this->uri->segment(1) . '/' . $this->uri->segment(2) . '/allproducts/';
         $config['total_rows'] = $this->mod_product_front->getAllProNum();
-        $config['per_page'] = 1;
+        $config['per_page'] = 9;
         $config['uri_segment'] = 4;
 
         $this->pagination->initialize($config);
@@ -45,6 +45,10 @@ class Products extends Base_Controller {
         return $this->mod_product_front->getProPhoto($proId, $limit);
     }
 
+    /**
+     * Get one product to view details information
+     * @param int $proId
+     */
     public function detail($proId = 0) {
         if ($proId == 0) {
             redirect($this->uri->segment(1) . '/' . $this->uri->segment(2));
@@ -54,11 +58,20 @@ class Products extends Base_Controller {
 
         $data['cats'] = $this->mod_product_front->getAllCats();
         $data['gros'] = $this->mod_product_front->getAllGros();
-        
         $data['title'] = "Product Detail";
         $data['page'] = 'products/detail';
         $data['action'] = 'View Product Details';
         $this->load->view('master', $data);
     }
 
+    /**
+     * Get related product
+     */
+    public function getRelatedProduct($proId=0){
+        if($proId!=0){
+            return $this->mod_product_front->getRelatedProduct($proId);
+        }else {
+            return '';
+        }
+    }
 }

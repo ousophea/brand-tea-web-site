@@ -109,6 +109,11 @@ class Mod_product_front extends CI_Model {
         return $this->db->get();
     }
 
+    /**
+     * Get single product. This function will use buy details or edit function
+     * @param int $id Product's id
+     * @return CI database object
+     */
     public function getPro($id) {
         $this->db->select('*');
         $this->db->from(table('product'));
@@ -118,6 +123,34 @@ class Mod_product_front extends CI_Model {
         $this->db->where(field('lanDes'), $this->lang->line('lang'));
         $this->db->where(table('product').'.'.  field('proId'), $id);
         return $this->db->get();
+    }
+    
+    /**
+     * Get related product where product's id
+     */
+    public function getRelatedProduct($proId){
+        $data = $this->getPro($proId);
+        if($data->num_rows()>0){
+            $html='';
+            foreach($data->result_array() as $row){
+                $html.='<div class="span3">';
+                    $photo = Products::getPhoto($row[field('proId')], 1)->result_array();
+                    $att = array(
+                        'src' => PRODUCT_PHOTO_PATH .'250x250/'. $photo[0][field('phoUrl')],
+                        'width' => 110,
+                        'class' => 'img'
+                    );
+                    $html.= '<div class="photo">' . img($att) . '</div>';
+                    $html.= '<div class="content">';
+                    $html.= $row[field('proName')];
+                    $html.= '<label class="price">' . $this->lang->line('currency'). $row[field('proPrice')] . '</label>';
+                    $html.='<label class="order">'. anchor('site/products/detail/' . $row[field('proId')], 'Details', 'class="btn"'). '</label>';
+                    $html.= '</div>';
+                $html.='</div>';
+            }
+            return $html;
+        }
+        return '';
     }
 
 }

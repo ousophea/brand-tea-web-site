@@ -1,13 +1,4 @@
 <?php
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- * Description of category
- *
- * @author who
- */
 class Tearelated extends Admin_Controller {
 
     public function __construct() {

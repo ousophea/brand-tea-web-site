@@ -18,6 +18,8 @@ $lang['qty']='Quantity';
 $lang['name']='Name';
 $lang['value']='Value';
 $lang['find_us']='Find us';
+$lang['related_knowledge']='Related Knowledge';
+$lang['related_product'] = 'Related Product';
 
 // Category
 $lang['cate_name']='Category Name';

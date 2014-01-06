@@ -98,6 +98,10 @@ class mod_product extends CI_Model {
 
             // Delete photo in local directory
             $this->deletePhotoInLocalDir($photos, './uploads/products/');
+            $this->deletePhotoInLocalDir($photos, './uploads/products/100x100/');
+            $this->deletePhotoInLocalDir($photos, './uploads/products/250x250/');
+            $this->deletePhotoInLocalDir($photos, './uploads/products/500x500/');
+            
 
             return TRUE;
         }
@@ -120,7 +124,7 @@ class mod_product extends CI_Model {
     public function deletePhotoInLocalDir($photos, $path) {
         foreach ($photos->result_array() as $file) { // iterate files
             if (is_file($path . $file[field('phoUrl')])) {
-                unlink($path . $file[field('phoUrl')]); // delete file
+                @unlink($path . $file[field('phoUrl')]); // delete file
             } else {
                 echo $path . $file[field('phoUrl')] . '<br />';
             }
@@ -158,7 +162,12 @@ class mod_product extends CI_Model {
      * @return boolean
      */
     public function deleteSinglePhoto($id, $removeLocalPhoto = FALSE, $photoPathAndName = '') {
-        $removeLocalPhoto ? unlink($photoPathAndName) : '';
+        if($removeLocalPhoto){
+           @unlink('./uploads/products/'.$photoPathAndName);
+           @unlink('./uploads/products/100x100/'.$photoPathAndName);
+           @unlink('./uploads/products/250x250/'.$photoPathAndName);
+           @unlink('./uploads/products/250x250/'.$photoPathAndName);
+        }
         $this->db->where(field('phoId'), $id);
         if ($this->db->delete(table('photo'))) {
             return TRUE;
