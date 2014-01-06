@@ -4,6 +4,7 @@ class Slideshow extends Admin_Controller {
 	
 	public function __construct(){
         $this->load->model('mod_slideshow');
+		$this->lang->load('dany_english', 'english');
 	}
 
 	public function index()

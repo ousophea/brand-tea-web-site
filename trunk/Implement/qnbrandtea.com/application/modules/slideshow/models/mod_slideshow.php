@@ -49,4 +49,11 @@ class Mod_Slideshow extends CI_Model{
         $result = $this->db->delete(table('slideshow'));
 		return $this->db->affected_rows($result);
     }
+		
+    public function getSlideshowByCatId($sliCatId) {
+        $this->db->select('*');
+        $this->db->from(table('slideshow'));
+//        $this->db->where(field('sliCatId'),$sliCatId);
+        return $this->db->get();
+    }
 }

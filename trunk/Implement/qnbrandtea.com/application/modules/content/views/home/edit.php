@@ -31,4 +31,3 @@ tinymce.init({
     toolbar: "insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
 });
 </script>
-

@@ -9,9 +9,9 @@
 <table class="tablesorter" cellspacing="0"> 
     <thead> 
         <tr> 
-            <th width="30">Nº</th> 
-            <th>Image</th>
-            <th>Action</th> 
+            <th width="30"><?php echo $this->lang->line('no'); ?></th> 
+            <th><?php echo $this->lang->line('image'); ?></th>
+            <th><?php echo $this->lang->line('action'); ?></th> 
         </tr> 
     </thead> 
     <tbody> 
@@ -24,9 +24,9 @@
                 <td><?php echo $i;?></td> 
                 <td><img src="<?php echo base_url().'template/frontend/img/slideshow/'.$v[field('sliImage')];?>" alt="<?php echo $v[field('sliImage')];?>" height="40" /></td>
                 <td width="100" align="center">
-                    <?php echo anchor('slideshow/edit/'.$v[field('sliId')],'Edit'); ?>
+                    <?php echo anchor('slideshow/edit/'.$v[field('sliId')],$this->lang->line('edit')); ?>
                     |
-                    <?php echo anchor('slideshow/delete/'.$v[field('sliId')],'Delete','onclick="return confirm(\'Are you sure want to delete?\n Data can not return back!\');"'); ?>
+                    <?php echo anchor('slideshow/delete/'.$v[field('sliId')],$this->lang->line('delete'),'onclick="return confirm(\''.$this->lang->line('ms_confirm_delete').'\');"'); ?>
                 </td>
             </tr> 
             <?php
