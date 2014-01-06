@@ -1,32 +1,18 @@
-
-	<!--Start Carousel-->
-          <div id="myCarousel" class="carousel slide">
-            <div class="carousel-inner">
-              <div class="item active">
-                <img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/featured/1.jpg" alt="">
-              </div>
-              <div class="item">
-                <img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/featured/2.jpg" alt="">
-              </div>
-              <div class="item">
-                <img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/featured/3.jpg" alt="">
-              </div>
-            </div>
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/arrow.png" alt="Arrow"></a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/arrow2.png" alt="Arrow"></a>
-          </div>
-	<!--End Carousel-->
     <div>  
+        <div class="input-append" id="search">
+            <input class="span3" type="text" placeholder="<?php echo $this->lang->line('search'); ?>..." />
+            <button class="btn" type="button"><?php echo $this->lang->line('search'); ?></button>
+        </div>
         <div class="row-fluid">
-        	<div class="span5" style="padding:15px;">
+        	<div class="span5 content-item first-child">
                   <h3>&gt; Welcome <span style="float: right; margin-right:25px;">Date</span></h3>
                   <hr>
                   
-            	<table width="100%" border="0" height="280">
+            	<table width="100%" border="0" class="event">
                   <tr>
-                    <td rowspan="10" class="span2">
-                    	<div style="padding-right:10px;">
-                            <p><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/welcome.png" /></p><br>
+                    <td rowspan="10" width="35%" valign="top">
+                    	<div style="padding-right:5px;">
+                            <p><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/welcome.png" class="span11" /></p><br>
                             <p>Lorem ipsum dolor sit amet, dolor sit amet</p>
                         </div>
                     </td>
@@ -72,7 +58,7 @@
                 </table>
             </div>
             <div class="span7">
-                <div class="span4" style="padding:15px;">
+                <div class="span7 content-item">
                     <h3>&gt; Gallery</h3>
                     <hr>
                                         
@@ -90,7 +76,7 @@
                     <!--Jssor Slider End-->
                     <div style="clear:both"></div>
                 </div>
-                <div class="span2" style="padding:15px;width:220px;">
+                <div class="span4 content-item">
                     <h3>Support</h3>
                     <hr>
                     <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/tea.png" width="70" /> Lorem ipsum</div>
@@ -102,70 +88,40 @@
         </div>  
         
         <div style="clear:both;padding:0 15px;">
-        <!--Start Carousel-->
-              <div id="myCarousel" class="carousel slide">
-                <div class="carousel-inner">
-                  <div class="item active">
-                    <img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/slide3/1.jpg" alt="">
-                  </div>
-                  <div class="item">
-                    <img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/slide3/2.jpg" alt="">
-                  </div>
-                  <div class="item">
-                    <img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/slide3/3.jpg" alt="">
-                  </div>
-                </div>
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/arrow.png" alt="Arrow"></a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/arrow2.png" alt="Arrow"></a>
-              </div>
-        <!--End Carousel-->
+        	<img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/tea-banner.png" width="100%" alt="">
         </div> 
         <div style="clear:both;padding:15px;">
-        	<div class="span7">
+        	<div class="span6">
             	<h3>&gt; Products</h3>
-                <hr><br>
-                <div>
-                	<div class="span7 product-row">
-                    	<div class="product">
-                        	<img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" width="160px">
-                            <p><a href="">/ Read More /</a></p>
-                        </div>
-                    	<div class="product">
-                        	<img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" width="160px">
-                            <p><a href="">/ Read More /</a></p>
-                        </div>
-                    	<div class="product">
-                        	<img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" width="160px">
-                            <p><a href="">/ Read More /</a></p>
-                        </div>
+                <hr>
+                <div class="span6 product-home">
+                    <div class="product">
+                        <p><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" class="span2"></p>
+                        <p><a href="#">/ Read More /</a></p>
                     </div>
-                	<div class="span7 product-row">
-                    	<div class="product">
-                        	<img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" width="160px">
-                            <p><a href="">/ Read More /</a></p>
-                        </div>
-                    	<div class="product">
-                        	<img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" width="160px">
-                            <p><a href="">/ Read More /</a></p>
-                        </div>
-                    	<div class="product">
-                        	<img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" width="160px">
-                            <p><a href="">/ Read More /</a></p>
-                        </div>
+                    <div class="product">
+                        <img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" class="span2">
+                        <p><a href="#">/ Read More /</a></p>
                     </div>
-                	<div class="span7 product-row">
-                    	<div class="product">
-                        	<img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" width="160px">
-                            <p><a href="">/ Read More /</a></p>
-                        </div>
-                    	<div class="product">
-                        	<img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" width="160px">
-                            <p><a href="">/ Read More /</a></p>
-                        </div>
-                    	<div class="product">
-                        	<img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" width="160px">
-                            <p><a href="">/ Read More /</a></p>
-                        </div>
+                    <div class="product">
+                        <img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" class="span2">
+                        <p><a href="#">/ Read More /</a></p>
+                    </div>
+                    <div class="product">
+                        <p><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" class="span2"></p>
+                        <p><a href="#">/ Read More /</a></p>
+                    </div>
+                    <div class="product">
+                        <img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" class="span2">
+                        <p><a href="#">/ Read More /</a></p>
+                    </div>
+                    <div class="product">
+                        <img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" class="span2">
+                        <p><a href="#">/ Read More /</a></p>
+                    </div>
+                    <div class="product">
+                        <img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/product.png" alt="product" class="span2">
+                        <p><a href="#">/ Read More /</a></p>
                     </div>
                 </div>
             </div>
@@ -174,15 +130,7 @@
                     <h3>&gt; Welcome <span style="float: right; margin-right:25px;">Date</span></h3>
                     <hr>
                   
-                    <table width="100%" border="0" height="260">
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
+                    <table width="100%" border="0" class="event">
                       <tr>
                         <td>Lorem ipsum dolor sit amet</td>
                         <td align="right">2013-12-05</td>
@@ -218,15 +166,7 @@
                     <h3>&gt; Welcome <span style="float: right; margin-right:25px;">Date</span></h3>
                     <hr>
                   
-                    <table width="100%" border="0" height="260">
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
+                    <table width="100%" border="0" class="event">
                       <tr>
                         <td>Lorem ipsum dolor sit amet</td>
                         <td align="right">2013-12-05</td>

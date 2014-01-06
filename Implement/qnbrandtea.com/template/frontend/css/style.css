@@ -1,6 +1,36 @@
+@media (max-width: 780px){	
+	.content-item {
+		padding: 15px;	
+	}	
+}
+
+@media (min-width: 781px){	
+	.content-item.first-child {
+		padding: 15px 5px 15px 15px;	
+	}
+	
+	.content-item {
+		padding: 15px 5px;	
+	}	
+}
+
 body{
 	background-color: #343434;	
 	background: url(../img/template/footer-bg.png) bottom repeat-x #343434;
+}
+
+#search {
+	padding:0 15px;	
+	text-align:right;
+}
+
+#search input[type*="text"]{
+	height: 16px;
+	font-size:14px;
+}
+
+#search.input-append .btn {
+	margin-left: -4px;	
 }
 
 .well {
@@ -9,15 +39,11 @@ body{
 	padding-bottom: 20px;	
 	margin-bottom: 0px;
         margin-top: 68px;
-}
+}	
 
 hr {
 	margin: 5px 0 15px 0;	
 	border: 2px solid #B7AB9A;
-}
-
-.span7 {
-	width: 650px;
 }
 
 .support {
@@ -25,16 +51,21 @@ hr {
 	margin-bottom: 7px;
 }
 
-.product-row {
+/*.product-row {
 	background: #FFFFFF;
-	margin-bottom:18px;
-	padding: 20px 0;
+	margin:10px 0px;
+}*/
+
+table.event tr th, table.event tr td {
+	padding:6px 0;
 }
 
-.product-row .product {
-	width: 210px;
+.product-home .product {
+	background: #FFFFFF;
 	text-align:center;
 	float:left;	
+	padding: 15px 6px 10px 6px;
+	margin:10px 0px;
 }
 
 [class*="span"] {
@@ -70,6 +101,20 @@ hr {
 }
 
 /* --------------- footer ---------------------- */
+#footer-info h3 {
+	padding: 0 0 0 20px;
+	color:#7F974F;
+}
+
+#footer-info ul li {
+	display:block;
+	padding: 3px 0;
+}
+
+#footer-info ul li a {
+	color: #BDBF1C;
+}
+
 .footer .container {
 	background: url(../img/template/footer-tran-bg.png) top repeat-x;
 	margin-top:2px;

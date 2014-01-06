@@ -76,7 +76,7 @@ if (!function_exists('field')) {
 
         $field['sliId'] = 'sli_id';
         $field['sliImage'] = 'sli_image';
-        $field['sliDes'] = 'sli_description';
+        $field['sliCatId'] = 'sli_cat_id';
 		
         if (array_key_exists($key, $field)) {
             return $field[$key];

@@ -45,7 +45,7 @@
 
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
-                            <li class="active"><a href="#">Home</a></li>
+                            <li class="active"><?php echo anchor('site/home',$this->lang->line('men_home')); ?></li>
                             <li><a href="#">About</a></li>
                             <li><?php echo anchor('site/products',$this->lang->line('men_product')); ?></li>
                             <li><a href="#">Services</a></li>
@@ -57,12 +57,54 @@
             </div>
         </div>
         <div class="container well">
+        	<?php include('slideshow.php'); ?>
             <?php $this->load->view($page); ?>
+            
+            <div class="span12" style="padding:0 15px;max-width: 910px;" id="footer-info">
+            	<br><hr>
+            	<div class="span3">
+                	<h3>INFORMATION</h3>
+                    <ul>
+                    	<li><a href="#">Sitemap</a></li>
+                    	<li><a href="#">Logal Notice</a></li>
+                    	<li><a href="#">Terms and Condictions</a></li>
+                    </ul>
+                </div>
+            	<div class="span3">
+                	<h3>OUR OFFERS</h3>
+                    <ul>
+                    	<li><a href="#">Products</a></li>
+                    	<li><a href="#">Services</a></li>
+                    	<li><a href="#">Tea Related</a></li>
+                    </ul>
+                </div>
+            	<div class="span3">
+                	<h3>MY ACCOUNT</h3>
+                    <ul>
+                    	<li><a href="#">My order</a></li>
+                    	<li><a href="#">My addresses</a></li>
+                    	<li><a href="#">My Personal info</a></li>
+                    	<li><a href="#">My credit slips</a></li>
+                    	<li><a href="#">My vouchers</a></li>
+
+                    </ul>
+                </div>
+            	<div class="span3">
+                	<h3>CONTACT US</h3>
+                    <ul>
+                    	<li><a href="#">#82, St.371, Phnom Penh, Cambodia</a></li>
+                    	<li><a href="#">Tel: (+855)99 999 999</a></li>
+                    	<li><a href="#">Fax: (+855)99 999 999</a></li>
+                    	<li><a href="#">Email: info@qnbrandtea.com</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
         </div><!-- /container -->
         <footer class="footer">
             <div class="container">
                 <ul class="footer-menu">
-                    <li><a href="">Home</a></li>
+                    <li><?php echo anchor('site/home',$this->lang->line('men_home')); ?></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Product</a></li>
                     <li><a href="#">Services</a></li>
@@ -89,7 +131,7 @@
         <script src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>js/bootstrap-typeahead.js"></script>
         <script src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>js/jquery-ui-1.8.18.custom.min.js"></script>
         <script src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>js/jquery.smooth-scroll.min.js"></script>
-        <script src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>js/lightbox.js"></script>
+        <!--<script src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>js/lightbox.js"></script>-->
         <script src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>js/jssor-slider.js" /></script>
     <script>
         $('.carousel').carousel({
@@ -97,7 +139,7 @@
         })
     </script>
     <script>
-        $Z$t3_starter("$Z$t3");
+    //    $Z$t3_starter("$Z$t3");
     </script>
 </body>
 </html>
