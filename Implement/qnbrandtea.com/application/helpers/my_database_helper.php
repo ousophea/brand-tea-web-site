@@ -19,6 +19,7 @@ if (!function_exists('table')) {
         $table['language'] = 'languages';
         $table['photo'] = 'photos';
         $table['slideshow'] = 'slideshow';
+        $table['tearelated'] = 'tearelated';
         if (array_key_exists($key, $table)) {
             return $table[$key];
         } else {
@@ -78,6 +79,10 @@ if (!function_exists('field')) {
         $field['sliImage'] = 'sli_image';
         $field['sliCatId'] = 'sli_cat_id';
 		
+		$field['teaId'] = 'tea_id';
+        $field['teaTitle'] = 'tea_title';
+        $field['teaDesc'] = 'tea_description';
+		$field['teaStatus'] = 'tea_status';
         if (array_key_exists($key, $field)) {
             return $field[$key];
         } else {
