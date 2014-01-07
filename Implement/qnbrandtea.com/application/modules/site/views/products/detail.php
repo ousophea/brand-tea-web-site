@@ -115,7 +115,7 @@ foreach ($pros->result_array() as $row) {
     #myGal img{border:2px solid white;}
 
     /*Change the colour*/
-    .active img{border:2px solid #333 !important;}
+    .myActive img{border:2px solid #333 !important;}
 </style>
 <script type="text/javascript">
 //initiate the plugin and pass the id of the div containing gallery images
@@ -124,7 +124,7 @@ foreach ($pros->result_array() as $row) {
         responsive: true,
         gallery: 'myGal',
         cursor: 'pointer',
-        galleryActiveClass: 'active',
+        galleryActiveClass: 'myActive',
         imageCrossfade: true,
         loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'
     });

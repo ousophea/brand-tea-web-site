@@ -153,4 +153,55 @@ class Mod_product_front extends CI_Model {
         return '';
     }
 
+    /**
+     * Get all products for category. Category's id is a condition for this method
+     * @param int $catId
+     * @return CI database object
+     */
+    public function getProPerCat($catId){
+        $this->db->select('*');
+        $this->db->from(table('product'));
+        $this->db->join(table('group'), table('group') . '.' . field('groId') . '=' . table('product') . '.' . field('groId'));
+        $this->db->join(table('category'), table('category') . '.' . field('catId') . '=' . table('group') . '.' . field('catId'));
+        $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+        $this->db->where(field('lanDes'), $this->lang->line('lang'));
+        $this->db->where(table('category').'.'.field('catId'), $catId);
+        return $this->db->get();
+    }
+    
+    /**
+     * Get all products for group. Group's id  is a condition for this method
+     * @param int $groId
+     * @return CI database object
+     */
+    public function getProPerGro($groId){
+        $this->db->select('*');
+        $this->db->from(table('product'));
+        $this->db->join(table('group'), table('group') . '.' . field('groId') . '=' . table('product') . '.' . field('groId'));
+        $this->db->join(table('category'), table('category') . '.' . field('catId') . '=' . table('group') . '.' . field('catId'));
+        $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+        $this->db->where(field('lanDes'), $this->lang->line('lang'));
+        $this->db->where(table('group').'.'.field('groId'), $groId);
+        return $this->db->get();
+    }
+    
+    public function getCatName($catId){
+        $this->db->select(field('catName'));
+        $this->db->from(table('category'));
+        $this->db->join(table('language'), table('category') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+        $this->db->where(field('lanDes'), $this->lang->line('lang'));
+        $this->db->where(table('category').'.'.field('catId'), $catId);
+        return $this->db->get()->row_array();
+    }
+    public function getGroName($groId){
+        $this->db->select(field('groName'));
+        $this->db->from(table('group'));
+        $this->db->join(table('language'), table('group') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+        $this->db->where(field('lanDes'), $this->lang->line('lang'));
+        $this->db->where(table('group').'.'.field('groId'), $groId);
+        $this->db->where(field('lanDes'), $this->lang->line('lang'));
+        return $this->db->get()->row_array();
+    }
+    
+   
 }

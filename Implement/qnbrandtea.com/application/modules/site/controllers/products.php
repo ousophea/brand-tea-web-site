@@ -12,10 +12,13 @@ class Products extends Base_Controller {
     }
 
     public function index() {
-        $this->allproducts();
+        $this->viewProducts();
     }
 
-    public function allproducts() {
+    /**
+     * Viell products by limit  9 products
+     */
+    public function viewProducts() {
         $config['base_url'] = base_url() . $this->uri->segment(1) . '/' . $this->uri->segment(2) . '/allproducts/';
         $config['total_rows'] = $this->mod_product_front->getAllProNum();
         $config['per_page'] = 9;
@@ -67,11 +70,40 @@ class Products extends Base_Controller {
     /**
      * Get related product
      */
-    public function getRelatedProduct($proId=0){
-        if($proId!=0){
+    public function getRelatedProduct($proId = 0) {
+        if ($proId != 0) {
             return $this->mod_product_front->getRelatedProduct($proId);
-        }else {
+        } else {
             return '';
         }
     }
+
+    public function category($catId = 0) {
+        // Get product
+        $data['pros'] = $this->mod_product_front->getProPerCat($catId);
+
+        $data['cats'] = $this->mod_product_front->getAllCats();
+        $data['gros'] = $this->mod_product_front->getAllGros();
+        
+        $catName = $this->mod_product_front->getCatName($catId);
+        $data['title'] = $catName[field('catName')];
+        $data['page'] = 'products/products';
+        $data['action'] = $catName[field('catName')];
+        $this->load->view('master', $data);
+    }
+
+    public function group($groId = 0) {
+        // Get product
+        $data['pros'] = $this->mod_product_front->getProPerGro($groId);
+
+        $data['cats'] = $this->mod_product_front->getAllCats();
+        $data['gros'] = $this->mod_product_front->getAllGros();
+        
+        $groName = $this->mod_product_front->getGroName($groId);
+        $data['title'] = $groName[field('groName')];
+        $data['page'] = 'products/products';
+        $data['action'] = $groName[field('groName')];
+        $this->load->view('master', $data);
+    }
+
 }
