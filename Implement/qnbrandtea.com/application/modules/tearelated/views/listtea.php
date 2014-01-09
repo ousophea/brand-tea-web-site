@@ -10,6 +10,7 @@
            <th  width="50">Nº</th> 
             <th>Title</th>
 			 <th>Description</th>
+			 <th>Status</th>
             <th>Action</th> 
         </tr> 
     </thead> 
@@ -23,6 +24,13 @@
                 <td><?php echo $i;?></td> 
                <td><?php echo   $tea[field('teaTitle')];?></td>
 			   <td><?php echo substr($tea[field('teaDesc')],0,150).'...';?></td>
+			   <td><?php    			   			   
+			   if($tea[field('teaStatus')] == 1){
+			      echo 'Active';
+			   }else{
+			      echo 'Inactive';
+			   }
+			   ?></th>
               <td width="100" align="center">
                     <?php echo anchor('tearelated/edit/'.$tea[field('teaId')],'Edit'); ?>
                     |

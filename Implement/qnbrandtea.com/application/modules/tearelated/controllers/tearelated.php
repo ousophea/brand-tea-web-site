@@ -3,9 +3,9 @@ class Tearelated extends Admin_Controller {
 
     public function __construct() {
         parent::__construct();
-    //    if ($this->checkSession()) {
-    //        redirect('authentication/login');
-    //    }
+        //if ($this->checkSession()) {
+          //  redirect('authentication/login');
+       // }
         $this->load->model('mod_tearelated');
      }
     public function index()
@@ -13,8 +13,8 @@ class Tearelated extends Admin_Controller {
 		$this->listtea();
 	}
     /**
-     * View all categories
-     * All category will get from table category
+     * View all list Tea
+     * All Tea related will get from table Tea related Knowledge
      */
     public function listtea() {
         $config['base_url'] = base_url() . $this->uri->segment(1) . '/listtea/';
@@ -30,7 +30,10 @@ class Tearelated extends Admin_Controller {
         $data['action'] = 'View Tearelated';
         $this->load->view('masterpage/master', $data);
     }
-	 //Add new tea related knowledge
+	 /**
+     * Add New Tea
+     * Tea related Knowledge
+     */
 	 public function addnewtea() {
         $data['title'] = "New Tea Related Knowledge";
         $data['page'] = 'addnewtea';
@@ -59,20 +62,19 @@ class Tearelated extends Admin_Controller {
         $data['page'] = 'edit';
         $data['action'] = 'Update Tea Knowledge';
 		$check='';
-        if($this->input->post('hid_tea_name')!= $this->input->post('txt_tea_title')){
-		 
+        if($this->input->post('hid_tea_name')!= $this->input->post('txt_tea_title')){	 
             $check = '|is_unique['.table('tearelated').'.'. field('teaTitle').']';
         }
 		$this->form_validation->set_rules('txt_tea_title', 'Tea Related', 'trim|required|max_length[50]'.$check);
 		if ($this->form_validation->run() == TRUE) {
 			$teaName = $this->input->post('txt_tea_title');
 			$teaDec = $this->input->post('txt_tea_dec');
-		if ($this->mod_tearelated->update($teaName, $teaDec,$this->uri->segment(3))) {
+			$teaStatus = $this->input->post('dd_status');
+		if ($this->mod_tearelated->update($teaName, $teaDec,$teaStatus,$this->uri->segment(3))) {
 				$this->session->set_userdata('ms', 'Success!');
 				redirect('tearelated');
 		}
-        }
-		
+        }	
         $data['tea'] = $this->mod_tearelated->getTea($this->uri->segment(3));
         $this->load->view('masterpage/master', $data);
     }

@@ -3,13 +3,11 @@
 class mod_tearelated extends CI_Model {
     //Insert new tea
     public function addTea($teaName,$teaDec) {
-        $data = array(
-		
-		    field('langId') => 2,
+        $data = array(		
+		    field('langId') => 1,
             field('teaTitle') => $teaName,
             field('teaDesc') => $teaDec,
-            field('teaStatus') => 1
-            
+            field('teaStatus') => 1 
         );
         if ($this->db->insert(table('tearelated'), $data)) {
             return TRUE;
@@ -22,7 +20,8 @@ class mod_tearelated extends CI_Model {
         $this->db->select('*');
         $this->db->limit($num, $start);
         $this->db->from(table('tearelated'));
-		$this->db->where(field('langId'),2);
+		$this->db->join(table('language'), table('tearelated') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+		$this->db->where(field('lanDes'), $this->lang->line('lang'));
 		$this->db->order_by("tea_id", "desc");
         return $this->db->get();
     }
@@ -35,10 +34,11 @@ class mod_tearelated extends CI_Model {
 	}
 	//update tea related knowledge
 	
-    public function update($teaName, $teaDec, $teaId) {
+    public function update($teaName, $teaDec,$teaStatus, $teaId) {
         $data = array(
             field('teaTitle') => $teaName,
             field('teaDesc') => $teaDec,
+			field('teaStatus')=>$teaStatus,
             field('teaId') => $teaId
             //field('langId') => 2
         );
