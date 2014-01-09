@@ -49,7 +49,7 @@
                             <li><a href="#">About</a></li>
                             <li><?php echo anchor('site/products',$this->lang->line('men_product')); ?></li>
                             <li><a href="#">Services</a></li>
-                            <li><a href="#">Tea Related</a></li>
+                            <li><?php echo anchor('site/tearelated',$this->lang->line('men_tearelated')); ?></li>
                             <li><a href="#">Contact</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
@@ -75,7 +75,7 @@
                     <ul>
                     	<li><a href="#">Products</a></li>
                     	<li><a href="#">Services</a></li>
-                    	<li><a href="#">Tea Related</a></li>
+                    	<li><?php echo anchor('site/tearelated',$this->lang->line('men_tearelated')); ?></li>
                     </ul>
                 </div>
             	<div class="span3">
@@ -108,7 +108,7 @@
                     <li><a href="#">About</a></li>
                     <li><a href="#">Product</a></li>
                     <li><a href="#">Services</a></li>
-                    <li><a href="#">Tea Related</a></li>
+                    <li><?php echo anchor('site/tearelated',$this->lang->line('men_tearelated')); ?></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </div>
