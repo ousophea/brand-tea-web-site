@@ -14,10 +14,9 @@
 <?php
 foreach ($tea->result_array() as $teas) {
     //$fields = unserialize($cat[field('catField')]);
-	 echo form_hidden('hid_tea_name', $teas[field('teaTitle')]);
-    
+	 echo form_hidden('hid_tea_name', $teas[field('teaTitle')]); 
 ?>
-<table cellspacing="0" style="width:624px"> 
+<table cellspacing="0" > 
     <tr> 
         <td width="100" valign="middle">
             <label for="tea-1"><?php echo $this->lang->line('tea_name'),$this->lang->line('require'); ?></label>
@@ -28,6 +27,19 @@ foreach ($tea->result_array() as $teas) {
         <td width="100" valign="middle">
              <label for="tea-2"><?php echo $this->lang->line('description'); ?></label>
              <?php echo form_textarea('txt_tea_dec', $this->input->post('txt_tea_dec') ? $this->input->post('txt_tea_dec') : $teas[field('teaDesc')], 'id="tea-2"'); ?>          
+        </td>
+    </tr>
+	 <tr> 
+        <td width="100" valign="middle">
+             <label for="tea-2"><?php echo $this->lang->line('men_status'); ?></label>		 
+			 <?php
+             $dd_list = array(
+			      ''. $teas[field('teaStatus')].'' => ''.$teas[field('teaStatus')].'',
+                  '1'   => 'Active',
+                  '0'   => 'Inactive'
+                );
+             echo form_dropdown('dd_status', $dd_list, '2');   
+			?>          
         </td>
     </tr>
 </table>
