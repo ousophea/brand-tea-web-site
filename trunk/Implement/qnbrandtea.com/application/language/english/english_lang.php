@@ -40,8 +40,8 @@ $lang['men_slideshow']='Slideshow';
 $lang['men_content']='Content';
 
 $lang['men_tearelated']='Tea Related';
-
-
+$lang['men_teaknowledge']='Tea Related Knowledge';
+$lang['men_status']='Tea Status';
 // Message
 $lang['ms_success']='Success!';
 $lang['ms_error']='Fail!';
