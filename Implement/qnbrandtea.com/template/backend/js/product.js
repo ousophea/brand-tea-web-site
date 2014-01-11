@@ -47,6 +47,11 @@ jQuery(document).ready(function($) {
         // Append data to this id
         $("#fields").append(data);
         fun = 'product/getFields';
+
+        // For add new product
+        $('.hideShow').click(function() {
+            $(this).next('input[type=hidden]').val() == 'show' ? $(this).next('input[type=hidden]').val('hide') : $(this).next('input[type=hidden]').val('show');
+        });
     }
 
     $('.remove').click(function() {
@@ -66,8 +71,15 @@ jQuery(document).ready(function($) {
                 }
             });
         }
-
-
     });
+
+    // For update product
+    $('.hideShow, .existingHideShow').click(function() {
+        $(this).next('input[type=hidden]').val() == 'show' ? $(this).next('input[type=hidden]').val('hide') : $(this).next('input[type=hidden]').val('show');
+    });
+    
+    
+   
+    
 
 });

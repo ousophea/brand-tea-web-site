@@ -30,7 +30,7 @@
                 selector: "textarea.tinyMCE",
                 theme: "modern",
                 external_filemanager_path:'<?php echo base_url(); ?>addon/tinymce/js/tinymce/plugins/filemanager/',
-                width: 680,
+                width: 300,
                 height: 300,
                 relative_urls: false,
                 remove_script_host: false,
@@ -38,10 +38,10 @@
                 plugins: [
                     "advlist autolink link image lists charmap print preview hr anchor pagebreak",
                     "searchreplace wordcount visualblocks visualchars code insertdatetime media nonbreaking",
-                    "table contextmenu directionality emoticons paste textcolor filemanager"
+                    "table contextmenu directionality emoticons paste textcolor filemanager fullscreen"
                 ],
                 image_advtab: true,
-                toolbar: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect forecolor backcolor | link unlink anchor | image media | print preview code"
+                toolbar: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect forecolor backcolor | link unlink anchor | image media | print preview code fullscreen"
             });
         </script>
         <script type="text/javascript" src="<?php echo base_url(); ?>addon/tinymce/js/tinymce/plugins/filemanager/plugin.min.js"></script>
