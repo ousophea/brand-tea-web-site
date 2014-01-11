@@ -9,7 +9,7 @@ $lang['new']='New';
 $lang['edit']='Edit';
 $lang['require']='<span class="require">*</span>';
 $lang['description']='Description';
-$lang['field']='Fields';
+$lang['field']='Field (s)';
 $lang['save']='Save';
 $lang['update']='Update';
 $lang['cancel']='Cancel';
@@ -20,6 +20,11 @@ $lang['value']='Value';
 $lang['find_us']='Find us';
 $lang['related_knowledge']='Related Knowledge';
 $lang['related_product'] = 'Related Product';
+$lang['hide']='Hide';
+$lang['show']='Show';
+$lang['photo']='Photo (s)';
+$lang['main_photo']='Main Photo';
+
 
 // Category
 $lang['cate_name']='Category Name';
@@ -47,6 +52,7 @@ $lang['ms_success']='Success!';
 $lang['ms_error']='Fail!';
 $lang['ms_upload_fail']='File(s) can not upload!<br /> Please check your file\'s type, and type size';
 $lang['ms_confirm_delete']='Are you sure want to remove?\n Data can not return back!';
+$lang['ms_no_record_found']='No record found!';
 
 
 

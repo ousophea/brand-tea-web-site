@@ -26,6 +26,7 @@ if (!function_exists('table')) {
             return NULL;
         }
     }
+
 }
 
 if (!function_exists('field')) {
@@ -48,7 +49,8 @@ if (!function_exists('field')) {
         $field['proDes'] = 'pro_des';
         $field['proField'] = 'pro_fields';
         $field['proRelated'] = 'pro_related';
-        
+        $field['proKnowledge']='pro_knowledge_related';
+
 
         $field['menId'] = 'men_id';
         $field['menName'] = 'men_name';
@@ -70,19 +72,20 @@ if (!function_exists('field')) {
         $field['catName'] = 'cate_name';
         $field['catDes'] = 'cate_description';
         $field['catField'] = 'cate_fields';
-        
-        $field['phoId']='pho_id';
-        $field['phoUrl']='pho_url';
-        $field['phoDes']='pho_des';
+
+        $field['phoId'] = 'pho_id';
+        $field['phoUrl'] = 'pho_url';
+        $field['phoDes'] = 'pho_des';
+        $field['isMainPhoto']='pho_is_main_photo';
 
         $field['sliId'] = 'sli_id';
         $field['sliImage'] = 'sli_image';
         $field['sliCatId'] = 'sli_cat_id';
-		
-		$field['teaId'] = 'tea_id';
+
+        $field['teaId'] = 'tea_id';
         $field['teaTitle'] = 'tea_title';
         $field['teaDesc'] = 'tea_description';
-		$field['teaStatus'] = 'tea_status';
+        $field['teaStatus'] = 'tea_status';
         if (array_key_exists($key, $field)) {
             return $field[$key];
         } else {

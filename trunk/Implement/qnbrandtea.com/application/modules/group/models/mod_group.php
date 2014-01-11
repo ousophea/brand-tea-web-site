@@ -101,7 +101,8 @@ class mod_group extends CI_Model {
         $html='';
         foreach ($fields['label'] as $field){
             $html .='<input type="hidden" value="'.$fields['label'][$k].'" name="label[]" />';
-            $html .='<label>'.$fields['label'][$k].' <input type="text" name="field[]" value="'.$fields['field'][$k].'"></label>';
+            $html .='<label for="field-"'.$k.'>'.$fields['label'][$k].' </label><input id="field-"'.$k.' type="text" name="field[]" value="'.$fields['field'][$k].'">';
+            $html.=' <input class="hideShow" type="checkbox" name="hide-show[]" value="hide" /> <input type="hidden" name="hide_show[]" value="show" />Hide';
             $k++;
         }
         return $html;
