@@ -1,4 +1,4 @@
-<?php echo form_open_multipart($this->uri->segment(1) . '/addnew'); ?>
+<?php echo form_open_multipart($this->uri->segment(1) . '/addnew','class="product-form"'); ?>
 <div class="holder">
     <div class="sub-title">
         <?php
@@ -26,12 +26,15 @@
             <td width="100" valign="middle">
                 <label for="price"><?php echo $this->lang->line('price'), $this->lang->line('require'); ?><small> (Number only)</small></label>
                 <?php echo form_input('txt_pro_price', $this->input->post('txt_pro_price') ? $this->input->post('txt_pro_price') : '', 'id="qty" required'); ?>
+                <?php echo form_checkbox('ch_price_hide', 'hide','','class="existingHideShow"'); echo '<input  type="hidden" value="show" name="price_hide_show" /> ', $this->lang->line('hide');?>
             </td>
         </tr>
         <tr> 
             <td width="100" valign="middle">
                 <label for="qty"><?php echo $this->lang->line('qty'), $this->lang->line('require'); ?><small> (Number only)</small></label>
                 <?php echo form_input('txt_pro_qty', $this->input->post('txt_pro_qty') ? $this->input->post('txt_pro_qty') : '', 'id="qty" required'); ?>
+                <?php echo form_checkbox('ch_qty_hide', 'hide','','class="existingHideShow"'); echo '<input  type="hidden" value="show" name="qty_hide_show" /> ', $this->lang->line('hide');?>
+                
             </td>
         </tr>
         <tr>
@@ -56,8 +59,15 @@
         </tr>
         <tr>
             <td>
-                <label>Photos <small>(Choose how many photos you want)</small></label>
-                <?php echo form_upload('photo[]','','multiple="multiple" accept="image/gif,image/jpeg,image/png"'); ?>
+                <label><?php echo $this->lang->line('main_photo'), $this->lang->line('require'); ?> <small>(Choose main photo)</small></label>
+                <?php echo form_upload('main_photo[]','',' accept="image/gif,image/jpeg,image/png" class="pro_photo"'); ?>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <label><?php echo $this->lang->line('photo');?> <small>(Choose how many photos you want)</small></label>
+                <?php echo form_upload('photo[]','','multiple="multiple" accept="image/gif,image/jpeg,image/png" class="pro_photo"'); ?>
             </td>
         </tr>
         <tr>
@@ -71,13 +81,40 @@
 
 </div>
 <div  style="float: left; width: 40%;">
-    <h2><?php echo $this->lang->line('men_tea_related'); ?></h2>
+    
+    <h2><?php echo $this->lang->line('related_product'); ?></h2>
     <table  style="min-width: 10px;">
         <?php
+        if($pros->num_rows>0){
+            
+        }else{
+            echo $this->lang->line('ms_no_record_found');
+        }
         foreach ($pros->result_array() as $pro) {
             ?>
             <tr>
                 <td><?php echo '<label for="'.$pro[field('proId')].'">', form_checkbox('ch_tea_related[]', $pro[field('proId')],$this->input->post('ch_tea_related')?$this->input->post('ch_tea_related'):'','id="'.$pro[field('proId')].'"'),  ' '.$pro[field('proName')].'</label>';?></td>
+            </tr>
+            <?php
+        }
+        ?>
+
+    </table>
+</div>
+<div  style="float: left; width: 40%;">
+    
+    <h2><?php echo $this->lang->line('related_knowledge'); ?></h2>
+    <table  style="min-width: 10px;">
+        <?php
+        if($relateds->num_rows>0){
+            
+        }else{
+            echo $this->lang->line('ms_no_record_found');
+        }
+        foreach ($relateds->result_array() as $pro) {
+            ?>
+            <tr>
+                <td><?php echo '<label for="'.$pro[field('teaId')].'">', form_checkbox('ch_tea_knowledge[]', $pro[field('teaId')],$this->input->post('ch_tea_knowledge')?$this->input->post('ch_tea_knowledge'):'','id="'.$pro[field('teaId')].'"'),  ' '.$pro[field('teaTitle')].'</label>';?></td>
             </tr>
             <?php
         }

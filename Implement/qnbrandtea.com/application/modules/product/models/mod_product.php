@@ -34,7 +34,7 @@ class mod_product extends CI_Model {
         return $this->db->insert_batch(table('photo'), $data);
     }
 
-    public function update($proId, $proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $fields, $photos='') {
+    public function update($proId, $proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $fields, $photos = '') {
         $data = array(
             field('proName') => $proName,
             field('proPrice') => $proPrice,
@@ -47,10 +47,9 @@ class mod_product extends CI_Model {
         );
         $this->db->where(field('proId'), $proId);
         if ($this->db->update(table('product'), $data)) {
-            if ($photos==''){
+            if ($photos == '') {
                 return TRUE;
-            }
-            else if ($this->addNewPhoto($proId, $photos)) {
+            } else if ($this->addNewPhoto($proId, $photos)) {
                 return TRUE;
             }
         }
@@ -101,7 +100,7 @@ class mod_product extends CI_Model {
             $this->deletePhotoInLocalDir($photos, './uploads/products/100x100/');
             $this->deletePhotoInLocalDir($photos, './uploads/products/250x250/');
             $this->deletePhotoInLocalDir($photos, './uploads/products/500x500/');
-            
+
 
             return TRUE;
         }
@@ -162,11 +161,11 @@ class mod_product extends CI_Model {
      * @return boolean
      */
     public function deleteSinglePhoto($id, $removeLocalPhoto = FALSE, $photoPathAndName = '') {
-        if($removeLocalPhoto){
-           @unlink('./uploads/products/'.$photoPathAndName);
-           @unlink('./uploads/products/100x100/'.$photoPathAndName);
-           @unlink('./uploads/products/250x250/'.$photoPathAndName);
-           @unlink('./uploads/products/250x250/'.$photoPathAndName);
+        if ($removeLocalPhoto) {
+            @unlink('./uploads/products/' . $photoPathAndName);
+            @unlink('./uploads/products/100x100/' . $photoPathAndName);
+            @unlink('./uploads/products/250x250/' . $photoPathAndName);
+            @unlink('./uploads/products/250x250/' . $photoPathAndName);
         }
         $this->db->where(field('phoId'), $id);
         if ($this->db->delete(table('photo'))) {
@@ -198,6 +197,15 @@ class mod_product extends CI_Model {
             $k++;
         }
         return $html;
+    }
+
+    public function getRelatedKnowledge() {
+        $this->db->select('*');
+        $this->db->from(table('tearelated'));
+        $this->db->join(table('language'), table('tearelated') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+        $this->db->where(field('lanDes'), $this->lang->line('lang'));
+        $this->db->order_by("tea_id", "desc");
+        return $this->db->get();
     }
 
 }

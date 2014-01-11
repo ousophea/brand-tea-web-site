@@ -50,7 +50,7 @@ class product extends Admin_Controller {
         $data['action'] = 'Add New Product';
         $data['gros'] = $this->mod_group->getAllGro();
 
-        $this->form_validation->set_rules('txt_pro_name', 'Product Name', 'trim|required|max_length[50]|is_unique[' . table('product') . '.' . field('proName') . ']');
+        $this->form_validation->set_rules('txt_pro_name', 'Product Name', 'trim|required|max_length[100]|is_unique[' . table('product') . '.' . field('proName') . ']');
         $this->form_validation->set_rules('txt_pro_price', 'Price', 'trim|required|numeric');
         $this->form_validation->set_rules('txt_pro_qty', 'Quantity', 'trim|required|numeric');
         $this->form_validation->set_rules('txt_pro_dec', 'Description', 'trim|required|max_length[500]');
@@ -87,6 +87,7 @@ class product extends Admin_Controller {
             }
         }
         $data['pros'] = $this->mod_product->getAllPro();
+        $data['relateds']=$this->mod_product->getRelatedKnowledge();
         $this->load->view('masterpage/master', $data);
     }
 
@@ -100,10 +101,10 @@ class product extends Admin_Controller {
         if ($this->input->post('hid_pro_name') != $this->input->post('txt_pro_name')) {
             $check = '|is_unique[' . table('product') . '.' . field('proName') . ']';
         }
-        $this->form_validation->set_rules('txt_pro_name', 'Product Name', 'trim|required|max_length[50]' . $check);
+        $this->form_validation->set_rules('txt_pro_name', 'Product Name', 'trim|required|max_length[100]' . $check);
         $this->form_validation->set_rules('txt_pro_price', 'Price', 'trim|required|numeric');
         $this->form_validation->set_rules('txt_pro_qty', 'Quantity', 'trim|required|numeric');
-        $this->form_validation->set_rules('txt_pro_dec', 'Description', 'trim|required|max_length[500]');
+        $this->form_validation->set_rules('txt_pro_dec', 'Description', 'trim|required|max_length[5000]');
         $this->form_validation->set_rules('dro_gro_name', 'Group', 'trim|required');
 
 
