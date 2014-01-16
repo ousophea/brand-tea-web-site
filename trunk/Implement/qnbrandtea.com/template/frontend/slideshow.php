@@ -1,10 +1,18 @@
 <?php if(isset($slideshow) && $slideshow->num_rows() > 0):?>
+	<style type="text/css">
+		.slide .carousel-inner .carousel-caption {
+			bottom: -266px;	
+		}
+	</style>
 	<!--Start Carousel-->
           <div id="myCarousel" class="carousel slide">
             <div class="carousel-inner">
             <?php $i = 0; foreach($slideshow->result_array() as $row): ?>
               <div class="item<?php echo $i == 0 ? ' active' : ''; ?>">
-                <img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/slideshow/<?php echo $row[field('sliImage')]; ?>" class="span12" alt="">
+                <img src="<?php echo base_url() . SLIDESHOW_IMAGE_PATH . '/' . $row[field('sliImage')]; ?>" class="span12" alt="">
+                <div class="carousel-caption">
+                  <p><?php echo $row[field('sliDes')]; ?></p>
+                </div>
               </div>
             <?php $i=1; endforeach; ?>
             </div>

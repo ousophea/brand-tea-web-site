@@ -10,7 +10,7 @@
     </div>
     <div style="clear:both"></div>
 </div>
-	<input type="file" name="image" id="image" /> &nbsp; 
-    <!--<input type="submit" name="btnUpload" class="button" id="btn-upload" value="Upload" />-->
+	<?php echo $this->lang->line('image'); ?>: <input type="file" name="image" id="image" /> <br><br>
+    <textarea name="description" class="tinyMCE" rows="10"><?php echo $slideshow->row()->sli_description; ?></textarea>
 </form>
 <br><br>

@@ -42,7 +42,7 @@ $lang['men_category']='Category';
 $lang['men_product']='Product';
 $lang['men_group']='Group';
 $lang['men_slideshow']='Slideshow';
-$lang['men_content']='Content';
+$lang['men_content']='Home Page';
 
 $lang['men_tearelated']='Tea Related';
 $lang['men_teaknowledge']='Tea Related Knowledge';
