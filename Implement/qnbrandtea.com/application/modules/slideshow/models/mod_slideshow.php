@@ -27,18 +27,24 @@ class Mod_Slideshow extends CI_Model{
         return $this->db->get();
     }
 	
-	public function addSlideshow($imageName){
+	public function addSlideshow($imageName, $description){
 		$data = array(
-			field('sliImage') => $imageName 
+			field('sliImage') => $imageName,
+			field('sliDes') => $description 
 		);			
 		$result = $this->db->insert(table('slideshow'), $data); 
 		return $this->db->affected_rows($result);
 	}
 	
-	public function updateSlideshow($imageName, $sliId){
+	public function updateSlideshow($imageName, $sliId, $description){
 		$data = array(
-			field('sliImage') => $imageName 
+			field('sliImage') => $imageName,
+			field('sliDes') => $description
 		);
+		
+		if(empty($imageName))
+			unset($data[field('sliImage')]);
+			
         $this->db->where(field('sliId'),$sliId);
 		$result = $this->db->update(table('slideshow'), $data); 
 		return $this->db->affected_rows($result);

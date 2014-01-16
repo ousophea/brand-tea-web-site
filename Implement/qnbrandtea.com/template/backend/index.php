@@ -179,7 +179,7 @@
                     </div>
 
                     <div class="box">
-                        <div class="h_title">&#8250; Content</div>
+                        <div class="h_title">&#8250; Home Page</div>
                         <ul>
                             <li class="b1"><a class="icon page" href="<?php echo site_url('content/home/listhome'); ?>">Home Page</a></li>
                         </ul>

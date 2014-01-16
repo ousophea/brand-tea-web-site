@@ -81,6 +81,7 @@ if (!function_exists('field')) {
         $field['sliId'] = 'sli_id';
         $field['sliImage'] = 'sli_image';
         $field['sliCatId'] = 'sli_cat_id';
+        $field['sliDes'] = 'sli_description';
 
         $field['teaId'] = 'tea_id';
         $field['teaTitle'] = 'tea_title';

@@ -10,8 +10,9 @@
     <thead> 
         <tr> 
             <th width="30"><?php echo $this->lang->line('no'); ?></th> 
-            <th><?php echo $this->lang->line('image'); ?></th>
-            <th><?php echo $this->lang->line('action'); ?></th> 
+            <th width="145"><?php echo $this->lang->line('image'); ?></th>
+            <th><?php echo $this->lang->line('description'); ?></th>
+            <th width="100"><?php echo $this->lang->line('action'); ?></th> 
         </tr> 
     </thead> 
     <tbody> 
@@ -22,8 +23,9 @@
             ?>
             <tr> 
                 <td><?php echo $i;?></td> 
-                <td><img src="<?php echo base_url().'template/frontend/img/slideshow/'.$v[field('sliImage')];?>" alt="<?php echo $v[field('sliImage')];?>" height="40" /></td>
-                <td width="100" align="center">
+                <td><img src="<?php echo base_url() . SLIDESHOW_IMAGE_PATH . $v[field('sliImage')];?>" alt="<?php echo $v[field('sliImage')];?>" height="40" /></td>
+                <td><?php echo $v[field('sliDes')];?></td> 
+                <td align="center">
                     <?php echo anchor('slideshow/edit/'.$v[field('sliId')],$this->lang->line('edit')); ?>
                     |
                     <?php echo anchor('slideshow/delete/'.$v[field('sliId')],$this->lang->line('delete'),'onclick="return confirm(\''.$this->lang->line('ms_confirm_delete').'\');"'); ?>

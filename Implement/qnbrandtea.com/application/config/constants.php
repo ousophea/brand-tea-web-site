@@ -40,6 +40,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 define('BACKEND_TEMPLATE',		'template/backend/');
 define('FRONTEND_TEMPLATE',		'template/frontend/');
 define('PRODUCT_PHOTO_PATH',		'uploads/products/');
+define('SLIDESHOW_IMAGE_PATH',		'uploads/slideshow/');
 
 
 
