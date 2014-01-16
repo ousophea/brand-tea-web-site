@@ -6,11 +6,13 @@
         <title><?php echo $title; ?></title>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() . BACKEND_TEMPLATE; ?>css/style.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() . BACKEND_TEMPLATE; ?>css/navi.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jcrop/css/jquery.Jcrop.css" media="screen" />
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jquery-1.7.2.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/category.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/product.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/tinymce/tinymce.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jcrop/js/jquery.Jcrop.js"></script>
         <script type="text/javascript">
             jQuery(document).ready(function($) {
                 $(".box .h_title").not(this).next("ul").hide("normal");
