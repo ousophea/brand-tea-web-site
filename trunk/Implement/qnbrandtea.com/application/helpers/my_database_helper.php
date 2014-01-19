@@ -20,6 +20,7 @@ if (!function_exists('table')) {
         $table['photo'] = 'photos';
         $table['slideshow'] = 'slideshow';
         $table['tearelated'] = 'tearelated';
+		$table['about'] = 'about';
         if (array_key_exists($key, $table)) {
             return $table[$key];
         } else {
@@ -87,6 +88,9 @@ if (!function_exists('field')) {
         $field['teaTitle'] = 'tea_title';
         $field['teaDesc'] = 'tea_description';
         $field['teaStatus'] = 'tea_status';
+		$field['aboId']='abo_id';
+		$field['aboDesc'] ='abo_description';
+		$field['aboStatus']='abo_status';
         if (array_key_exists($key, $field)) {
             return $field[$key];
         } else {
