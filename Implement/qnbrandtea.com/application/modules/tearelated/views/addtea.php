@@ -31,22 +31,6 @@
     </tr>
 </table>
 </div>
-<!--<div id='tab3'>
-<table cellspacing="0" style="width:624px"> 
-    <tr> 
-        <td width="100" valign="middle">
-            <label for="tea-1"><?php //echo $this->lang->line('tea_name'),$this->lang->line('require'); ?></label>
-             <?php //echo form_input('txt_tea_title_ch', $this->input->post('txt_tea_title_ch') ? $this->input->post('txt_tea_title_ch') : '', 'id="tea-1"'); ?>
-        </td>
-    </tr>
-    <tr> 
-        <td width="100" valign="middle">
-             <label for="tea-2"><?php //echo $this->lang->line('description'); ?></label>
-             <?php //echo form_textarea('txt_tea_dec_ch', $this->input->post('txt_tea_dec_ch') ? $this->input->post('txt_tea_dec_ch') : '', 'id="tea-2"'); ?>     
-        </td>
-    </tr>
-</table>
-</div>-->
 <?php echo form_close(); ?>
 <!--tynimce-->
 	<script type="text/javascript">
@@ -60,26 +44,6 @@
 		toolbar: "insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
 	});
 	</script>
-</div>
-<!--Tab-->
-<style>		
-			.tabs li {
-				list-style:none;
-				display:inline;
-			}
-			.tabs a {
-				padding:5px 10px;
-				display:inline-block;
-				background:#666;
-				color:#fff;
-				text-decoration:none;
-			}
-			.tabs a.active {
-				background:#fff;
-				color:#000;
-			}
-
-</style>
         <script>
 			// Wait until the DOM has loaded before querying the document
 			$(document).ready(function(){
