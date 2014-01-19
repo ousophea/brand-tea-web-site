@@ -7,8 +7,8 @@
                 <h3 class="page-head"> <?php echo $action?></h3>  
                  <?php
                      foreach ($teas->result_array() as $row) {	
-					  $tea_desc=$row[field('teaDesc')];
-                  	?>
+					          $tea_desc=$row[field('teaDesc')];
+                 ?>
                  <?php					
                   echo'<table width="90%" border="0" class="event" style="margin:0 auto">
                     <tr>
@@ -16,7 +16,7 @@
 				 ?>
                   <?php echo "<h3 style='color:#DF9D29'>".'<img src="'.base_url() . FRONTEND_TEMPLATE.'/img/content/detail.png" width="20" height="20"/>'.' '.$row[field('teaTitle')]."</h3><br>"?>
 				  <?php 	                 				  
-            	   echo $tea_desc;		   
+            	   echo "<span style='text-align:justify;'>". $tea_desc."</span>";		   
                    echo '</td>    									
                  </tr>   									
                 </table>';
