@@ -18,8 +18,6 @@ $lang['qty']='Quantity';
 $lang['name']='Name';
 $lang['value']='Value';
 $lang['find_us']='Find us';
-$lang['related_knowledge']='Related Knowledge';
-$lang['related_product'] = 'Related Product';
 $lang['hide']='Hide';
 $lang['show']='Show';
 $lang['photo']='Photo (s)';
@@ -43,10 +41,16 @@ $lang['men_product']='Product';
 $lang['men_group']='Group';
 $lang['men_slideshow']='Slideshow';
 $lang['men_content']='Home Page';
-
+//Tea Related knowledge
+$lang['related_knowledge']='Related Knowledge';
+$lang['related_product'] = 'Related Product';
 $lang['men_tearelated']='Tea Related';
 $lang['men_teaknowledge']='Tea Related Knowledge';
 $lang['men_status']='Tea Status';
+$lang['men_about']="About us";
+$lang['men_abo_status']='About Status';
+$lang['men_follow']='FOLLOW US';
+$lang['men_contact']="Contact";
 // Message
 $lang['ms_success']='Success!';
 $lang['ms_error']='Fail!';
