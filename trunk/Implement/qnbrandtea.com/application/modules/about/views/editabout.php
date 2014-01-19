@@ -24,7 +24,7 @@ foreach ($about->result_array() as $abo) {
     <tr> 
         <td width="100" valign="middle">
              <label for="tea-2"><?php echo $this->lang->line('men_about'); ?></label>
-             <?php echo form_textarea('txt_about', $this->input->post('txt_about') ? $this->input->post('txt_about') : $abo[field('aboDesc')], 'id="tea-2"'); ?>          
+             <?php echo form_textarea('txt_about', $this->input->post('txt_about') ? $this->input->post('txt_about') : $abo[field('aboDesc')], 'class="tinyMCE"'); ?>          
         </td>
     </tr>
 	<tr> 
@@ -43,7 +43,7 @@ foreach ($about->result_array() as $abo) {
 </table>
 <?php } ?>
 </form>
-<!--tynimce-->
+<!--tynimce
 	<script type="text/javascript">
 	tinymce.init({
 		selector: "textarea",
@@ -56,4 +56,4 @@ foreach ($about->result_array() as $abo) {
 		],
 		toolbar: "insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
 	});
-	</script>
+	</script>-->
