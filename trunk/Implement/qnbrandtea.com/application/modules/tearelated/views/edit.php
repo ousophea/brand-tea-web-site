@@ -45,22 +45,6 @@ foreach ($tea->result_array() as $teas) {
 </table>
 <?php } ?>
 </form>
-<!--<div id='tab3'>
-<table cellspacing="0" style="width:624px"> 
-    <tr> 
-        <td width="100" valign="middle">
-            <label for="tea-1"><?php //echo $this->lang->line('tea_name'),$this->lang->line('require'); ?></label>
-             <?php //echo form_input('txt_tea_title_ch', $this->input->post('txt_tea_title_ch') ? $this->input->post('txt_tea_title_ch') : '', 'id="tea-1"'); ?>
-        </td>
-    </tr>
-    <tr> 
-        <td width="100" valign="middle">
-             <label for="tea-2"><?php //echo $this->lang->line('description'); ?></label>
-             <?php //echo form_textarea('txt_tea_dec_ch', $this->input->post('txt_tea_dec_ch') ? $this->input->post('txt_tea_dec_ch') : '', 'id="tea-2"'); ?>     
-        </td>
-    </tr>
-</table>
-</div>-->
 <!--tynimce-->
 	<script type="text/javascript">
 	tinymce.init({
