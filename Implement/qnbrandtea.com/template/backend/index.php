@@ -13,6 +13,7 @@
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/tinymce/tinymce.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jcrop/js/jquery.Jcrop.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/translation.js"></script>
         <script type="text/javascript">
             jQuery(document).ready(function($) {
                 $(".box .h_title").not(this).next("ul").hide("normal");
