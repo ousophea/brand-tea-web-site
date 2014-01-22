@@ -20,7 +20,8 @@ if (!function_exists('table')) {
         $table['photo'] = 'photos';
         $table['slideshow'] = 'slideshow';
         $table['tearelated'] = 'tearelated';
-		$table['about'] = 'about';
+        $table['proLang'] = 'product_languages';
+        $table['about'] = 'about';
         if (array_key_exists($key, $table)) {
             return $table[$key];
         } else {
@@ -50,7 +51,7 @@ if (!function_exists('field')) {
         $field['proDes'] = 'pro_des';
         $field['proField'] = 'pro_fields';
         $field['proRelated'] = 'pro_related';
-        $field['proKnowledge']='pro_knowledge_related';
+        $field['proKnowledge'] = 'pro_knowledge_related';
 
 
         $field['menId'] = 'men_id';
@@ -77,7 +78,7 @@ if (!function_exists('field')) {
         $field['phoId'] = 'pho_id';
         $field['phoUrl'] = 'pho_url';
         $field['phoDes'] = 'pho_des';
-        $field['isMainPhoto']='pho_is_main_photo';
+        $field['isMainPhoto'] = 'pho_is_main_photo';
 
         $field['sliId'] = 'sli_id';
         $field['sliImage'] = 'sli_image';
@@ -88,9 +89,12 @@ if (!function_exists('field')) {
         $field['teaTitle'] = 'tea_title';
         $field['teaDesc'] = 'tea_description';
         $field['teaStatus'] = 'tea_status';
-		$field['aboId']='abo_id';
-		$field['aboDesc'] ='abo_description';
-		$field['aboStatus']='abo_status';
+        $field['aboId'] = 'abo_id';
+        $field['aboDesc'] = 'abo_description';
+        $field['aboStatus'] = 'abo_status';
+
+        $field['prlId'] = 'prl_id';
+
         if (array_key_exists($key, $field)) {
             return $field[$key];
         } else {

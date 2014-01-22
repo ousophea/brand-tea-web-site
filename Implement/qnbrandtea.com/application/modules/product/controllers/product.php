@@ -5,7 +5,7 @@
  * It is a controller of group. It will controll all action of group management
  * @author Richat
  */
-class product extends Admin_Controller {
+class Product extends Admin_Controller {
 
     public $photo = '';
 
@@ -15,9 +15,7 @@ class product extends Admin_Controller {
         if (!$this->checkSession()) {
             redirect('authentication/login');
         }
-        $this->load->model('mod_product');
-        $this->load->model('category/mod_category');
-        $this->load->model('group/mod_group');
+        $this->load->model(array('mod_product', 'category/mod_category', 'group/mod_group', 'translation/mod_translation'));
         $this->load->library('image_lib');
     }
 
@@ -37,6 +35,7 @@ class product extends Admin_Controller {
         $this->pagination->initialize($config);
 
         $data['pros'] = $this->mod_product->getProduct($this->uri->segment(3), $config['per_page']);
+        $data['langs'] = $this->mod_translation->getLanguages();
 
         $data['title'] = "Product";
         $data['page'] = 'product';
@@ -53,41 +52,47 @@ class product extends Admin_Controller {
         $this->form_validation->set_rules('txt_pro_name', 'Product Name', 'trim|required|max_length[100]|is_unique[' . table('product') . '.' . field('proName') . ']');
         $this->form_validation->set_rules('txt_pro_price', 'Price', 'trim|required|numeric');
         $this->form_validation->set_rules('txt_pro_qty', 'Quantity', 'trim|required|numeric');
-        $this->form_validation->set_rules('txt_pro_dec', 'Description', 'trim|required|max_length[500]');
+        $this->form_validation->set_rules('txt_pro_dec', 'Description', 'trim|required|max_length[5000]');
         $this->form_validation->set_rules('dro_gro_name', 'Group', 'trim|required');
+//        $this->form_validation->set_rules('main_photo', 'Main Photo', 'required');
 
 
         if ($this->form_validation->run() == TRUE) {
             $proName = $this->input->post('txt_pro_name');
             $proDec = $this->input->post('txt_pro_dec');
-            $proPrice = $this->input->post('txt_pro_price');
-            $proQty = $this->input->post('txt_pro_qty');
+            $proPrice = serialize(array('price' => $this->input->post('txt_pro_price'), 'hide_show' => $this->input->post('price_hide_show')));
+            $proQty = serialize(array('qty' => $this->input->post('txt_pro_qty'), 'hide_show' => $this->input->post('qty_hide_show')));
             $groId = $this->input->post('dro_gro_name');
             $proRelated = serialize($this->input->post('ch_tea_related'));
             $fields = $this->input->post('field');
             $labels = $this->input->post('label');
-            $serielizeFields = serialize(array('label' => $labels, 'field' => $fields));
+            $hideShows = $this->input->post('hide_show');
+            $serielizeFields = serialize(array('label' => $labels, 'field' => $fields, 'hide_show' => $hideShows));
+            $relatedKnowledge = serialize($this->input->post('ch_tea_knowledge'));
 
 
+            $this->photo['photo'] = array();
+            $this->photo['main_photo'] = array();
             // Check upload photo first
-            if ($this->uploadPhoto('photo')) {
+            if ($this->uploadPhoto('main_photo')) {
                 // Resize image
-                $this->configResizePhoto($this->photo);
+                $this->configResizePhoto($this->photo['main_photo']);
+            }
+            if ($this->uploadPhoto('photo')) {
+                $this->configResizePhoto($this->photo['photo']);
+            }
 
-                if ($this->mod_product->addNew($proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $serielizeFields, $this->photo)) {
-                    $this->session->set_userdata('ms', $this->lang->line('ms_success'));
-                    $this->photo = '';
-                    redirect($this->uri->segment(1));
-                    exit();
-                } else {
-                    $this->session->set_userdata('ms', $this->lang->line('ms_error'));
-                }
+            if ($this->mod_product->addNew($proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $serielizeFields, $this->photo, $relatedKnowledge)) {
+                $this->session->set_userdata('ms', $this->lang->line('ms_success'));
+                $this->photo = '';
+                redirect($this->uri->segment(1));
+                exit();
             } else {
-                $this->session->set_userdata('ms', $this->lang->line('ms_upload_fail'));
+                $this->session->set_userdata('ms', $this->lang->line('ms_error'));
             }
         }
         $data['pros'] = $this->mod_product->getAllPro();
-        $data['relateds']=$this->mod_product->getRelatedKnowledge();
+        $data['relateds'] = $this->mod_product->getRelatedKnowledge();
         $this->load->view('masterpage/master', $data);
     }
 
@@ -111,22 +116,30 @@ class product extends Admin_Controller {
         if ($this->form_validation->run() == TRUE) {
             $proName = $this->input->post('txt_pro_name');
             $proDec = $this->input->post('txt_pro_dec');
-            $proPrice = $this->input->post('txt_pro_price');
-            $proQty = $this->input->post('txt_pro_qty');
+            $proPrice = serialize(array('price' => $this->input->post('txt_pro_price'), 'hide_show' => $this->input->post('price_hide_show')));
+            $proQty = serialize(array('qty' => $this->input->post('txt_pro_qty'), 'hide_show' => $this->input->post('qty_hide_show')));
             $groId = $this->input->post('dro_gro_name');
             $proRelated = serialize($this->input->post('ch_tea_related'));
             $fields = $this->input->post('field');
             $labels = $this->input->post('label');
-            $serielizeFields = serialize(array('label' => $labels, 'field' => $fields));
+            $hideShows = $this->input->post('hide_show');
+            $serielizeFields = serialize(array('label' => $labels, 'field' => $fields, 'hide_show' => $hideShows));
+            $relatedKnowledge = serialize($this->input->post('ch_tea_knowledge'));
 
             // Check upload photo first
             if (!$this->uploadPhoto('photo')) {
-                $this->photo = '';
+                $this->photo['photo'] = array();
             } else {
                 // Resize image
-                $this->configResizePhoto($this->photo);
+                $this->configResizePhoto($this->photo['photo']);
             }
-            if ($this->mod_product->update($this->uri->segment(3), $proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $serielizeFields, $this->photo)) {
+            if (!$this->uploadPhoto('main_photo')) {
+                $this->photo['main_photo'] = array();
+            } else {
+                // Resize image
+                $this->configResizePhoto($this->photo['main_photo']);
+            }
+            if ($this->mod_product->update($this->uri->segment(3), $proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $serielizeFields, $this->photo, $relatedKnowledge)) {
                 $this->session->set_userdata('ms', $this->lang->line('ms_success'));
                 redirect($this->uri->segment(1));
                 exit();
@@ -141,6 +154,7 @@ class product extends Admin_Controller {
         $data['photos'] = $this->mod_product->getPhoto($this->uri->segment(3));
         // Related product
         $data['pros'] = $this->mod_product->getAllPro();
+        $data['relateds'] = $this->mod_product->getRelatedKnowledge();
         $this->load->view('masterpage/master', $data);
     }
 
@@ -185,7 +199,8 @@ class product extends Admin_Controller {
         );
         $this->upload->initialize($config);
         if ($this->upload->do_multi_upload($fieldName)) { // use same as you did in the input field
-            $this->photo = $this->upload->get_multi_upload_data();
+            $this->photo[$fieldName] = $this->upload->get_multi_upload_data();
+            unset($this->upload->_multi_upload_data);
             return TRUE;
         } else {
             return FALSE;
@@ -247,6 +262,42 @@ class product extends Admin_Controller {
         if (!$this->image_lib->resize()) {
             $this->session->set_userdata('ms_error', $this->lang->line('ms_error'));
         }
+    }
+
+    /**
+     * Translation
+     */
+    public function product_translation($id, $lanId) {
+        $this->form_validation->set_rules('txt_pro_name', 'Product Name', 'trim|required|max_length[100]');
+        $this->form_validation->set_rules('txt_pro_dec', 'Description', 'trim|required|max_length[5000]');
+        
+        if ($this->form_validation->run() == TRUE) {
+            $proName =$this->input->post('txt_pro_name');
+            $proDes =$this->input->post('txt_pro_dec');
+            $fields = $this->input->post('field');
+            $labels = $this->input->post('label');
+            $hideShows = $this->input->post('hide_show');
+            $serielizeFields = serialize(array('label' => $labels, 'field' => $fields, 'hide_show' => $hideShows));
+            $action =$this->input->post('action');
+            if($this->mod_product->translate($id, $lanId, $proName, $proDes, $serielizeFields, $action)){
+                $this->session->set_userdata('ms', $this->lang->line('ms_success'));
+                redirect('product');
+            }
+            
+        }
+        $data['title'] = "Translate";
+        $data['page'] = 'product_translation';
+        $data['action'] = 'Translate';
+        if ($this->input->post('lan_title')) {
+            $data['langTitle'] = $this->input->post('lan_title');
+            $data['itemId']=$this->input->post('pro_id');
+            $data['langId']=$this->input->post('lang_id');
+            $data['items']=$this->input->post('pro_data');
+        }else{
+            redirect('product');
+        }
+        
+        $this->load->view('masterpage/master', $data);
     }
 
 }

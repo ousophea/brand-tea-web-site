@@ -2,7 +2,7 @@
 
 class mod_product extends CI_Model {
 
-    public function addNew($proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $fields, $photos) {
+    public function addNew($proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $fields, $photos, $relatedKnowledge) {
         $data = array(
             field('proName') => $proName,
             field('proPrice') => $proPrice,
@@ -11,11 +11,12 @@ class mod_product extends CI_Model {
             field('proField') => $fields,
             field('proRelated') => $proRelated,
             field('groId') => $groId,
+            field('proKnowledge') => $relatedKnowledge,
             field('langId') => 1
         );
         if ($this->db->insert(table('product'), $data)) {
             $proId = $this->db->insert_id();
-            if ($this->addNewPhoto($proId, $photos)) {
+            if ($this->addNewPhoto($proId, $photos['main_photo'], 1) && $this->addNewPhoto($proId, $photos['photo'])) {
                 return TRUE;
             } else {
                 return FALSE;
@@ -24,17 +25,44 @@ class mod_product extends CI_Model {
         return FALSE;
     }
 
-    public function addNewPhoto($proId, $photos) {
-        foreach ($photos as $photo) {
-            $data[] = array(
-                field('phoUrl') => $photo['file_name'],
-                field('proId') => $proId
-            );
+    public function addNewPhoto($proId, $photos, $mainPhoto = 0) {
+        if ($mainPhoto == 1) {
+            $this->db->where(field('proId'), $proId);
+            $this->db->where(field('isMainPhoto'), 1);
+            foreach ($photos as $photo) {
+                $data = array(
+                    field('phoUrl') => $photo['file_name'],
+                );
+            }
+            $this->db->update(table('photo'), $data);
+            @unlink('uploads/products/100x100/' . $this->input->post('hid_main_photo')); // delete file. this code is not good. But sometime it is good
+            @unlink('uploads/products/250x250/' . $this->input->post('hid_main_photo'));
+            @unlink('uploads/products/500x500/' . $this->input->post('hid_main_photo'));
+            @unlink('uploads/products/' . $this->input->post('hid_main_photo'));
+        } else {
+            foreach ($photos as $photo) {
+                $data[] = array(
+                    field('phoUrl') => $photo['file_name'],
+                    field('proId') => $proId,
+                    field('isMainPhoto') => $mainPhoto
+                );
+            }
+//            if (count($photos) > 0)
+            return $this->db->insert_batch(table('photo'), $data);
+//            else
+//                return TRUE;
         }
-        return $this->db->insert_batch(table('photo'), $data);
     }
 
-    public function update($proId, $proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $fields, $photos = '') {
+    public function update($proId, $proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $fields, $photos = '', $relatedKnowledge) {
+        print_r($photos['photo']);
+        $mainUpdate = FALSE;
+        $newPhoto = FALSE;
+        if (count($photos['main_photo']) > 0)
+            $mainUpdate = TRUE;
+        if (count($photos['photo']) > 0)
+            $newPhoto = TRUE;
+
         $data = array(
             field('proName') => $proName,
             field('proPrice') => $proPrice,
@@ -43,15 +71,18 @@ class mod_product extends CI_Model {
             field('proField') => $fields,
             field('proRelated') => $proRelated,
             field('groId') => $groId,
+            field('proKnowledge') => $relatedKnowledge,
             field('langId') => 1
         );
         $this->db->where(field('proId'), $proId);
         if ($this->db->update(table('product'), $data)) {
-            if ($photos == '') {
-                return TRUE;
-            } else if ($this->addNewPhoto($proId, $photos)) {
-                return TRUE;
+            if ($mainUpdate) {
+                $this->addNewPhoto($proId, $photos['main_photo'], 1);
             }
+            if ($newPhoto) {
+                $this->addNewPhoto($proId, $photos['photo']);
+            }
+            return TRUE;
         }
         return FALSE;
     }
@@ -206,6 +237,34 @@ class mod_product extends CI_Model {
         $this->db->where(field('lanDes'), $this->lang->line('lang'));
         $this->db->order_by("tea_id", "desc");
         return $this->db->get();
+    }
+
+    /*
+     * Translation
+     */
+
+    public function checkLang($proId, $langId) {
+        $this->db->select('*');
+        $this->db->from(table('proLang'));
+        $this->db->where(field('proId'), $proId);
+        $this->db->where(field('langId'), $langId);
+        return $this->db->get();
+    }
+
+    public function translate($id, $lanId, $proName, $proDes, $serielizeFields, $action) {
+        $data = array(
+            field('proName') => $proName,
+            field('proDes') => $proDes,
+            field('proField') => $serielizeFields,
+            field('proId') => $id,
+            field('langId') => $lanId
+        );
+        if ($action == 'insert') {
+            return $this->db->insert(table('proLang'), $data);
+        } else if ($action == 'update') {
+            return $this->db->update(table('proLang'), $data);
+        }
+        return FALSE;
     }
 
 }
