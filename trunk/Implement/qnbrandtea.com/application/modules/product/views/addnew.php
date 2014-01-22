@@ -93,16 +93,14 @@
         foreach ($pros->result_array() as $pro) {
             ?>
             <tr>
-                <td><?php echo '<label for="'.$pro[field('proId')].'">', form_checkbox('ch_tea_related[]', $pro[field('proId')],$this->input->post('ch_tea_related')?$this->input->post('ch_tea_related'):'','id="'.$pro[field('proId')].'"'),  ' '.$pro[field('proName')].'</label>';?></td>
+                <td><?php echo '<label for="'.$pro[field('proId')].'">', form_checkbox('ch_tea_related[]', $pro[field('proId')],  '','id="'.$pro[field('proId')].'" '.set_checkbox('ch_tea_related',$pro[field('proId')])),  ' '.$pro[field('proName')].'</label>';?></td>
             </tr>
             <?php
         }
         ?>
-
     </table>
 </div>
 <div  style="float: left; width: 40%;">
-    
     <h2><?php echo $this->lang->line('related_knowledge'); ?></h2>
     <table  style="min-width: 10px;">
         <?php
@@ -114,7 +112,7 @@
         foreach ($relateds->result_array() as $pro) {
             ?>
             <tr>
-                <td><?php echo '<label for="'.$pro[field('teaId')].'">', form_checkbox('ch_tea_knowledge[]', $pro[field('teaId')],$this->input->post('ch_tea_knowledge')?$this->input->post('ch_tea_knowledge'):'','id="'.$pro[field('teaId')].'"'),  ' '.$pro[field('teaTitle')].'</label>';?></td>
+                <td><?php echo '<label for="knowledge-'.$pro[field('teaId')].'">', form_checkbox('ch_tea_knowledge[]', $pro[field('teaId')],  '','id="knowledge-'.$pro[field('teaId')].'" '.set_checkbox('ch_tea_knowledge',$pro[field('teaId')])),  ' '.$pro[field('teaTitle')].'</label>';?></td>
             </tr>
             <?php
         }
