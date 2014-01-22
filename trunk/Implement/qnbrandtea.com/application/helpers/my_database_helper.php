@@ -21,6 +21,7 @@ if (!function_exists('table')) {
         $table['slideshow'] = 'slideshow';
         $table['tearelated'] = 'tearelated';
         $table['proLang'] = 'product_languages';
+        $table['catLang'] = 'category_languages';
         $table['about'] = 'about';
         if (array_key_exists($key, $table)) {
             return $table[$key];
@@ -94,6 +95,8 @@ if (!function_exists('field')) {
         $field['aboStatus'] = 'abo_status';
 
         $field['prlId'] = 'prl_id';
+        
+        $field['calId']='cal_id';
 
         if (array_key_exists($key, $field)) {
             return $field[$key];
