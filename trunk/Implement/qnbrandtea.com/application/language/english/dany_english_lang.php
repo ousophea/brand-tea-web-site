@@ -7,6 +7,9 @@ $lang['delete'] = 'Delete';
 $lang['no'] = 'N&ordm;';
 $lang['image'] = 'Image';
 $lang['action'] = 'Actions';
+$lang['sli_category'] = 'Category';
+
+$lang['home_title'] = 'Title';
 
 // Menu
 $lang['men_home']='Home';

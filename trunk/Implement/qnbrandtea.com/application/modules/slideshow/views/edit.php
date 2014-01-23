@@ -24,6 +24,15 @@
         <input type="hidden" id="h" name="h" />
         <input type="hidden" id="image_crop" name="image_crop" />
         <input type="hidden" name="oldimage" id="oldimage" value=""/>
+        
+        <?php echo $this->lang->line('sli_category'); ?>: 
+        <select name="category" style="min-width:150px;">
+            <?php
+            foreach($category->result_array() as $v){
+                echo '<option value="'.$v[field('sliCatId')].'"'.(($v[field('sliCatId')] == $slideshow->row()->sli_cat_id) ? ' selected' : 'qwere').'>'.$v[field('sliCatName')].'</option>';
+            }
+            ?>
+        </select><br><br>
         <textarea name="description" id="description" class="slideTinyMCE" rows="10"><?php echo $slideshow->row()->sli_description; ?></textarea>
     </form>
 <br><br>
@@ -39,40 +48,40 @@ tinymce.init({
 });
 
 
-$(document).ready(function() { 
+jQuery(document).ready(function() { 
 		
-	$('#image').die('click').live('change', function(){ 
-		$("#img-preview").html('');	
-		$("#upload-frm").ajaxForm({target: '#img-preview', 
+	jQuery('#image').die('click').live('change', function(){ 
+		jQuery("#img-preview").html('');	
+		jQuery("#upload-frm").ajaxForm({target: '#img-preview', 
 			beforeSubmit:function(){ 
 				//console.log('ttest');
-				$("#imageloadstatus").show();
-				$("#imageloadbutton").hide();
+				jQuery("#imageloadstatus").show();
+				jQuery("#imageloadbutton").hide();
 			}, 
 			success:function(){ 
 				//console.log('test');
-				$("#imageloadstatus").hide();
-				$("#imageloadbutton").show();
+				jQuery("#imageloadstatus").hide();
+				jQuery("#imageloadbutton").show();
 			}, 
 			error:function(){ 
 				//console.log('xtest');
-				$("#imageloadstatus").hide();
-				$("#imageloadbutton").show();
+				jQuery("#imageloadstatus").hide();
+				jQuery("#imageloadbutton").show();
 			} 
 		}).submit();
 	});
 });
 
 
-$(function(){
-	$('#cropbox').Jcrop({
+jQuery(function(){
+	jQuery('#cropbox').Jcrop({
 		aspectRatio: 3.5,
 		onSelect: updateCoords
 	});
 });
   
 function crop_image(){
-	$('#cropbox').Jcrop({
+	jQuery('#cropbox').Jcrop({
 		aspectRatio: 3.5,
 		onSelect: updateCoords
 	});
@@ -80,45 +89,45 @@ function crop_image(){
 
 function updateCoords(c)
 {
-	$('#x').val(c.x);
-	$('#y').val(c.y);
-	$('#w').val(c.w);
-	$('#h').val(c.h);
-	$('#image_crop').val($('#image').val());
+	jQuery('#x').val(c.x);
+	jQuery('#y').val(c.y);
+	jQuery('#w').val(c.w);
+	jQuery('#h').val(c.h);
+	jQuery('#image_crop').val(jQuery('#image').val());
 };
 
 function crop(){
-	var image = $('#image_crop').val();
+	var image = jQuery('#image_crop').val();
 	image = image ? image : '';
-	var newImage = $('#image').val();
-	var x = $('#x').val();
-	var y = $('#y').val();
-	var w = $('#w').val();
-	var h = $('#h').val();
+	var newImage = jQuery('#image').val();
+	var x = jQuery('#x').val();
+	var y = jQuery('#y').val();
+	var w = jQuery('#w').val();
+	var h = jQuery('#h').val();
 	
 	if(image != newImage || image == '' || w == ''){
     	alert('Please select a crop region then press submit.');
 		return false;
 	}
 	
-	$(function(){
-		$('#img-preview').html('<img src="<?php echo base_url() . BACKEND_TEMPLATE; ?>img/loader.gif" alt="Loading...."/>');
-		$.ajax({
+	jQuery(function(){
+		jQuery('#img-preview').html('<img src="<?php echo base_url() . BACKEND_TEMPLATE; ?>img/loader.gif" alt="Loading...."/>');
+		jQuery.ajax({
 			type : "POST",
 			url : "<?php echo base_url() . 'slideshow/cropimage'; ?>",
 			data:"x="+x+ "&y="+y+"&w="+w+"&h="+h+"&image="+image,
 			dataType:"json",
 			success:function(data){
 				var img = '<img src="<?php echo base_url() . SLIDESHOW_IMAGE_PATH; ?>'+data.image+'" id="cropbox" style="width:100%" />';
-                $("#img-preview").html(img);
-				$('#oldimage').val(data.image);
-				$('#x,#y,#w,#h,#image_crop').val('');
+                jQuery("#img-preview").html(img);
+				jQuery('#oldimage').val(data.image);
+				jQuery('#x,#y,#w,#h,#image_crop').val('');
             }
 		});
 	});
 }
 
 function saveEdit(){
-	$('#edit-frm').submit();
+	jQuery('#edit-frm').submit();
 }
 </script>

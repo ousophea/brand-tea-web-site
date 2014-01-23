@@ -8,7 +8,7 @@
 </div>
 <br>
 <div class="holder">
-    <h3><?php echo $home->row()->cont_name; ?></h3>
+    <h3><?php echo $this->lang->line('home_title'); ?>: <?php echo $home->row()->cont_name; ?></h3>
     <p><?php echo $home->row()->cont_description; ?></p>
     <br>
 </div>
