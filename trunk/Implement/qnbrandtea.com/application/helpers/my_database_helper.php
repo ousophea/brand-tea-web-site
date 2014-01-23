@@ -19,6 +19,7 @@ if (!function_exists('table')) {
         $table['language'] = 'languages';
         $table['photo'] = 'photos';
         $table['slideshow'] = 'slideshow';
+        $table['sli_category'] = 'sli_categories';
         $table['tearelated'] = 'tearelated';
         $table['proLang'] = 'product_languages';
         $table['catLang'] = 'category_languages';
@@ -83,8 +84,11 @@ if (!function_exists('field')) {
 
         $field['sliId'] = 'sli_id';
         $field['sliImage'] = 'sli_image';
-        $field['sliCatId'] = 'sli_cat_id';
+    //    $field['sliCatId'] = 'sli_cat_id';
         $field['sliDes'] = 'sli_description';
+		
+		$field['sliCatId'] = 'sli_cat_id';
+		$field['sliCatName'] = 'sli_cat_name';
 
         $field['teaId'] = 'tea_id';
         $field['teaTitle'] = 'tea_title';

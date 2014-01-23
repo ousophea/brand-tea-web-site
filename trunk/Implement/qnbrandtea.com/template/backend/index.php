@@ -13,6 +13,7 @@
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/tinymce/tinymce.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jcrop/js/jquery.Jcrop.js"></script>
+		<script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jquery.wallform.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/translation.js"></script>
         <script type="text/javascript">
             jQuery(document).ready(function($) {
@@ -170,6 +171,8 @@
                         <ul>
                             <li class="b1"><a class="icon page" href="<?php echo site_url('slideshow/listslide'); ?>">Show all slideshow</a></li>
                             <li class="b2"><a class="icon add_page" href="<?php echo site_url('slideshow/addnew'); ?>">Add new slideshow</a></li>
+                            <li class="b1"><a class="icon page" href="<?php echo site_url('slideshow/category/listcat'); ?>">Show category</a></li>
+                            <li class="b2"><a class="icon add_page" href="<?php echo site_url('slideshow/category/addnew'); ?>">Add new category</a></li>
                         </ul>
                     </div>
 

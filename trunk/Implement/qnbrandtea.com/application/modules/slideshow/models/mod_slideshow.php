@@ -59,7 +59,7 @@ class Mod_Slideshow extends CI_Model{
     public function getSlideshowByCatId($sliCatId) {
         $this->db->select('*');
         $this->db->from(table('slideshow'));
-//        $this->db->where(field('sliCatId'),$sliCatId);
+        $this->db->where(field('sliCatId'),$sliCatId);
         return $this->db->get();
     }
 }
