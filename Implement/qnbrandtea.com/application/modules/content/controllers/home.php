@@ -4,6 +4,7 @@ class Home extends Admin_Controller {
 	
 	public function __construct(){
         $this->load->model('mod_content');
+		$this->lang->load('dany_english', 'english');
 	}
 
 	public function index()

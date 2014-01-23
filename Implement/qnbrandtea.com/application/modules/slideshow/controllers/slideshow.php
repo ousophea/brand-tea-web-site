@@ -3,7 +3,7 @@
 class Slideshow extends Admin_Controller {
 	
 	public function __construct(){
-        $this->load->model('mod_slideshow');
+        $this->load->model(array('mod_slideshow', 'slideshow/mod_category'));
 		$this->lang->load('dany_english', 'english');
 	}
 
@@ -30,11 +30,12 @@ class Slideshow extends Admin_Controller {
 					
 		if($this->input->post()){
 			$image = $this->input->post('oldimage');
+			$category = $this->input->post('category');
 			$description = $this->input->post('description');
 	
 			if (!empty($image))
 			{		
-				if($this->mod_slideshow->addSlideshow($image, $description) > 0){
+				if($this->mod_slideshow->addSlideshow($image, $description, $category) > 0){
 					$this->session->set_userdata('ms', $this->lang->line('ms_success'));
 					redirect('slideshow/listSlide');
 				} else {
@@ -44,6 +45,7 @@ class Slideshow extends Admin_Controller {
 				$this->session->set_userdata('ms', $this->lang->line('ms_error'));
 			}
 		}
+		$data['category'] = $this->mod_category->getAllSlideshowCategory();
 		
 		$data['title']="Slidesow Management - Add new";
 		$data['page']='slideshow/new';
@@ -56,11 +58,12 @@ class Slideshow extends Admin_Controller {
 		
 		if($this->input->post()){
 			$image = $this->input->post('oldimage');
+			$category = $this->input->post('category');
 			$description = $this->input->post('description');
 	
 			if (empty($image))
 			{			
-				if($this->mod_slideshow->updateSlideshow(NULL, $id, $description) > 0){
+				if($this->mod_slideshow->updateSlideshow(NULL, $id, $description, $category) > 0){
 					$this->session->set_userdata('ms', $this->lang->line('ms_success'));
 					redirect('slideshow/listslide');
 				} else {
@@ -69,7 +72,7 @@ class Slideshow extends Admin_Controller {
 			} else {		
 				$oldData = $this->mod_slideshow->getSlideshowById($id);
 				
-				if($this->mod_slideshow->updateSlideshow($image, $id, $description) > 0){
+				if($this->mod_slideshow->updateSlideshow($image, $id, $description, $category) > 0){
 					$this->session->set_userdata('ms', $this->lang->line('ms_success'));
 					@unlink(SLIDESHOW_IMAGE_PATH . $oldData->row()->sli_image);
 					redirect('slideshow/listslide');
@@ -80,6 +83,7 @@ class Slideshow extends Admin_Controller {
 		}
 		
 		$data['slideshow'] = $this->mod_slideshow->getSlideshowById($id);
+		$data['category'] = $this->mod_category->getAllSlideshowCategory();
 		
 		$data['title']="Slidesow Management - Edit";
 		$data['page']='slideshow/edit';

@@ -6,6 +6,7 @@ class Mod_Slideshow extends CI_Model{
 		$this->db->select('*');
         $this->db->limit($num, $start);
         $this->db->from(table('slideshow'));
+		$this->db->join(table('sli_category'), table('sli_category').'.'.field('sliCatId').'='.table('slideshow').'.'.field('sliCatId'));
         return $this->db->get();
 	}
 	
@@ -17,6 +18,7 @@ class Mod_Slideshow extends CI_Model{
     public function getAllSlideshow() {
         $this->db->select('*');
         $this->db->from(table('slideshow'));
+		$this->db->join(table('sli_category'), table('sli_category').'.'.field('sliCatId').'='.table('slideshow').'.'.field('sliCatId'));
         return $this->db->get();
     }
 	
@@ -27,19 +29,21 @@ class Mod_Slideshow extends CI_Model{
         return $this->db->get();
     }
 	
-	public function addSlideshow($imageName, $description){
+	public function addSlideshow($imageName, $description, $category){
 		$data = array(
 			field('sliImage') => $imageName,
-			field('sliDes') => $description 
+			field('sliDes') => $description,
+			field('sliCatId') => $category 
 		);			
 		$result = $this->db->insert(table('slideshow'), $data); 
 		return $this->db->affected_rows($result);
 	}
 	
-	public function updateSlideshow($imageName, $sliId, $description){
+	public function updateSlideshow($imageName, $sliId, $description, $category){
 		$data = array(
 			field('sliImage') => $imageName,
-			field('sliDes') => $description
+			field('sliDes') => $description,
+			field('sliCatId') => $category
 		);
 		
 		if(empty($imageName))

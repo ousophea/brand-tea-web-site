@@ -15,7 +15,7 @@
     <div style="clear:both"></div>
 </div>
 <div class="holder">
-    <h3><input type="text" name="txt_name" placeholder="Page Title" value="<?php echo $home->row()->cont_name; ?>" required /> <?php echo $this->lang->line('require'); ?></h3>
+    <h3><?php echo $this->lang->line('home_title'); ?>: <input type="text" name="txt_name" placeholder="Page Title" value="<?php echo $home->row()->cont_name; ?>" required /> <?php echo $this->lang->line('require'); ?></h3>
     <p><textarea name="txt_description" placeholder="Description" rows="10" required ><?php echo $home->row()->cont_description; ?></textarea></p>
     <br>
 </div>
