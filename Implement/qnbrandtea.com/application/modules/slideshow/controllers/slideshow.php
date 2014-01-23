@@ -13,7 +13,7 @@ class Slideshow extends Admin_Controller {
 	}
 	
 	public function listSlide(){
-        $config['base_url'] = base_url() . $this->uri->segment(1) . '/viewCategory/';
+        $config['base_url'] = base_url() . $this->uri->segment(1) . '/listSlide/';
         $config['total_rows'] = $this->mod_slideshow->getSlideshowNum();
         $config['per_page'] = 25;
 
@@ -27,44 +27,22 @@ class Slideshow extends Admin_Controller {
 	}
 	
 	public function addNew(){
-		if($this->input->post('x')){
-			$targ_w = 1000;
-			$targ_h = 282;
-			$jpeg_quality = 100;
-		
-			$src = SLIDESHOW_IMAGE_PATH . '2.jpg';
-			$dist = SLIDESHOW_IMAGE_PATH . '_2.jpg';
-			$img_r = imagecreatefromjpeg($src);
-			$dst_r = ImageCreateTrueColor( $targ_w, $targ_h );
-		
-			imagecopyresampled($dst_r,$img_r,0,0,$this->input->post('x'),$this->input->post('y'), $targ_w, $targ_h, $this->input->post('w'), $this->input->post('h'));
-		
-			header('Content-type: image/jpeg');
-			imagejpeg($dst_r,$dist,$jpeg_quality);
-		}
-		
-		if($this->input->post('btnUpload')){		
-			$config['upload_path'] = SLIDESHOW_IMAGE_PATH;
-			$config['allowed_types'] = 'gif|jpg|jpeg|png|JPEG|JPG|PNG|x-png';
-			$config['max_size']	= '1000';
+					
+		if($this->input->post()){
+			$image = $this->input->post('oldimage');
+			$description = $this->input->post('description');
 	
-			$this->load->library('upload', $config);
-	
-			if ( ! $this->upload->do_upload('image'))
-			{			
-				$this->session->set_userdata('ms', $this->upload->display_errors());			
-			} else {				
-				$image = $this->upload->data();
-				$imageName = $image['file_name'];
-				$description = $this->input->post('description');
-				
-				if($this->mod_slideshow->addSlideshow($imageName, $description) > 0){
+			if (!empty($image))
+			{		
+				if($this->mod_slideshow->addSlideshow($image, $description) > 0){
 					$this->session->set_userdata('ms', $this->lang->line('ms_success'));
 					redirect('slideshow/listSlide');
 				} else {
                     $this->session->set_userdata('ms', $this->lang->line('ms_error'));
                 }
-			}	
+			} else {
+				$this->session->set_userdata('ms', $this->lang->line('ms_error'));
+			}
 		}
 		
 		$data['title']="Slidesow Management - Add new";
@@ -76,36 +54,28 @@ class Slideshow extends Admin_Controller {
 	public function edit(){
 		$id = $this->uri->segment(3);
 		
-		if($this->input->post('btnUpload')){		
-			$config['upload_path'] = SLIDESHOW_IMAGE_PATH;
-			$config['allowed_types'] = 'gif|jpg|jpeg|png|JPEG|JPG|PNG|x-png';
-			$config['max_size']	= '1000';
-	
-			$this->load->library('upload', $config);
+		if($this->input->post()){
+			$image = $this->input->post('oldimage');
 			$description = $this->input->post('description');
 	
-			if ( ! $this->upload->do_upload('image'))
+			if (empty($image))
 			{			
-			//	$this->session->set_userdata('ms', $this->upload->display_errors());
 				if($this->mod_slideshow->updateSlideshow(NULL, $id, $description) > 0){
 					$this->session->set_userdata('ms', $this->lang->line('ms_success'));
 					redirect('slideshow/listslide');
 				} else {
-                    $this->session->set_userdata('ms', $this->lang->line('ms_error'));
-                }				
-			} else {				
-				$image = $this->upload->data();
-				$imageName = $image['file_name'];
-				
+					$this->session->set_userdata('ms', $this->lang->line('ms_error'));
+				}				
+			} else {		
 				$oldData = $this->mod_slideshow->getSlideshowById($id);
 				
-				if($this->mod_slideshow->updateSlideshow($imageName, $id, $description) > 0){
+				if($this->mod_slideshow->updateSlideshow($image, $id, $description) > 0){
 					$this->session->set_userdata('ms', $this->lang->line('ms_success'));
 					@unlink(SLIDESHOW_IMAGE_PATH . $oldData->row()->sli_image);
 					redirect('slideshow/listslide');
 				} else {
-                    $this->session->set_userdata('ms', $this->lang->line('ms_error'));
-                }
+					$this->session->set_userdata('ms', $this->lang->line('ms_error'));
+				}
 			}	
 		}
 		
@@ -129,4 +99,62 @@ class Slideshow extends Admin_Controller {
 		}
         redirect('slideshow/listslide');
     }
+	
+	public function uploadImage(){
+		$oldImage = $this->input->post('oldimage');
+		$config['upload_path'] = SLIDESHOW_IMAGE_PATH;
+		$config['allowed_types'] = 'gif|jpg|jpeg|png|JPEG|JPG|PNG|x-png';
+		$config['max_size']	= '1000';	
+	
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload('image'))
+		{			
+		//	$this->session->set_userdata('ms', $this->upload->display_errors());	
+		} else {				
+			$image = $this->upload->data();
+			$imageName = $image['file_name'];
+			echo '<script>$("#img-preview").html("");</script>';
+			echo '<img src="' . base_url() . SLIDESHOW_IMAGE_PATH . $imageName . '" id="cropbox" />';
+			echo '<script>crop_image();$("#oldimage").val("' . $imageName . '")</script>';
+			@unlink(SLIDESHOW_IMAGE_PATH . $oldImage);
+		}
+	}
+	
+	public function cropImage(){	
+		
+		if($this->input->post('x')){
+			$x = $this->input->post('x');
+			$y = $this->input->post('y');
+			$w = $this->input->post('w');
+			$h = $this->input->post('h');
+			$image = $this->input->post('image');			
+			$ext = end(explode(".", $image));		// get file extension
+			$file_name = current(explode(".", $image));	// get file name withoud extension
+			
+			$targ_w = 950;
+			$targ_h = 267;
+			$jpeg_quality = 100;
+			$suf = '_950x267';
+			$new_img = $file_name . $suf . '.' . $ext;
+		
+			$src = SLIDESHOW_IMAGE_PATH . $image;
+			$dist = SLIDESHOW_IMAGE_PATH . $new_img;
+			$img_r = imagecreatefromjpeg($src);
+			$dst_r = ImageCreateTrueColor( $targ_w, $targ_h );
+		
+			imagecopyresampled($dst_r,$img_r,0,0,$x,$y, $targ_w, $targ_h, $w, $h);		
+			//header('Content-type: image/jpeg');
+			if(imagejpeg($dst_r,$dist,$jpeg_quality))
+				@unlink(SLIDESHOW_IMAGE_PATH . $image);
+			else
+				$new_img = $image;
+			
+			$data = array('image'=>$new_img);			
+			echo json_encode($data);
+			return;
+		}	
+		$data = array('image'=>'');			
+		echo json_encode($data);
+	}
 }
