@@ -117,7 +117,10 @@
                                                             <li>&#8250; <a href="">Lock users</a></li>
                                                         </ul>-->
                         </li>
-
+                         <li class="upp"><?php echo anchor('about', $this->lang->line('men_about')); ?>
+                        </li>
+						 <li class="upp"><?php echo anchor('contact', $this->lang->line('men_contact')); ?>
+                        </li>
                         <!--                        <li class="upp"><a href="#">Settings</a>
                                                     <ul>
                                                         <li>&#8250; <a href="">Site configuration</a></li>
@@ -190,7 +193,18 @@
                             <li class="b1"><a class="icon page" href="<?php echo site_url('content/home/listhome'); ?>">Home Page</a></li>
                         </ul>
                     </div>
-
+                     <div class="box">
+                        <div class="h_title">&#8250; About</div>
+                        <ul>
+                            <li class="b1"><a class="icon page" href="<?php echo site_url('about/listabout'); ?>">About Page</a></li>	
+                        </ul>
+                    </div>
+					 <div class="box">
+                        <div class="h_title">&#8250; Contact</div>
+                        <ul>
+                            <li class="b1"><a class="icon page" href="<?php echo site_url('contact/listcontact'); ?>">Contact Page</a></li>		
+                        </ul>
+                    </div>
                     <!--                    <div class="box">
                                             <div class="h_title">&#8250; Settings</div>
                                             <ul>
