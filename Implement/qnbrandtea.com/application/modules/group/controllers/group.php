@@ -5,7 +5,8 @@
  * It is a controller of group. It will controll all action of group management
  * @author Richat
  */
-class group extends Admin_Controller{
+class group extends Admin_Controller {
+
     //put your code here
     public function __construct() {
         parent::__construct();
@@ -13,10 +14,9 @@ class group extends Admin_Controller{
             redirect('authentication/login');
         }
         $this->load->model('mod_group');
-        $this->load->model('category/mod_category');
-        
+        $this->load->model(array('category/mod_category', 'translation/mod_translation'));
     }
-    
+
     public function index() {
         $this->viewGroup();
     }
@@ -29,11 +29,12 @@ class group extends Admin_Controller{
         $config['base_url'] = base_url() . $this->uri->segment(1) . '/viewGroup/';
         $config['total_rows'] = $this->mod_group->getGroNum();
         $config['per_page'] = 25;
+        $data['langs'] = $this->mod_translation->getLanguages();
 
         $this->pagination->initialize($config);
 
         $data['gros'] = $this->mod_group->getGroup($this->uri->segment(3), $config['per_page']);
-        
+
         $data['title'] = "Group";
         $data['page'] = 'group';
         $data['action'] = 'View Group';
@@ -65,17 +66,17 @@ class group extends Admin_Controller{
         $data['page'] = 'edit';
         $data['action'] = 'Update Group';
         $data['cats'] = $this->mod_category->getAllCat();
-        $check='';
-        if($this->input->post('hid_gro_name')!= $this->input->post('txt_gro_name')){
-            $check = '|is_unique['.table('group').'.'. field('groName').']';
+        $check = '';
+        if ($this->input->post('hid_gro_name') != $this->input->post('txt_gro_name')) {
+            $check = '|is_unique[' . table('group') . '.' . field('groName') . ']';
         }
-        $this->form_validation->set_rules('txt_gro_name', 'Group Name', 'trim|required|max_length[50]'.$check);
+        $this->form_validation->set_rules('txt_gro_name', 'Group Name', 'trim|required|max_length[50]' . $check);
         if ($this->form_validation->run() == TRUE) {
             $groName = $this->input->post('txt_gro_name');
             $catId = $this->input->post('dro_cat_name');
             $groDes = $this->input->post('txt_gro_des');
-            
-            if ($this->mod_group->update($groName, $groDes, $catId,$this->uri->segment(3))) {
+
+            if ($this->mod_group->update($groName, $groDes, $catId, $this->uri->segment(3))) {
                 $this->session->set_userdata('ms', $this->lang->line('ms_success'));
                 redirect($this->uri->segment(1));
             }
@@ -90,7 +91,7 @@ class group extends Admin_Controller{
             redirect($this->uri->segment(1));
         }
     }
-    
+
     /**
      * Check user had logged in or not
      * @return boolean
@@ -102,4 +103,34 @@ class group extends Admin_Controller{
             return FALSE;
         }
     }
+
+    /**
+     * Translation
+     */
+    public function translation($itemId, $lanId) {
+        $this->form_validation->set_rules('txt_gro_name', 'Group Name', 'trim|required|max_length[100]');
+        if ($this->form_validation->run() == TRUE) {
+            $name = $this->input->post('txt_gro_name');
+            $dec = $this->input->post('txt_gro_des');
+            $action = $this->input->post('action');
+            if ($this->mod_group->translate($itemId, $lanId, $name, $dec, $action)) {
+                $this->session->set_userdata('ms', $this->lang->line('ms_success'));
+                redirect('group');
+            }
+        }
+        $data['title'] = "Translate";
+        $data['page'] = 'group_translation';
+        $data['action'] = 'Translate';
+        if ($this->input->post('lan_title')) {
+            $data['langTitle'] = $this->input->post('lan_title');
+            $data['itemId'] = $this->input->post('item_id');
+            $data['langId'] = $this->input->post('lang_id');
+            $data['items'] = $this->input->post('item_data');
+        } else {
+            redirect('category');
+        }
+
+        $this->load->view('masterpage/master', $data);
+    }
+
 }

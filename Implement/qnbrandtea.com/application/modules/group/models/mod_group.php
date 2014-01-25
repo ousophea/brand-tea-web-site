@@ -75,14 +75,14 @@ class mod_group extends CI_Model {
 
     public function getFields($groId) {
         $fields = $this->getCatFields($groId);
-        if($fields->num_rows()>0){
+        if ($fields->num_rows() > 0) {
             return $this->generateFieldsToHtml($fields);
-        }else{
+        } else {
             return 'No field more!';
         }
     }
-    
-    public function getCatFields($groId){
+
+    public function getCatFields($groId) {
         $this->db->select(field('catField'));
         $this->db->from(table('group'));
         $this->db->join(table('category'), table('category') . '.' . field('catId') . '=' . table('group') . '.' . field('catId'));
@@ -91,21 +91,50 @@ class mod_group extends CI_Model {
         $this->db->where(field('groId'), $groId);
         return $this->db->get();
     }
-    
-    public function generateFieldsToHtml($data){
-        $fields=array();
-        foreach ($data->result_array() as $row){
-            $fields=unserialize($row[field('catField')]);
+
+    public function generateFieldsToHtml($data) {
+        $fields = array();
+        foreach ($data->result_array() as $row) {
+            $fields = unserialize($row[field('catField')]);
         }
-        $k=0;
-        $html='';
-        foreach ($fields['label'] as $field){
-            $html .='<input type="hidden" value="'.$fields['label'][$k].'" name="label[]" />';
-            $html .='<label for="field-"'.$k.'>'.$fields['label'][$k].' </label><input id="field-"'.$k.' type="text" name="field[]" value="'.$fields['field'][$k].'">';
+        $k = 0;
+        $html = '';
+        foreach ($fields['label'] as $field) {
+            $html .='<input type="hidden" value="' . $fields['label'][$k] . '" name="label[]" />';
+            $html .='<label for="field-"' . $k . '>' . $fields['label'][$k] . ' </label><input id="field-"' . $k . ' type="text" name="field[]" value="' . $fields['field'][$k] . '">';
             $html.=' <input class="hideShow" type="checkbox" name="hide-show[]" value="hide" /> <input type="hidden" name="hide_show[]" value="show" />Hide';
             $k++;
         }
         return $html;
+    }
+
+    /*
+     * Translation
+     */
+
+    public function checkLang($itemId, $langId) {
+        $this->db->select('*');
+        $this->db->from(table('groLang'));
+        $this->db->where(field('groId'), $itemId);
+        $this->db->where(field('langId'), $langId);
+        return $this->db->get();
+    }
+
+    public function translate($itemId, $lanId, $name, $dec, $action) {
+        $data = array(
+            field('groName') => $name,
+            field('groDes') => $dec,
+            field('groId') => $itemId,
+            field('langId') => $lanId
+        );
+        if ($action == 'insert') {
+            return $this->db->insert(table('groLang'), $data);
+        } else if ($action == 'update') {
+            $this->db->where(field('groId'), $itemId);
+            $this->db->where(field('langId'), $lanId);
+            return $this->db->update(table('groLang'), $data);
+        }
+        return FALSE;
     }
 
 }
