@@ -262,6 +262,8 @@ class mod_product extends CI_Model {
         if ($action == 'insert') {
             return $this->db->insert(table('proLang'), $data);
         } else if ($action == 'update') {
+            $this->db->where(field('proId'),$id);
+            $this->db->where(field('langId'), $lanId);
             return $this->db->update(table('proLang'), $data);
         }
         return FALSE;

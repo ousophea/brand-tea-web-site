@@ -1,7 +1,7 @@
 <?php
 echo form_open('product/product_translation/' . $itemId . '/' . $langId);
 echo form_hidden('lan_title', $langTitle);
-echo form_hidden('pro_id',$itemId);
+echo form_hidden('item_id',$itemId);
 echo form_hidden('lang_id',$langId);
 
 ?>
@@ -24,6 +24,7 @@ $action ='insert';
 // Check existing data
 $this->load->model('product/mod_product');
 $langData = $this->mod_product->checkLang($itemId, $langId);
+
 if($langData->num_rows()>0){
     $pros = $langData->result_array();
     $action='update';

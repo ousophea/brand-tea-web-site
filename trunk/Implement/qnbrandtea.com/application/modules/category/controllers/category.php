@@ -1,15 +1,4 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of category
- *
- * @author who
- */
 class Category extends Admin_Controller {
 
     public function __construct() {
@@ -17,7 +6,7 @@ class Category extends Admin_Controller {
         if (!$this->checkSession()) {
             redirect('authentication/login');
         }
-        $this->load->model('mod_category');
+        $this->load->model(array('mod_category','translation/mod_translation'));
     }
 
     public function index() {
@@ -32,6 +21,7 @@ class Category extends Admin_Controller {
         $config['base_url'] = base_url() . $this->uri->segment(1) . '/viewCategory/';
         $config['total_rows'] = $this->mod_category->getCatNum();
         $config['per_page'] = 25;
+        $data['langs'] = $this->mod_translation->getLanguages();
 
         $this->pagination->initialize($config);
 
@@ -105,4 +95,35 @@ class Category extends Admin_Controller {
         }
     }
 
+    /**
+     * Translation
+     */
+    public function category_translation($itemId, $lanId) {
+        $this->form_validation->set_rules('txt_cate_name', 'Category Name', 'trim|required|max_length[100]');
+        if ($this->form_validation->run() == TRUE) {
+            $catName = $this->input->post('txt_cate_name');
+            $catDec = $this->input->post('txt_cate_dec');
+            $fields = $this->input->post('field');
+            $labels = $this->input->post('label');
+            $serielizeFields = serialize(array('label' => $labels, 'field' => $fields));
+            $action =$this->input->post('action');
+            if($this->mod_category->translate($itemId, $lanId,$catName,$catDec,$serielizeFields, $action)){
+                $this->session->set_userdata('ms', $this->lang->line('ms_success'));
+                redirect('category');
+            }
+        }
+        $data['title'] = "Translate";
+        $data['page'] = 'category_translation';
+        $data['action'] = 'Translate';
+        if ($this->input->post('lan_title')) {
+            $data['langTitle'] = $this->input->post('lan_title');
+            $data['itemId']=$this->input->post('item_id');
+            $data['langId']=$this->input->post('lang_id');
+            $data['items']=$this->input->post('item_data');
+        }else{
+            redirect('category');
+        }
+        
+        $this->load->view('masterpage/master', $data);
+    }
 }
