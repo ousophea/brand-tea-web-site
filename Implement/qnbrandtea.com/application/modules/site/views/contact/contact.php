@@ -9,7 +9,7 @@
 				  <div class="row-fluid span12">				
                     <?php
                      
-				     echo $con[field('conDesc')];
+				     echo $con[field('contactDesc')];
                    
                     ?>
                 </div>
