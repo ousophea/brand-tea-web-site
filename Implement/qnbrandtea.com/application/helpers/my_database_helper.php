@@ -103,9 +103,9 @@ if (!function_exists('field')) {
 		$field['aboDesc'] ='abo_description';
 		$field['aboStatus']='abo_status';
 
-        $field['aboId'] = 'abo_id';
-        $field['aboDesc'] = 'abo_description';
-        $field['aboStatus'] = 'abo_status';
+        //$field['aboId'] = 'abo_id';
+        //$field['aboDesc'] = 'abo_description';
+        //$field['aboStatus'] = 'abo_status';
 
         $field['prlId'] = 'prl_id';
         
@@ -114,9 +114,9 @@ if (!function_exists('field')) {
         $field['grlId']='grl_id';
 
 		//Contact
-		$field['conId']='con_id';
-		$field['conDesc'] ='con_description';
-		$field['conStatus']='con_status';
+		$field['contactId']='con_id';
+		$field['contactDesc'] ='con_description';
+		$field['contactStatus']='con_status';
         if (array_key_exists($key, $field)) {
             return $field[$key];
         } else {
