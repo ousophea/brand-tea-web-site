@@ -17,7 +17,7 @@ class Mod_contact_front extends CI_Model {
         $this->db->from(table('contact'));   
 		$this->db->join(table('language'), table('contact') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
         $this->db->where(field('lanDes'), $this->lang->line('lang'));
-		$this->db->where(field('conStatus'), 1);	
+		$this->db->where(field('contactStatus'), 1);	
         return $this->db->get();
     }
 
