@@ -82,6 +82,7 @@ class Product extends Admin_Controller {
                 $this->configResizePhoto($this->photo['photo']);
             }
 
+            
             if ($this->mod_product->addNew($proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $serielizeFields, $this->photo, $relatedKnowledge)) {
                 $this->session->set_userdata('ms', $this->lang->line('ms_success'));
                 $this->photo = '';

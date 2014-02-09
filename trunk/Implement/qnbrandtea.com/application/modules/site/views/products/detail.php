@@ -42,8 +42,22 @@ foreach ($pros->result_array() as $row) {
                 <div class="span5">
                     <p class="title"><?php echo $row[field('proName')]; ?></p>
                     <p>
-                        <?php echo '<label><b>', $this->lang->line('price'), '</b> : <span class="price" style="text-align: left;">', $this->lang->line('currency'), $row[field('proPrice')], '</span></label>'; ?>
-                        <?php // echo br().$row[field('proQty')]; ?>
+                        <?php
+                        $price = unserialize($row[field('proPrice')]);
+                        
+                        if ($price['hide_show'] != 'hide') {
+                            echo $this->lang->line('price').': '.'<span class="price">' . $this->lang->line('currency'), $price['price'] . '</span>';
+                        }
+                        ?>
+                        
+                    </p>
+                    <p>
+                        <?php
+                        $qty = unserialize($row[field('proQty')]);
+                        if ($qty['hide_show'] != 'hide') {
+                            echo $this->lang->line('qty').': '.'<span class="">', $qty['qty'] . '</span>';
+                        }
+                        ?>
                     </p>
                     <p>
                         <?php
@@ -67,19 +81,15 @@ foreach ($pros->result_array() as $row) {
                     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                         <li class="active"><a href="#des" data-toggle="tab"><?php echo $this->lang->line('description'); ?></a></li>
                         <li><a href="#reated-knowledge" data-toggle="tab"><?php echo $this->lang->line('related_knowledge'); ?></a></li>
-                        <li><a href="#other" data-toggle="tab">Other</a></li>
+                        
                     </ul>
                     <div id="my-tab-content" class="tab-content">
                         <div class="tab-pane active" id="des">
-                            <?php echo $row[field('proDes')];  ?>
+                            <?php echo $row[field('proDes')]; ?>
                         </div>
                         <div class="tab-pane" id="reated-knowledge">
                             <h1>Orange</h1>
                             <p>orange orange orange orange orange</p>
-                        </div>
-                        <div class="tab-pane" id="other">
-                            <h1>Yellow</h1>
-                            <p>yellow yellow yellow yellow yellow</p>
                         </div>
 
                     </div>
@@ -96,10 +106,12 @@ foreach ($pros->result_array() as $row) {
         ?>
         <div class="span12">
             <h3 class="page-head"><?php echo $this->lang->line('related_product'); ?></h3>
-            <?php echo br(2);?>
-            <?php foreach($relatedProduct as $relatedProId){
+            <?php echo br(2); ?>
+            <?php
+            foreach ($relatedProduct as $relatedProId) {
                 echo Products::getRelatedProduct($relatedProId);
-            } ?>
+            }
+            ?>
         </div>
         <?php
     }

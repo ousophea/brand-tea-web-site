@@ -21,8 +21,29 @@ class Mod_product_front extends CI_Model {
         $this->db->from(table('product'));
         $this->db->join(table('group'), table('group') . '.' . field('groId') . '=' . table('product') . '.' . field('groId'));
         $this->db->join(table('category'), table('category') . '.' . field('catId') . '=' . table('group') . '.' . field('catId'));
-        $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
-        $this->db->where(field('lanDes'), $this->lang->line('lang'));
+
+        if ($this->input->cookie('language')) {
+            $this->db->join(table('proLang'), table('proLang') . '.' . field('proId') . '=' . table('product') . '.' . field('proId'));
+            $this->db->join(table('language'), table('proLang') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+            $this->db->where(field('lanDes'), $this->input->cookie('language'));
+        }
+        $data = $this->db->get();
+        if ($data->num_rows() > 0) {
+            return $data;
+        } else {
+            return $this->getEnProduct($start, $perPage);
+        }
+    }
+
+    /**
+     * Get English Product
+     */
+    public function getEnProduct($start, $perPage) {
+        $this->db->select('*');
+        $this->db->limit($perPage, $start);
+        $this->db->from(table('product'));
+        $this->db->join(table('group'), table('group') . '.' . field('groId') . '=' . table('product') . '.' . field('groId'));
+        $this->db->join(table('category'), table('category') . '.' . field('catId') . '=' . table('group') . '.' . field('catId'));
         return $this->db->get();
     }
 
@@ -36,8 +57,14 @@ class Mod_product_front extends CI_Model {
         $this->db->from(table('product'));
         $this->db->join(table('group'), table('group') . '.' . field('groId') . '=' . table('product') . '.' . field('groId'));
         $this->db->join(table('category'), table('category') . '.' . field('catId') . '=' . table('group') . '.' . field('catId'));
-        $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
-        $this->db->where(field('lanDes'), $this->lang->line('lang'));
+//        $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+//        $this->db->where(field('lanDes'), $this->lang->line('lang'));
+        if ($this->input->cookie('language')) {
+            $this->db->join(table('proLang'), table('proLang') . '.' . field('proId') . '=' . table('product') . '.' . field('proId'));
+            $this->db->join(table('language'), table('proLang') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+            $this->db->where(field('lanDes'), $this->input->cookie('language'));
+            
+        }
         $this->db->where(field('proId'), $id);
         return $this->db->get();
     }
@@ -51,8 +78,8 @@ class Mod_product_front extends CI_Model {
         $this->db->from(table('product'));
         $this->db->join(table('group'), table('group') . '.' . field('groId') . '=' . table('product') . '.' . field('groId'));
         $this->db->join(table('category'), table('category') . '.' . field('catId') . '=' . table('group') . '.' . field('catId'));
-        $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
-        $this->db->where(field('lanDes'), $this->lang->line('lang'));
+//        $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+//        $this->db->where(field('lanDes'), $this->lang->line('lang'));
         return $this->db->get();
     }
 
@@ -87,8 +114,30 @@ class Mod_product_front extends CI_Model {
         $this->db->from(table('category'));
         $this->db->join(table('group'), table('group') . '.' . field('catId') . '=' . table('category') . '.' . field('catId'));
         $this->db->join(table('product'), table('product') . '.' . field('groId') . '=' . table('group') . '.' . field('groId'));
-        $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
-        $this->db->where(field('lanDes'), $this->lang->line('lang'));
+
+        if ($this->input->cookie('language')) {
+            $this->db->join(table('catLang'), table('catLang') . '.' . field('catId') . '=' . table('category') . '.' . field('catId'));
+            $this->db->join(table('language'), table('catLang') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+            $this->db->where(field('lanDes'), $this->input->cookie('language'));
+        }
+
+        $this->db->group_by(table('category') . '.' . field('catId'));
+        $data = $this->db->get();
+        if($data->num_rows()>0){
+            return $data;
+        }else{
+            return $this->getEnCats();
+        }
+    }
+
+    /**
+     * Get English category
+     */
+    public function getEnCats() {
+        $this->db->select('*');
+        $this->db->from(table('category'));
+        $this->db->join(table('group'), table('group') . '.' . field('catId') . '=' . table('category') . '.' . field('catId'));
+        $this->db->join(table('product'), table('product') . '.' . field('groId') . '=' . table('group') . '.' . field('groId'));
         $this->db->group_by(table('category') . '.' . field('catId'));
         return $this->db->get();
     }
@@ -103,8 +152,29 @@ class Mod_product_front extends CI_Model {
         $this->db->from(table('group'));
         $this->db->join(table('category'), table('group') . '.' . field('catId') . '=' . table('category') . '.' . field('catId'));
         $this->db->join(table('product'), table('product') . '.' . field('groId') . '=' . table('group') . '.' . field('groId'));
-        $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
-        $this->db->where(field('lanDes'), $this->lang->line('lang'));
+        
+         if ($this->input->cookie('language')) {
+            $this->db->join(table('groLang'), table('groLang') . '.' . field('groId') . '=' . table('group') . '.' . field('groId'));
+            $this->db->join(table('language'), table('groLang') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+            $this->db->where(field('lanDes'), $this->input->cookie('language'));
+        }
+        $this->db->group_by(table('group') . '.' . field('groId'));
+        $data = $this->db->get();
+        if($data->num_rows()>0){
+            return $data;
+        }else{
+            return $this->getEnGroup();
+        }
+    }
+    
+    /**
+     * Get English group
+     */
+    public function getEnGroup(){
+        $this->db->select('*');
+        $this->db->from(table('group'));
+        $this->db->join(table('category'), table('group') . '.' . field('catId') . '=' . table('category') . '.' . field('catId'));
+        $this->db->join(table('product'), table('product') . '.' . field('groId') . '=' . table('group') . '.' . field('groId'));
         $this->db->group_by(table('group') . '.' . field('groId'));
         return $this->db->get();
     }
@@ -119,33 +189,38 @@ class Mod_product_front extends CI_Model {
         $this->db->from(table('product'));
         $this->db->join(table('group'), table('group') . '.' . field('groId') . '=' . table('product') . '.' . field('groId'));
         $this->db->join(table('category'), table('category') . '.' . field('catId') . '=' . table('group') . '.' . field('catId'));
-        $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
-        $this->db->where(field('lanDes'), $this->lang->line('lang'));
-        $this->db->where(table('product').'.'.  field('proId'), $id);
+//        $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+        if ($this->input->cookie('language')) {
+            $this->db->join(table('proLang'), table('proLang') . '.' . field('proId') . '=' . table('product') . '.' . field('proId'));
+            $this->db->join(table('language'), table('proLang') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+            $this->db->where(field('lanDes'), $this->input->cookie('language'));
+        }
+//        $this->db->where(field('lanDes'), $this->lang->line('lang'));
+        $this->db->where(table('product') . '.' . field('proId'), $id);
         return $this->db->get();
     }
-    
+
     /**
      * Get related product where product's id
      */
-    public function getRelatedProduct($proId){
+    public function getRelatedProduct($proId) {
         $data = $this->getPro($proId);
-        if($data->num_rows()>0){
-            $html='';
-            foreach($data->result_array() as $row){
+        if ($data->num_rows() > 0) {
+            $html = '';
+            foreach ($data->result_array() as $row) {
                 $html.='<div class="span3">';
-                    $photo = Products::getPhoto($row[field('proId')], 1)->result_array();
-                    $att = array(
-                        'src' => PRODUCT_PHOTO_PATH .'250x250/'. $photo[0][field('phoUrl')],
-                        'width' => 110,
-                        'class' => 'img'
-                    );
-                    $html.= '<div class="photo">' . img($att) . '</div>';
-                    $html.= '<div class="content">';
-                    $html.= $row[field('proName')];
-                    $html.= '<label class="price">' . $this->lang->line('currency'). $row[field('proPrice')] . '</label>';
-                    $html.='<label class="order">'. anchor('site/products/detail/' . $row[field('proId')], 'Details', 'class="btn"'). '</label>';
-                    $html.= '</div>';
+                $photo = Products::getPhoto($row[field('proId')], 1)->result_array();
+                $att = array(
+                    'src' => PRODUCT_PHOTO_PATH . '250x250/' . $photo[0][field('phoUrl')],
+                    'width' => 110,
+                    'class' => 'img'
+                );
+                $html.= '<div class="photo">' . img($att) . '</div>';
+                $html.= '<div class="content">';
+                $html.= $row[field('proName')];
+                $html.= '<label class="price">' . $this->lang->line('currency') . $row[field('proPrice')] . '</label>';
+                $html.='<label class="order">' . anchor('site/products/detail/' . $row[field('proId')], 'Details', 'class="btn"') . '</label>';
+                $html.= '</div>';
                 $html.='</div>';
             }
             return $html;
@@ -158,50 +233,50 @@ class Mod_product_front extends CI_Model {
      * @param int $catId
      * @return CI database object
      */
-    public function getProPerCat($catId){
+    public function getProPerCat($catId) {
         $this->db->select('*');
         $this->db->from(table('product'));
         $this->db->join(table('group'), table('group') . '.' . field('groId') . '=' . table('product') . '.' . field('groId'));
         $this->db->join(table('category'), table('category') . '.' . field('catId') . '=' . table('group') . '.' . field('catId'));
         $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
         $this->db->where(field('lanDes'), $this->lang->line('lang'));
-        $this->db->where(table('category').'.'.field('catId'), $catId);
+        $this->db->where(table('category') . '.' . field('catId'), $catId);
         return $this->db->get();
     }
-    
+
     /**
      * Get all products for group. Group's id  is a condition for this method
      * @param int $groId
      * @return CI database object
      */
-    public function getProPerGro($groId){
+    public function getProPerGro($groId) {
         $this->db->select('*');
         $this->db->from(table('product'));
         $this->db->join(table('group'), table('group') . '.' . field('groId') . '=' . table('product') . '.' . field('groId'));
         $this->db->join(table('category'), table('category') . '.' . field('catId') . '=' . table('group') . '.' . field('catId'));
         $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
         $this->db->where(field('lanDes'), $this->lang->line('lang'));
-        $this->db->where(table('group').'.'.field('groId'), $groId);
+        $this->db->where(table('group') . '.' . field('groId'), $groId);
         return $this->db->get();
     }
-    
-    public function getCatName($catId){
+
+    public function getCatName($catId) {
         $this->db->select(field('catName'));
         $this->db->from(table('category'));
         $this->db->join(table('language'), table('category') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
         $this->db->where(field('lanDes'), $this->lang->line('lang'));
-        $this->db->where(table('category').'.'.field('catId'), $catId);
+        $this->db->where(table('category') . '.' . field('catId'), $catId);
         return $this->db->get()->row_array();
     }
-    public function getGroName($groId){
+
+    public function getGroName($groId) {
         $this->db->select(field('groName'));
         $this->db->from(table('group'));
         $this->db->join(table('language'), table('group') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
         $this->db->where(field('lanDes'), $this->lang->line('lang'));
-        $this->db->where(table('group').'.'.field('groId'), $groId);
+        $this->db->where(table('group') . '.' . field('groId'), $groId);
         $this->db->where(field('lanDes'), $this->lang->line('lang'));
         return $this->db->get()->row_array();
     }
-    
-   
+
 }

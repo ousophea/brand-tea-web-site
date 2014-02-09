@@ -1,0 +1,28 @@
+#lang{
+    float: right;
+    position: relative;
+    width: 35px;
+    top: 50px;
+    color: #fff;
+    
+}
+.lang{
+    float: right;
+    position: fixed;
+    width: 100%;
+    clear: both;
+    background: #ddd;
+}
+.lang ul{
+    margin: 0px;
+    list-style: none;
+    padding: 5px;
+}
+.lang ul li{
+    padding: 1px 2px;
+}
+
+.lang ul li a img{
+    text-decoration: none;
+    border: none;
+}

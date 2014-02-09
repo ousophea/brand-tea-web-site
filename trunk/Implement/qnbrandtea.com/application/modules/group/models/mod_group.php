@@ -136,7 +136,6 @@ class mod_group extends CI_Model {
         }
         return FALSE;
     }
-
 }
 
 ?>
