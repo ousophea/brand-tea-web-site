@@ -11,14 +11,17 @@
                     <?php
                     $photo = Products::getPhoto($row[field('proId')], 1)->result_array();
                     $att = array(
-                        'src' => PRODUCT_PHOTO_PATH .'250x250/'. $photo[0][field('phoUrl')],
+                        'src' => PRODUCT_PHOTO_PATH . '250x250/' . $photo[0][field('phoUrl')],
                         'width' => 110,
                         'class' => 'img'
                     );
                     echo '<div class="photo">' . img($att) . '</div>';
                     echo '<div class="content">';
                     echo $row[field('proName')];
-                    echo '<label class="price">' . $this->lang->line('currency'), $row[field('proPrice')] . '</label>';
+                    $price = unserialize($row[field('proPrice')]);
+                    if ($price['hide_show'] != 'hide') {
+                        echo '<label class="price">' . $this->lang->line('currency'), $price['price'] . '</label>';
+                    }
                     echo '<label class="order">', anchor('site/products/detail/' . $row[field('proId')], 'Details', 'class="btn"'), '</label>';
                     echo '</div>';
                     ?>

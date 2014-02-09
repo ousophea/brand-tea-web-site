@@ -46,6 +46,16 @@ foreach ($pros as $currentPro) {
             $fields = unserialize($currentPro[field('proField')]);
             $html = '';
             $k = 0;
+            $catData = $this->mod_product->getCateName($itemId, $langId);
+            $numRows= $catData->num_rows();
+            $catField='';
+            if($numRows>0){
+                $arrayCateData=($catData->result_array());
+                foreach($catData->result_array() as $singleCatData){
+                    $catField = (unserialize($singleCatData[field('catField')]));
+                }
+                echo ($catField['label'][0]);
+            }
             foreach ($fields['label'] as $field) {
                 $html .='<input type="hidden" value="' . $fields['label'][$k] . '" name="label[]" />';
                 $html .='<label for="feilds-' . $k . '">' . $fields['label'][$k] . '</label> <input id="feilds-' . $k . '" type="text" name="field[]" value="' . $fields['field'][$k] . '">';

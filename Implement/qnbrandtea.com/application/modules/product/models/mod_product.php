@@ -16,7 +16,7 @@ class mod_product extends CI_Model {
         );
         if ($this->db->insert(table('product'), $data)) {
             $proId = $this->db->insert_id();
-            if ($this->addNewPhoto($proId, $photos['main_photo'], 1) && $this->addNewPhoto($proId, $photos['photo'])) {
+            if ($this->addNewPhoto($proId, $photos['main_photo'], 1,'addnew') && $this->addNewPhoto($proId, $photos['photo'])) {
                 return TRUE;
             } else {
                 return FALSE;
@@ -25,8 +25,8 @@ class mod_product extends CI_Model {
         return FALSE;
     }
 
-    public function addNewPhoto($proId, $photos, $mainPhoto = 0) {
-        if ($mainPhoto == 1) {
+    public function addNewPhoto($proId, $photos, $mainPhoto = 0, $action='update') {
+        if ($mainPhoto == 1 && $action=='update') {
             $this->db->where(field('proId'), $proId);
             $this->db->where(field('isMainPhoto'), 1);
             foreach ($photos as $photo) {
@@ -267,6 +267,18 @@ class mod_product extends CI_Model {
             return $this->db->update(table('proLang'), $data);
         }
         return FALSE;
+    }
+    
+    public function getCateName($proId, $langId){
+        $this->db->select(table('catLang').'.'.  field('catField'));
+        $this->db->from(table('product'));
+        $this->db->join(table('group'), table('group') . '.' . field('groId') . '=' . table('product') . '.' . field('groId'));
+        $this->db->join(table('category'), table('category') . '.' . field('catId') . '=' . table('group') . '.' . field('catId'));
+//        $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+        $this->db->join(table('catLang'), table('catLang') . '.' . field('catId') . '=' . table('category') . '.' . field('catId'));
+        $this->db->where(table('catLang').'.'.field('langId'), $langId);
+        $this->db->where(table('product').'.'.field('proId'), $proId);
+        return $this->db->get();
     }
 
 }

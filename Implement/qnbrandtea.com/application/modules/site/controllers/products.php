@@ -28,6 +28,7 @@ class Products extends Base_Controller {
 
         // Get product
         $data['pros'] = $this->mod_product_front->getProduct($this->uri->segment(4), $config['per_page']);
+       
 
         $data['cats'] = $this->mod_product_front->getAllCats();
         $data['gros'] = $this->mod_product_front->getAllGros();

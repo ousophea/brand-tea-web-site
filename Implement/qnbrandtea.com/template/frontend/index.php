@@ -13,6 +13,7 @@
         <link href="<?php echo base_url() . FRONTEND_TEMPLATE; ?>css/style.css" rel="stylesheet">
         <link href="<?php echo base_url() . FRONTEND_TEMPLATE; ?>css/jssor-slider.css" rel="stylesheet"  />
         <link href="<?php echo base_url() . FRONTEND_TEMPLATE; ?>css/more-style.css" rel="stylesheet"  />
+        <link href="<?php echo base_url() . FRONTEND_TEMPLATE; ?>css/language.css" rel="stylesheet"  />
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -30,7 +31,7 @@
     </head>
 
     <body>
-
+        <?php $this->load->view('translation/front-end-view'); ?>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
@@ -57,6 +58,7 @@
             </div>
         </div>
         <div class="container well">
+                
         	<?php include('slideshow.php'); ?>
             <?php $this->load->view($page); ?>
             
