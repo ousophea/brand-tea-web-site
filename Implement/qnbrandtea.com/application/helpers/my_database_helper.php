@@ -23,15 +23,16 @@ if (!function_exists('table')) {
         $table['tearelated'] = 'tearelated';
         $table['proLang'] = 'product_languages';
         $table['catLang'] = 'category_languages';
-        $table['groLang']='group_languages';
+        $table['groLang'] = 'group_languages';
         $table['about'] = 'about';
-		$table['contact']='contact';
+        $table['contact'] = 'contact';
         if (array_key_exists($key, $table)) {
             return $table[$key];
         } else {
             return NULL;
         }
     }
+
 }
 
 if (!function_exists('field')) {
@@ -89,30 +90,31 @@ if (!function_exists('field')) {
         $field['sliDes'] = 'sli_description';
         //Tea
 
-		
-		$field['sliCatId'] = 'sli_cat_id';
-		$field['sliCatName'] = 'sli_cat_name';
+
+        $field['sliCatId'] = 'sli_cat_id';
+        $field['sliCatName'] = 'sli_cat_name';
 
 
         $field['teaId'] = 'tea_id';
         $field['teaTitle'] = 'tea_title';
         $field['teaDesc'] = 'tea_description';
         $field['teaStatus'] = 'tea_status';
-		//About
-		$field['aboId']='abo_id';
-		$field['aboDesc'] ='abo_description';
-		$field['aboStatus']='abo_status';
+        //About
+        $field['aboId'] = 'abo_id';
+        $field['aboDesc'] = 'abo_description';
+        $field['aboStatus'] = 'abo_status';
 
         //$field['aboId'] = 'abo_id';
         //$field['aboDesc'] = 'abo_description';
         //$field['aboStatus'] = 'abo_status';
 
         $field['prlId'] = 'prl_id';
-        
-        $field['calId']='cal_id';
-        
-        $field['grlId']='grl_id';
 
+
+        $field['calId'] = 'cal_id';
+        $field['grlId'] = 'grl_id';
+
+      
 		//Contact
 		$field['contactId']='con_id';
 		$field['contactDesc'] ='con_description';
