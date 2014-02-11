@@ -12,10 +12,10 @@
             <div class="span3 content-item">
                 <h3>Support</h3>
                 <hr>
-                <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/tea.png" width="70" /> Lorem ipsum</div>
-                <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/tea.png" width="70" /> Lorem ipsum</div>
-                <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/tea.png" width="70" /> Lorem ipsum</div>
-                <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/tea.png" width="70" /> Lorem ipsum</div>
+                <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/phone_support.png" width="60" /> <?php echo $this->lang->line('phone_support'); ?></div>
+                <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/tea_logo.png" width="60" /> Lorem ipsum</div>
+                <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/tea.png" width="60" /> Lorem ipsum</div>
+                <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/ticket.png" width="60" /> Email Support</div>
             </div>
         </div>  
         
@@ -34,11 +34,15 @@
                             'src' => PRODUCT_PHOTO_PATH .'250x250/'. $photo[0][field('phoUrl')],
                             'class' => 'span2'
                         );
+							
+						$price = unserialize($row[field('proPrice')]);
                 ?>
                         <div class="product">
                             <p><?php echo img($att); ?></p>
                             <p><?php echo $row[field('proName')]; ?></p>
-                            <p class="price"><?php echo $this->lang->line('currency'), $row[field('proPrice')]; ?></p>
+                            <?php if($price['hide_show'] != 'hide'): ?>
+                            <p class="price"><?php echo $this->lang->line('currency'), $price['price']; ?></p>
+                            <?php endif; ?>
                             <p><a href="#">/ <?php echo anchor('site/products/detail/' . $row[field('proId')], 'Details'); ?> /</a></p>
                         </div>
                 <?php endforeach; ?>
@@ -46,74 +50,23 @@
             </div>
         	<div class="span5" style="padding-left:20px;">
             	<div>
-                    <h3>&gt; Welcome <span style="float: right; margin-right:25px;">Date</span></h3>
+                    <h3>&gt; <?php echo $this->lang->line('men_teaknowledge'); ?></h3>
                     <hr>
                   
-                    <table width="100%" border="0" class="event">
+                    <table width="100%" border="0" class="event tea_related">
+                    <?php
+					if(isset($teas) && $teas->num_rows() >  0):
+					foreach ($teas->result_array() as $row): 
+					echo '<tr>
+                        <td>' . anchor('site/tearelated/detail/' . $row[field('teaId')], $row[field('teaTitle')]) . '</td>
+                      </tr>';
+					endforeach; 
+					else: 
+					?>
                       <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
+                        <td>No data display!</td>
                       </tr>
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
-                    </table>
-                </div>
-            	<div>
-                	<br>
-                    <h3>&gt; Welcome <span style="float: right; margin-right:25px;">Date</span></h3>
-                    <hr>
-                  
-                    <table width="100%" border="0" class="event">
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
-                      <tr>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td align="right">2013-12-05</td>
-                      </tr>
+					<?php endif; ?>
                     </table>
                 </div>
             </div>
