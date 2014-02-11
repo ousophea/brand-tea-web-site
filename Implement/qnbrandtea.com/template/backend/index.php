@@ -61,7 +61,7 @@
             <div id="header">
                 <div id="top">
                     <div class="left" >
-                        <h2>Pichnil</h2>
+                        <!--<h2>Pichnil</h2>-->
                     </div>
                     <div class="right">
                         <div class="align-right">
@@ -417,7 +417,7 @@
             </div>
             <div id="footer">
                 <div class="left">
-                    <p>Power by: <a href="http://pichnil.com">Pichnil</a> | For: <a href="">qnbrandtea.com</a></p>
+                    <!--<p>Power by: <a href="http://pichnil.com">Pichnil</a> | For: <a href="">qnbrandtea.com</a></p>-->
                 </div>
                 <div class="right">
                     <!--<p><a href="">Example link 1</a> | <a href="">Example link 2</a></p>-->

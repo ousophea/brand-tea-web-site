@@ -12,6 +12,7 @@ jQuery(document).ready(function($) {
         var itemId = $('.ch_translate:checked').val();// Item Id
         var langTitle =$('.dro_translate option:selected').text();
         if (itemId > 0 && langId > 0) {
+//            alert($('.translation_rule').html());
             sendData($('.translation_rule').html(), langId, itemId, langTitle);
         }
     });

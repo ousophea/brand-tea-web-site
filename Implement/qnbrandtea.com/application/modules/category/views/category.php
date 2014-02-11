@@ -50,9 +50,10 @@ $this->session->unset_userdata('ms');
                     <td width="100">
                         <?php
                         $fields = unserialize($cat[field('catField')]);
-                        if (is_array($fields)) {
+                        if (is_array($fields['label']) && count($fields['label'])>0) {
 //                        print_r($fields);
                             $k = 0;
+                            
                             foreach ($fields['label'] as $field) {
 //                            print_r($field);
                                 ?>
@@ -60,7 +61,7 @@ $this->session->unset_userdata('ms');
                                     <?php 
                                     echo 'Label: ';
                                     echo $fields['label'][$k];
-                                    echo '<br />Value: ';
+                                    echo '<br />'.$this->lang->line('value').': ';
                                     echo $fields['field'][$k],'<br /><br />';
                                     ?>
                                 </div>

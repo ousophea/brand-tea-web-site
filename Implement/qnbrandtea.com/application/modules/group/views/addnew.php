@@ -28,7 +28,7 @@
                 $options[$cat[field('catId')]] = $cat[field('catName')];
             }
             ?>
-            <label for="cate"><?php echo $this->lang->line('description'),$this->lang->line('require'); ?></label>
+            <label for="cate"><?php echo $this->lang->line('men_category'),$this->lang->line('require'); ?></label>
             <?php
             echo form_dropdown('dro_cat_name', $options, $this->input->post('dro_cat_name') ? $this->input->post('dro_cat_name') : ' ','id="cate"');
             ?>
