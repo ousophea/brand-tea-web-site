@@ -9,6 +9,16 @@ class Products extends Base_Controller {
         parent::__construct();
         $this->load->model('products/mod_product_front');
         $this->load->helper('facebook');
+        // Load language
+        if ($this->input->cookie('language') == 'en') {
+            $this->lang->load('english', 'english');
+        } else if ($this->input->cookie('language') == 'kh') {
+            $this->lang->load('khmer', 'khmer');
+        } else if ($this->input->cookie('language') == 'ch') {
+            
+            $this->lang->load('chiness', 'chiness');
+        }
+        
     }
 
     public function index() {
@@ -19,6 +29,7 @@ class Products extends Base_Controller {
      * Viell products by limit  9 products
      */
     public function viewProducts() {
+        $data['slideshow'] = $this->mod_slideshow->getSlideshowByCatId(3);
         $config['base_url'] = base_url() . $this->uri->segment(1) . '/' . $this->uri->segment(2) . '/allproducts/';
         $config['total_rows'] = $this->mod_product_front->getAllProNum();
         $config['per_page'] = 9;
@@ -28,14 +39,14 @@ class Products extends Base_Controller {
 
         // Get product
         $data['pros'] = $this->mod_product_front->getProduct($this->uri->segment(4), $config['per_page']);
-       
+
 
         $data['cats'] = $this->mod_product_front->getAllCats();
         $data['gros'] = $this->mod_product_front->getAllGros();
 
         $data['title'] = "Product";
         $data['page'] = 'products/products';
-        $data['action'] = 'Products';
+        $data['action'] = $this->lang->line('men_product');
         $this->load->view('master', $data);
     }
 
@@ -64,7 +75,7 @@ class Products extends Base_Controller {
         $data['gros'] = $this->mod_product_front->getAllGros();
         $data['title'] = "Product Detail";
         $data['page'] = 'products/detail';
-        $data['action'] = 'View Product Details';
+        $data['action'] = $this->lang->line('pro_details');
         $this->load->view('master', $data);
     }
 
@@ -85,7 +96,7 @@ class Products extends Base_Controller {
 
         $data['cats'] = $this->mod_product_front->getAllCats();
         $data['gros'] = $this->mod_product_front->getAllGros();
-        
+
         $catName = $this->mod_product_front->getCatName($catId);
         $data['title'] = $catName[field('catName')];
         $data['page'] = 'products/products';
@@ -99,7 +110,7 @@ class Products extends Base_Controller {
 
         $data['cats'] = $this->mod_product_front->getAllCats();
         $data['gros'] = $this->mod_product_front->getAllGros();
-        
+
         $groName = $this->mod_product_front->getGroName($groId);
         $data['title'] = $groName[field('groName')];
         $data['page'] = 'products/products';

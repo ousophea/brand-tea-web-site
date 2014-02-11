@@ -17,6 +17,7 @@ class Product extends Admin_Controller {
         }
         $this->load->model(array('mod_product', 'category/mod_category', 'group/mod_group', 'translation/mod_translation'));
         $this->load->library('image_lib');
+        $this->lang->load('english', 'english');
     }
 
     public function index() {

@@ -49,7 +49,7 @@
                             <li class="active"><?php echo anchor('site/home',$this->lang->line('men_home')); ?></li>
                             <li><?php echo anchor('site/about',$this->lang->line('men_about')); ?></li>
                             <li><?php echo anchor('site/products',$this->lang->line('men_product')); ?></li>
-                            <li><a href="#">Services</a></li>
+                            <li><?php echo anchor('site/service',$this->lang->line('men_service')); ?></li>
                             <li><?php echo anchor('site/tearelated',$this->lang->line('men_tearelated')); ?></li>
                             <li><?php echo anchor('site/contact',$this->lang->line('men_contact')); ?></li>
                         </ul>

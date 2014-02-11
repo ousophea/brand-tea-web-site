@@ -40,12 +40,12 @@
         <tr>
             <td>
                 <?php
-                $options[' '] = '--Select Group--';
+                $options[' '] = '--Select Category--';
                 foreach ($gros->result_array() as $gro) {
-                    $options[$gro[field('groId')]] = $gro[field('groName')] . '-->' . $gro[field('catName')];
+                    $options[$gro[field('groId')]] =   $gro[field('catName')]. '-->' . $gro[field('groName')];
                 }
                 ?>
-                <label for="gro"><?php echo $this->lang->line('description'), $this->lang->line('require'); ?><small> (Group's name --> Category's name)</small></label>
+                <label for="gro"><?php echo $this->lang->line('men_category'), $this->lang->line('require'); ?><small> (Category's name --> Group's name)</small></label>
                 <?php
                 echo form_dropdown('dro_gro_name', $options, $this->input->post('dro_gro_name') ? $this->input->post('dro_gro_name') : ' ', 'id="gro"');
                 ?>

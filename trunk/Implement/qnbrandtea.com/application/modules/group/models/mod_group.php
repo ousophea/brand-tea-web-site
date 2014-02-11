@@ -99,6 +99,9 @@ class mod_group extends CI_Model {
         }
         $k = 0;
         $html = '';
+        if(!is_array($fields['label'])){
+            return FALSE;
+        }
         foreach ($fields['label'] as $field) {
             $html .='<input type="hidden" value="' . $fields['label'][$k] . '" name="label[]" />';
             $html .='<label for="field-"' . $k . '>' . $fields['label'][$k] . ' </label><input id="field-"' . $k . ' type="text" name="field[]" value="' . $fields['field'][$k] . '">';

@@ -44,18 +44,18 @@ foreach ($pros->result_array() as $row) {
                     <p>
                         <?php
                         $price = unserialize($row[field('proPrice')]);
-                        
+
                         if ($price['hide_show'] != 'hide') {
-                            echo $this->lang->line('price').': '.'<span class="price">' . $this->lang->line('currency'), $price['price'] . '</span>';
+                            echo $this->lang->line('price') . ': ' . '<span class="price">' . $this->lang->line('currency'), $price['price'] . '</span>';
                         }
                         ?>
-                        
+
                     </p>
                     <p>
                         <?php
                         $qty = unserialize($row[field('proQty')]);
                         if ($qty['hide_show'] != 'hide') {
-                            echo $this->lang->line('qty').': '.'<span class="">', $qty['qty'] . '</span>';
+                            echo $this->lang->line('qty') . ': ' . '<span class="">', $qty['qty'] . '</span>';
                         }
                         ?>
                     </p>
@@ -65,9 +65,11 @@ foreach ($pros->result_array() as $row) {
                         $fields = unserialize($row[field('proField')]);
                         $html = '';
                         $k = 0;
-                        foreach ($fields['label'] as $field) {
-                            $html .='<label><b>' . $fields['label'][$k] . '</b> : ' . $fields['field'][$k] . '</label>';
-                            $k++;
+                        if(is_array($fields['label'])) {
+                            foreach ($fields['label'] as $field) {
+                                $html .='<label><b>' . $fields['label'][$k] . '</b> : ' . $fields['field'][$k] . '</label>';
+                                $k++;
+                            }
                         }
                         echo $html;
                         ?>
@@ -81,7 +83,7 @@ foreach ($pros->result_array() as $row) {
                     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                         <li class="active"><a href="#des" data-toggle="tab"><?php echo $this->lang->line('description'); ?></a></li>
                         <li><a href="#reated-knowledge" data-toggle="tab"><?php echo $this->lang->line('related_knowledge'); ?></a></li>
-                        
+
                     </ul>
                     <div id="my-tab-content" class="tab-content">
                         <div class="tab-pane active" id="des">

@@ -38,7 +38,7 @@ foreach ($cats->result_array() as $cat) {
                 <a href="#add" class="button add category-add" id="add"><?php echo $this->lang->line('new'); ?></a>
                 <div id="category-add">
                     <?php
-                    if (is_array($fields)) {
+                    if (is_array($fields['label'])) {
 //                        print_r($fields);
                         $k=0;
                         foreach ($fields['label'] as $field) {

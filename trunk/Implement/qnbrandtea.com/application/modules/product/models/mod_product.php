@@ -93,8 +93,8 @@ class mod_product extends CI_Model {
         $this->db->from(table('product'));
         $this->db->join(table('group'), table('group') . '.' . field('groId') . '=' . table('product') . '.' . field('groId'));
         $this->db->join(table('category'), table('category') . '.' . field('catId') . '=' . table('group') . '.' . field('catId'));
-        $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
-        $this->db->where(field('lanDes'), $this->lang->line('lang'));
+//        $this->db->join(table('language'), table('product') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
+//        $this->db->where(field('lanDes'), $this->lang->line('lang'));
         return $this->db->get();
     }
 
