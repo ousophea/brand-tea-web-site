@@ -10,14 +10,7 @@ class Products extends Base_Controller {
         $this->load->model('products/mod_product_front');
         $this->load->helper('facebook');
         // Load language
-        if ($this->input->cookie('language') == 'en') {
-            $this->lang->load('english', 'english');
-        } else if ($this->input->cookie('language') == 'kh') {
-            $this->lang->load('khmer', 'khmer');
-        } else if ($this->input->cookie('language') == 'ch') {
-            
-            $this->lang->load('chiness', 'chiness');
-        }
+        $this->load->helper('checklang');
         
     }
 
@@ -44,7 +37,7 @@ class Products extends Base_Controller {
         $data['cats'] = $this->mod_product_front->getAllCats();
         $data['gros'] = $this->mod_product_front->getAllGros();
 
-        $data['title'] = "Product";
+        $data['title'] = $this->lang->line('men_product');
         $data['page'] = 'products/products';
         $data['action'] = $this->lang->line('men_product');
         $this->load->view('master', $data);

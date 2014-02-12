@@ -6,6 +6,8 @@ class Home extends Base_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model(array('products/mod_product_front', 'content/mod_content', 'tearelated/mod_tea_front'));
+        // Load language
+        $this->load->helper('checklang');
     }
 	
 	public function index()
@@ -17,7 +19,6 @@ class Home extends Base_Controller {
         $config['uri_segment'] = 4;
 		$data['products'] = $this->mod_product_front->getProduct($this->uri->segment(4), $config['per_page']);
         $data['teas'] = $this->mod_tea_front->getTea($this->uri->segment(4), $config['per_page']);
-		
 		$data['title']="Welcome to Tea home page";
 		$data['page']='home';
 		$data['action']='Dashboard';

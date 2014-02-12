@@ -9,7 +9,7 @@
 				  <div class="row-fluid span12">				
                     <?php
                      
-				     echo $abo[field('aboDesc')];
+				     echo $abo[field('conDes')];
                    
                     ?>
                 </div>

@@ -15,26 +15,13 @@
 <?php
 foreach ($contact->result_array() as $con) {
     //$fields = unserialize($cat[field('catField')]);
-	 echo form_hidden('hid_desc', $con[field('contactDesc')]); 
+	 echo form_hidden('hid_desc', $con[field('conDes')]); 
 ?>
 <table cellspacing="0"> 
     <tr> 
         <td width="100" valign="middle">
              <label for="tea-2"><?php echo $this->lang->line('men_contact'); ?></label>
-             <?php echo form_textarea('txt_contact', $this->input->post('txt_contact') ? $this->input->post('txt_contact') : $con[field('contactDesc')], 'class="tinyMCE"'); ?>          
-        </td>
-    </tr>
-	<tr> 
-        <td width="100" valign="middle">
-             <label for="tea-2"><?php echo $this->lang->line('men_con_status'); ?></label>		 
-			 <?php
-             $dd_list = array(
-			      ''. $con[field('contactStatus')].'' => ''.$con[field('contactStatus')].'',
-                  '1'   => 'Active',
-                  '0'   => 'Inactive'
-                );
-             echo form_dropdown('dd_status', $dd_list, '2');   
-			?>          
+             <?php echo form_textarea('txt_contact', $this->input->post('txt_contact') ? $this->input->post('txt_contact') : $con[field('conDes')], 'class="tinyMCE"'); ?>          
         </td>
     </tr>
 </table>

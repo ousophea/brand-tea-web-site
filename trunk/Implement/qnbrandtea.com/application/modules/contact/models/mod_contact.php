@@ -6,7 +6,8 @@ class mod_contact extends CI_Model {
         $this->db->select('*'); 
         $this->db->from(table('contact'));
 		$this->db->join(table('language'), table('contact') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
-		$this->db->where(field('lanDes'), $this->lang->line('lang'));	
+		$this->db->where(field('lanDes'), $this->lang->line('lang'));
+                
         return $this->db->get();
     }	
     public function update($conDec,$conStatus,$contactId) {
