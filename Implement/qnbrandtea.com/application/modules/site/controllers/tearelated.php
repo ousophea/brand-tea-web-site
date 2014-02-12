@@ -1,17 +1,24 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
 class Tearelated extends Base_Controller {
 
     function __construct() {
         parent::__construct();
-		$this->load->model('tearelated/mod_tea_front');
-		$this->load->helper('text');
+        $this->load->model('tearelated/mod_tea_front');
+        $this->load->helper('text');
+        // Load language
+        $this->load->helper('checklang');
     }
-	public function index()
-	{	
+
+    public function index() {
         $this->allteas();
-	}
-	 public function allteas() {
+    }
+
+    public function allteas() {
+         $data['slideshow'] = $this->mod_slideshow->getSlideshowByCatId(5);
         $config['base_url'] = base_url() . $this->uri->segment(1) . '/' . $this->uri->segment(2) . '/allteas/';
         $config['total_rows'] = $this->mod_tea_front->getAllTeaNum();
         $config['per_page'] = 5;
@@ -21,13 +28,14 @@ class Tearelated extends Base_Controller {
 
         // Get tea knowledge
         $data['teas'] = $this->mod_tea_front->getTea($this->uri->segment(4), $config['per_page']);
-       
+
         $data['title'] = "Tea Related Knowledge";
         $data['page'] = 'tearelated/tearelated';
         $data['action'] = 'Tea Related Knowledge';
         $this->load->view('master', $data);
     }
-	  /**
+
+    /**
      * Get one Tea related knowledge to view details information
      * @param int $teaId
      */
@@ -43,4 +51,5 @@ class Tearelated extends Base_Controller {
         $data['action'] = 'View Tea Related Knowledge Details';
         $this->load->view('master', $data);
     }
+
 }

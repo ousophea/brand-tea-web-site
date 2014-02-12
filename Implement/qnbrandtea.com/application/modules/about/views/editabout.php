@@ -18,28 +18,15 @@
 <?php
 foreach ($about->result_array() as $abo) {
     //$fields = unserialize($cat[field('catField')]);
-	 echo form_hidden('hid_desc', $abo[field('aboDesc')]); 
+	 echo form_hidden('hid_desc', $abo[field('conDes')]); 
 ?>
 <table cellspacing="0"> 
     <tr> 
         <td width="100" valign="middle">
              <label for="tea-2"><?php echo $this->lang->line('men_about'); ?></label>
-             <?php echo form_textarea('txt_about', $this->input->post('txt_about') ? $this->input->post('txt_about') : $abo[field('aboDesc')], 'class="tinyMCE"'); ?>          
+             <?php echo form_textarea('txt_about', $this->input->post('txt_about') ? $this->input->post('txt_about') : $abo[field('conDes')], 'class="tinyMCE"'); ?>          
         </td>
-    </tr>
-	<tr> 
-        <td width="100" valign="middle">
-             <label for="tea-2"><?php echo $this->lang->line('men_abo_status'); ?></label>		 
-			 <?php
-             $dd_list = array(
-			      ''. $abo[field('aboStatus')].'' => ''.$abo[field('aboStatus')].'',
-                  '1'   => 'Active',
-                  '0'   => 'Inactive'
-                );
-             echo form_dropdown('dd_status', $dd_list, '2');   
-			?>          
-        </td>
-    </tr>
+    </tr>	
 </table>
 <?php } ?>
 </form>

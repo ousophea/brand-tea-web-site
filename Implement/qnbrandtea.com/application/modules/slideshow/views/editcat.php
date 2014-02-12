@@ -10,7 +10,7 @@
     </div>
     <div style="clear:both"></div>
 </div>
-	<?php echo $this->lang->line('name'); ?>: <input type="text" name="name" id="name" value="<?php echo $category->row()->cat_name?>" /> <?php echo $this->lang->line('require'); ?>
+	<?php echo $this->lang->line('name'); ?>: <input type="text" name="name" id="name" value="<?php echo $category->row()->sli_cat_name?>" /> <?php echo $this->lang->line('require'); ?>
 </form>
 <br><br>
 <script type="text/javascript">
