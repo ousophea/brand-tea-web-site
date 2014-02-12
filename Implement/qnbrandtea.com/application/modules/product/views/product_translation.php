@@ -1,9 +1,8 @@
 <?php
 echo form_open('product/product_translation/' . $itemId . '/' . $langId);
 echo form_hidden('lan_title', $langTitle);
-echo form_hidden('item_id',$itemId);
-echo form_hidden('lang_id',$langId);
-
+echo form_hidden('item_id', $itemId);
+echo form_hidden('lang_id', $langId);
 ?>
 <div class="holder">
     <div class="sub-title"> <h2>Translate to <?php echo $langTitle; ?></h2>
@@ -20,14 +19,14 @@ echo form_hidden('lang_id',$langId);
 </div>
 <?php
 $pros = unserialize($items);
-$action ='insert';
+$action = 'insert';
 // Check existing data
 $this->load->model('product/mod_product');
 $langData = $this->mod_product->checkLang($itemId, $langId);
 
-if($langData->num_rows()>0){
+if ($langData->num_rows() > 0) {
     $pros = $langData->result_array();
-    $action='update';
+    $action = 'update';
 }
 echo form_hidden('action', $action);
 echo form_hidden('pro_data', serialize($pros));
@@ -47,20 +46,22 @@ foreach ($pros as $currentPro) {
             $html = '';
             $k = 0;
             $catData = $this->mod_product->getCateName($itemId, $langId);
-            $numRows= $catData->num_rows();
-            $catField='';
-            if($numRows>0){
-                $arrayCateData=($catData->result_array());
-                foreach($catData->result_array() as $singleCatData){
+            $numRows = $catData->num_rows();
+            $catField = '';
+            if ($numRows > 0) {
+                $arrayCateData = ($catData->result_array());
+                foreach ($catData->result_array() as $singleCatData) {
                     $catField = (unserialize($singleCatData[field('catField')]));
                 }
                 echo ($catField['label'][0]);
             }
-            foreach ($fields['label'] as $field) {
-                $html .='<input type="hidden" value="' . $fields['label'][$k] . '" name="label[]" />';
-                $html .='<label for="feilds-' . $k . '">' . $fields['label'][$k] . '</label> <input id="feilds-' . $k . '" type="text" name="field[]" value="' . $fields['field'][$k] . '">';
-                $html.='<input type="hidden" name="hide_show[]" value="' . $fields['hide_show'][$k] . '" />';
-                $k++;
+            if (is_array($fields['label'])) {
+                foreach ($fields['label'] as $field) {
+                    $html .='<input type="hidden" value="' . $fields['label'][$k] . '" name="label[]" />';
+                    $html .='<label for="feilds-' . $k . '">' . $fields['label'][$k] . '</label> <input id="feilds-' . $k . '" type="text" name="field[]" value="' . $fields['field'][$k] . '">';
+                    $html.='<input type="hidden" name="hide_show[]" value="' . $fields['hide_show'][$k] . '" />';
+                    $k++;
+                }
             }
             echo $html;
             ?>

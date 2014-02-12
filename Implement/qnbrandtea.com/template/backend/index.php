@@ -13,7 +13,7 @@
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/tinymce/tinymce.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jcrop/js/jquery.Jcrop.js"></script>
-		<script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jquery.wallform.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jquery.wallform.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/translation.js"></script>
         <script type="text/javascript">
             jQuery(document).ready(function($) {
@@ -24,7 +24,7 @@
                 });
             });
         </script>
-        
+
         <!--TinyMCE-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>addon/tinymce/js/tinymce/skins/lightgray/skin.min.css" media="all" />
         <script type="text/javascript" src="<?php echo base_url(); ?>addon/tinymce/js/tinymce/tinymce.min.js"></script>
@@ -33,8 +33,8 @@
             tinymce.init({
                 selector: "textarea.tinyMCE",
                 theme: "modern",
-                external_filemanager_path:'<?php echo base_url(); ?>addon/tinymce/js/tinymce/plugins/filemanager/',
-                width: 300,
+                external_filemanager_path: '<?php echo base_url(); ?>addon/tinymce/js/tinymce/plugins/filemanager/',
+                width: 500,
                 height: 300,
                 relative_urls: false,
                 remove_script_host: false,
@@ -50,12 +50,12 @@
         </script>
         <script type="text/javascript" src="<?php echo base_url(); ?>addon/tinymce/js/tinymce/plugins/filemanager/plugin.min.js"></script>
         <!--End TinyMCE-->
-        
+
     </head>
     <body>
-        
+
         <?php echo form_open(); ?>
-        <input type="hidden" value="<?php echo base_url();?>" id="base_url" />
+        <input type="hidden" value="<?php echo base_url(); ?>" id="base_url" />
         <?php echo form_close(); ?>
         <div class="wrap">
             <div id="header">
@@ -71,43 +71,36 @@
                 </div>
                 <div id="nav">
                     <ul>
+                        <li class="upp"><?php echo anchor('admin', $this->lang->line('men_dashboard')); ?>
+                        </li>
                         <li class="upp"><?php echo anchor('product', $this->lang->line('men_product')); ?>
-                            <!--                            <ul>
-                                                            <li>&#8250; <a href="">Visit site</a></li>
-                                                            <li>&#8250; <a href="">Reports</a></li>
-                                                            <li>&#8250; <a href="">Add new page</a></li>
-                                                            <li>&#8250; <a href="">Site config</a></li>
-                                                        </ul>-->
+                            <ul>
+                                <li>&#8250; <?php echo anchor('product/addnew', $this->lang->line('men_add_new')); ?></li>
+                            </ul>
                         </li>
                         <li class="upp"><?php echo anchor('category', $this->lang->line('men_category')); ?>
-                            <!--                            <ul>
-                                                            <li>&#8250; <a href="">Show all pages</a></li>
-                                                            <li>&#8250; <a href="">Add new page</a></li>
-                                                            <li>&#8250; <a href="">Add new gallery</a></li>
-                                                            <li>&#8250; <a href="">Categories</a></li>
-                                                        </ul>-->
+                            <ul>
+                                <li>&#8250; <?php echo anchor('category/addnew', $this->lang->line('men_add_new')); ?></li>
+                            </ul>                         
                         </li>
                         <li class="upp"><?php echo anchor('group', $this->lang->line('men_group')); ?>
-                            <!--                            <ul>
-                                                            <li>&#8250; <a href="">Show all uses</a></li>
-                                                            <li>&#8250; <a href="">Add new user</a></li>
-                                                            <li>&#8250; <a href="">Lock users</a></li>
-                                                        </ul>-->
+                           <ul>
+                                <li>&#8250; <?php echo anchor('group/addnew', $this->lang->line('men_add_new')); ?></li>
+                            </ul> 
                         </li>
                         <li class="upp"><?php echo anchor('slideshow', $this->lang->line('men_slideshow')); ?>
-                            <!--                            <ul>
-                                                            <li>&#8250; <a href="">Show all uses</a></li>
-                                                            <li>&#8250; <a href="">Add new user</a></li>
-                                                            <li>&#8250; <a href="">Lock users</a></li>
-                                                        </ul>-->
+                            <ul>
+                                <li>&#8250; <?php echo anchor('slideshow/addnew', $this->lang->line('men_add_new')); ?></li>
+                                <li>&#8250; <?php echo anchor('slideshow/category/listcat', $this->lang->line('men_slide_cat')); ?></li>
+                                <li>&#8250; <?php echo anchor('slideshow/category/addnew', $this->lang->line('men_add_new_slide_cat')); ?></li>
+                                
+                            </ul> 
                         </li>
 
-						<li class="upp"><?php echo anchor('tearelated', $this->lang->line('men_tearelated')); ?>
-                            <!--                            <ul>
-                                                            <li>&#8250; <a href="">Show all uses</a></li>
-                                                            <li>&#8250; <a href="">Add new user</a></li>
-                                                            <li>&#8250; <a href="">Lock users</a></li>
-                                                        </ul>-->
+                        <li class="upp"><?php echo anchor('tearelated', $this->lang->line('men_tearelated')); ?>
+                            <ul>
+                                <li>&#8250; <?php echo anchor('tearelated/addnewtea', $this->lang->line('men_add_new')); ?></li>
+                            </ul> 
                         </li>
 
                         <li class="upp"><?php echo anchor('content/home', $this->lang->line('men_content')); ?>
@@ -117,29 +110,24 @@
                                                             <li>&#8250; <a href="">Lock users</a></li>
                                                         </ul>-->
                         </li>
-                         <li class="upp"><?php echo anchor('about', $this->lang->line('men_about')); ?>
+                        <li class="upp"><?php echo anchor('about', $this->lang->line('men_about')); ?>
                         </li>
-						 <li class="upp"><?php echo anchor('contact', $this->lang->line('men_contact')); ?>
+                        <li class="upp"><?php echo anchor('contact', $this->lang->line('men_contact')); ?>
                         </li>
-                        <!--                        <li class="upp"><a href="#">Settings</a>
-                                                    <ul>
-                                                        <li>&#8250; <a href="">Site configuration</a></li>
-                                                        <li>&#8250; <a href="">Contact Form</a></li>
-                                                    </ul>
-                                                </li>-->
+                        
                     </ul>
                 </div>
             </div>
 
             <div id="content">
-                <div id="sidebar">
+<!--                <div id="sidebar">
                     <div class="box">
                         <div class="h_title">&#8250; Product</div>
                         <ul id="home">
                             <li class="b1"><a class="icon page" href="">Show all products</a></li>
-                            <!--                            <li class="b2"><a class="icon report" href="">Reports</a></li>-->
+                                                        <li class="b2"><a class="icon report" href="">Reports</a></li>
                             <li class="b1"><a class="icon add_page" href="">Add product</a></li>
-                            <!--<li class="b2"><a class="icon config" href="">Site config</a></li>-->
+                            <li class="b2"><a class="icon config" href="">Site config</a></li>
                         </ul>
                     </div>
 
@@ -148,8 +136,8 @@
                         <ul>
                             <li class="b1"><a class="icon page" href="">Show all categories</a></li>
                             <li class="b2"><a class="icon add_page" href="">Add category</a></li>
-                            <!--                            <li class="b1"><a class="icon photo" href="">Add new gallery</a></li>
-                                                        <li class="b2"><a class="icon category" href="">Categories</a></li>-->
+                                                        <li class="b1"><a class="icon photo" href="">Add new gallery</a></li>
+                                                        <li class="b2"><a class="icon category" href="">Categories</a></li>
                         </ul>
                     </div>
                     <div class="box">
@@ -157,8 +145,8 @@
                         <ul>
                             <li class="b1"><a class="icon page" href="">Show all groups</a></li>
                             <li class="b2"><a class="icon add_page" href="">Add group</a></li>
-                            <!--                            <li class="b1"><a class="icon photo" href="">Add new gallery</a></li>
-                                                        <li class="b2"><a class="icon category" href="">Categories</a></li>-->
+                                                        <li class="b1"><a class="icon photo" href="">Add new gallery</a></li>
+                                                        <li class="b2"><a class="icon category" href="">Categories</a></li>
                         </ul>
                     </div>
                     <div class="box">
@@ -179,7 +167,7 @@
                         </ul>
                     </div>
 
-					<div class="box">
+                    <div class="box">
                         <div class="h_title">&#8250; Tearelated</div>
                         <ul>
                             <li class="b1"><a class="icon page" href="<?php echo site_url('tearelated/listtea'); ?>">Show all tearelated</a></li>
@@ -193,26 +181,26 @@
                             <li class="b1"><a class="icon page" href="<?php echo site_url('content/home/listhome'); ?>">Home Page</a></li>
                         </ul>
                     </div>
-                     <div class="box">
+                    <div class="box">
                         <div class="h_title">&#8250; About</div>
                         <ul>
                             <li class="b1"><a class="icon page" href="<?php echo site_url('about/listabout'); ?>">About Page</a></li>	
                         </ul>
                     </div>
-					 <div class="box">
+                    <div class="box">
                         <div class="h_title">&#8250; Contact</div>
                         <ul>
                             <li class="b1"><a class="icon page" href="<?php echo site_url('contact/listcontact'); ?>">Contact Page</a></li>		
                         </ul>
                     </div>
-                    <!--                    <div class="box">
+                                        <div class="box">
                                             <div class="h_title">&#8250; Settings</div>
                                             <ul>
                                                 <li class="b1"><a class="icon config" href="">Site configuration</a></li>
                                                 <li class="b2"><a class="icon contact" href="">Contact Form</a></li>
                                             </ul>
-                                        </div>-->
-                </div>
+                                        </div>
+                </div>-->
                 <div id="main">
                     <!--                    <div class="half_w half_left">
                                             <div class="h_title">Visits statistics</div>

@@ -54,7 +54,7 @@ foreach ($cats as $cat) {
                 <label for="cate-2"><?php echo $this->lang->line('field'); ?></label>
                 <div id="category-add">
                     <?php
-                    if (is_array($fields)) {
+                    if (is_array($fields['label'])) {
 //                        print_r($fields);
                         $k=0;
                         foreach ($fields['label'] as $field) {
