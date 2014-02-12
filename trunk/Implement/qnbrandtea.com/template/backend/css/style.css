@@ -141,7 +141,7 @@ button:hover, .button:hover, input[type=submit]:hover{
     float: right;
     margin: 0 0 12px 0;
     min-width: 680px;
-    width: 76%;
+    width: 100%;
 }
 
 #content #main ul, #content #main ol{
@@ -366,11 +366,11 @@ table .chb{
     color: #939393;
     float: left;
     margin: 0 auto;
-    padding: 8px 20px;
+    padding: 20px 20px;
     text-shadow: #111111 0px 1px 1px;
     min-width: 860px;
     max-width: 1160px;
-    width: 99%;
+    width: 100%;
 }
 #footer a{
     color: #939393;

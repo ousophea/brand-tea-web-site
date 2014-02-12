@@ -52,6 +52,13 @@ $lang['men_abo_status']='About Status';
 $lang['men_follow']='FOLLOW US';
 $lang['men_contact']="Contact";
 $lang['men_service']="Service";
+$lang['men_add_new']="Add New";
+$lang['men_slide_cat']="Slide Category";
+$lang['men_add_new_slide_cat']="New Category Slide";
+$lang['men_dashboard']="Dashboard";
+
+
+
 
 // Message
 $lang['ms_success']='Success!';
