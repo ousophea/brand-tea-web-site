@@ -103,7 +103,7 @@
                             </ul> 
                         </li>
 
-                        <li class="upp"><?php echo anchor('content/home', $this->lang->line('men_content')); ?>
+                        <li class="upp"><?php echo anchor('content/home', $this->lang->line('men_home')); ?>
                             <!--                            <ul>
                                                             <li>&#8250; <a href="">Show all uses</a></li>
                                                             <li>&#8250; <a href="">Add new user</a></li>

@@ -12,10 +12,6 @@ $lang['sli_category'] = 'Category';
 $lang['title'] = 'Title';
 $lang['home_sli_category'] = 'Slideshow Category';
 
-// Menu
-$lang['men_home']='Home';
-$lang['men_services']='Services';
-
 
 $lang['ms_require'] = 'Please enter require field!';
 $lang['ms_error_inuse'] = 'Data is in use!';
