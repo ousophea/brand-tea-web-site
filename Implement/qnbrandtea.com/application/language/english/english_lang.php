@@ -40,7 +40,7 @@ $lang['men_category']='Category';
 $lang['men_product']='Product';
 $lang['men_group']='Group';
 $lang['men_slideshow']='Slideshow';
-$lang['men_content']='Home Page';
+$lang['men_home']='Home';
 $lang['men_services']='Services';
 //Tea Related knowledge
 $lang['related_knowledge']='Related Knowledge';
