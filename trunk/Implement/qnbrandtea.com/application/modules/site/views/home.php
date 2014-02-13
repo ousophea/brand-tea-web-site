@@ -4,10 +4,12 @@
             <button class="btn" type="button"><?php echo $this->lang->line('search'); ?></button>
         </div>
         <div class="row-fluid">
-        	<div class="span9 content-item first-child">
-                  <h3>&gt; Welcome</h3>
-                  <hr>
-                  <?php echo $home->row()->cont_description; ?>
+        	<div class="span9 content-item first-child" style="padding:0;">
+    			<h3 class="page-head"><?php echo $home->row()->cont_name; ?></h3>
+                <?php echo br(1); ?> 
+                <div class="row-fluid span12" style="margin-left:3%;">	
+                	<?php echo $home->row()->cont_description; ?>
+                </div>
             </div>
             <div class="span3 content-item">
                 <h3>Support</h3>
