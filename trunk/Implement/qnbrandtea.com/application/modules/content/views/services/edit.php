@@ -1,5 +1,5 @@
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-<input type="hidden" name="txt_id" value="<?php echo $home->row()->cont_id; ?>" />
+<input type="hidden" name="txt_id" value="<?php echo $services->row()->cont_id; ?>" />
 <div class="holder">
     <div class="sub-title red">
         <?php 
@@ -10,13 +10,13 @@
 
     <div class="action">
         <?php echo form_submit('btnSave', $this->lang->line('save'), 'class="add"'); ?>
-        <?php echo anchor('content/home',$this->lang->line('cancel'), 'class="button cancel"');?>
+        <?php echo anchor('content/services',$this->lang->line('cancel'), 'class="button cancel"');?>
     </div>
     <div style="clear:both"></div>
 </div>
 <div class="holder">
-    <h3><?php echo $this->lang->line('title'); ?>: <input type="text" name="txt_name" placeholder="Page Title" value="<?php echo $home->row()->cont_name; ?>" required /> <?php echo $this->lang->line('require'); ?></h3>
-    <p><textarea name="txt_description" placeholder="Description" rows="10" required ><?php echo $home->row()->cont_description; ?></textarea></p>
+    <h3><?php echo $this->lang->line('title'); ?>: <input type="text" name="txt_name" placeholder="Page Title" value="<?php echo $services->row()->cont_name; ?>" required /> <?php echo $this->lang->line('require'); ?></h3>
+    <p><textarea name="txt_description" placeholder="Description" rows="10" required ><?php echo $services->row()->cont_description; ?></textarea></p>
     <br>
 </div>
 </form>

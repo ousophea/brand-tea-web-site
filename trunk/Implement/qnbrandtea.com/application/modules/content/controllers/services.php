@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends Admin_Controller {
+class Services extends Admin_Controller {
 	
 	public function __construct(){
         if (!$this->checkSession()) {
@@ -12,15 +12,15 @@ class Home extends Admin_Controller {
 
 	public function index()
 	{
-		$this->listHome();
+		$this->listServices();
 	}
 	
-	public function listHome(){
-		$data['home'] = $this->mod_content->getContent(1);
+	public function listServices(){
+		$data['services'] = $this->mod_content->getContent(4);
 		
-		$data['title']="Content Management - Home page";
-		$data['page']='home/list';
-		$data['action']='Home page';
+		$data['title']="Content Management - Services";
+		$data['page']='services/list';
+		$data['action']='Services';
     	$this->load->view('masterpage/master',$data);
 	}
 		
@@ -36,21 +36,21 @@ class Home extends Admin_Controller {
 				
 				if($this->mod_content->updateContent($id, $name, $description)){
 					$this->session->set_userdata('ms', $this->lang->line('ms_success'));
-					redirect('content/home/listhome');
+					redirect('content/services/listservices');
 				} else {
 					$this->session->set_userdata('ms', $this->lang->line('ms_error'));
 				}
 			}
 		}
 		
-		$data['home'] = $this->mod_content->getContent(1);
+		$data['services'] = $this->mod_content->getContent(4);
 		
-		$data['title']="Content Management - Edit home page";
-		$data['page']='home/edit';
-		$data['action']='Edit Home';
+		$data['title']="Content Management - Edit service";
+		$data['page']='services/edit';
+		$data['action']='Edit Services';
     	$this->load->view('masterpage/master',$data);
 	}
-
+	
     public function checkSession() {
         if ($this->session->userdata('admin')) {
             return TRUE;
@@ -58,5 +58,4 @@ class Home extends Admin_Controller {
             return FALSE;
         }
     }
-	
 }

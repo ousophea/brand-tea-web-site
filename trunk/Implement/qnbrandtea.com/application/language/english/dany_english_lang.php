@@ -9,11 +9,12 @@ $lang['image'] = 'Image';
 $lang['action'] = 'Actions';
 $lang['sli_category'] = 'Category';
 
-$lang['home_title'] = 'Title';
+$lang['title'] = 'Title';
 $lang['home_sli_category'] = 'Slideshow Category';
 
 // Menu
 $lang['men_home']='Home';
+$lang['men_services']='Services';
 
 
 $lang['ms_require'] = 'Please enter require field!';
