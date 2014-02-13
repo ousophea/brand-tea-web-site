@@ -110,6 +110,7 @@
                                                             <li>&#8250; <a href="">Lock users</a></li>
                                                         </ul>-->
                         </li>
+                        <li class="upp"><?php echo anchor('content/services', $this->lang->line('men_services')); ?></li>
                         <li class="upp"><?php echo anchor('about', $this->lang->line('men_about')); ?>
                         </li>
                         <li class="upp"><?php echo anchor('contact', $this->lang->line('men_contact')); ?>
