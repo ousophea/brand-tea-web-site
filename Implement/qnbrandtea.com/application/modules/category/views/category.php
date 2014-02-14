@@ -15,10 +15,10 @@ $this->session->unset_userdata('ms');
                 echo form_close();
                 $rules = array(
                     'view' => 'category/category_translation',
-                    'data' => serialize($cats->result_array())
+                    'data' => (serialize($cats->result_array()))
                 );
                 ?>
-                <label style="display: none" class="translation_rule"><?php echo serialize($rules); ?></label>
+                <label style="display: none" class="translation_rule"><?php echo base64_encode(serialize($rules)); ?></label>
             </div>
         </div>
 
