@@ -27,7 +27,27 @@
         <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
         <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
 
-
+        <style type="text/css">
+        <?php
+        if ($this->uri->segment(2)) {
+            echo '.'.$this->uri->segment(2).'{ text-decoration: underline;color: #DE9D27;}';
+        }  else {
+            echo '.home{text-decoration: underline; color: #DE9D27;}';
+        }
+        // Check cookie
+        if($this->input->cookie('language') == 'kh'){
+            ?>
+            @font-face{
+                font-family: 'khmer-bokor';
+                src: url('<?php echo base_url().FRONTEND_TEMPLATE; ?>fonts/KhmerOSbokor.ttf');
+            }
+            ul.nav li a{
+                font-family: 'khmer-bokor'!important;
+            } 
+            <?php
+        }
+        ?>
+        </style>
     </head>
 
     <body>
@@ -46,12 +66,12 @@
 
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
-                            <li class="active"><?php echo anchor('site/home', $this->lang->line('men_home')); ?></li>
-                            <li><?php echo anchor('site/about', $this->lang->line('men_about')); ?></li>
-                            <li><?php echo anchor('site/products', $this->lang->line('men_product')); ?></li>
-                            <li><?php echo anchor('site/service', $this->lang->line('men_service')); ?></li>
-                            <li><?php echo anchor('site/tearelated', $this->lang->line('men_tearelated')); ?></li>
-                            <li><?php echo anchor('site/contact', $this->lang->line('men_contact')); ?></li>
+                            <li class="home"><?php echo anchor('site/home', $this->lang->line('men_home')); ?></li>
+                            <li class="about"><?php echo anchor('site/about', $this->lang->line('men_about')); ?></li>
+                            <li class="products"><?php echo anchor('site/products', $this->lang->line('men_product')); ?></li>
+                            <li class="service"><?php echo anchor('site/service', $this->lang->line('men_service')); ?></li>
+                            <li class="tearelated"><?php echo anchor('site/tearelated', $this->lang->line('men_tearelated')); ?></li>
+                            <li class="contact"><?php echo anchor('site/contact', $this->lang->line('men_contact')); ?></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
@@ -119,11 +139,12 @@
                 <ul class="footer-menu">
                     <li><?php echo anchor('site/home', $this->lang->line('men_home')); ?></li>
                     <li><?php echo anchor('site/about', $this->lang->line('men_about')); ?></li>
-                    <li><a href="#">Product</a></li>
-                    <li><a href="#">Services</a></li>
+                    <li><?php echo anchor('site/about', $this->lang->line('men_product')); ?></li>
+                    <li><?php echo anchor('site/about', $this->lang->line('men_service')); ?></li>
                     <li><?php echo anchor('site/tearelated', $this->lang->line('men_tearelated')); ?></li>
                     <li><?php echo anchor('site/contact', $this->lang->line('men_contact')); ?></li>
                 </ul>
+                <span style="color: #fff; font-size: 10px;"> &copy; Q.N Brand Tea</span>
             </div>
         </footer>
         <!-- javascript

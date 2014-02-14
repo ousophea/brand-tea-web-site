@@ -2,34 +2,51 @@
 <div class="row-fluid">
     <div class="span8">
         <h3 class="page-head"><?php echo $action; ?></h3>
-        <div class="row-fluid span12">
-            <?php
-            echo br(1);
-            foreach ($pros->result_array() as $row) {
-                ?>
-                <div class="span3">
-                    <?php
-                    $photo = Products::getPhoto($row[field('proId')], 1)->result_array();
-                    $att = array(
-                        'src' => PRODUCT_PHOTO_PATH . '250x250/' . $photo[0][field('phoUrl')],
-                        'width' => 110,
-                        'class' => 'img'
-                    );
-                    echo '<div class="photo">' . img($att) . '</div>';
-                    echo '<div class="content">';
-                    echo $row[field('proName')];
-                    $price = unserialize($row[field('proPrice')]);
-                    if ($price['hide_show'] != 'hide') {
-                        echo '<label class="price">' . $this->lang->line('currency'), $price['price'] . '</label>';
-                    }
-                    echo '<label class="order">', anchor('site/products/detail/' . $row[field('proId')], 'Details', 'class="btn"'), '</label>';
-                    echo '</div>';
-                    ?>
-                </div>
-                <?php
+
+        <?php
+        echo br(1);
+        $i = 0;
+        $html = '';
+        foreach ($pros->result_array() as $row) {
+            $i++;
+
+            $html.='<div class="span3">';
+
+            $photo = Products::getMainPhoto($row[field('proId')])->result_array();
+            $att = array(
+                'src' => PRODUCT_PHOTO_PATH . '250x250/' . $photo[0][field('phoUrl')],
+                'width' => 110,
+                'class' => 'img'
+            );
+            $html.= '<div class="photo">' . img($att) . '</div>';
+            $html.= '<div class="content">';
+            $html.= $row[field('proName')];
+            $price = unserialize($row[field('proPrice')]);
+            if ($price['hide_show'] != 'hide') {
+                $html.= '<label class="price">' . $this->lang->line('currency') . $price['price'] . '</label>';
             }
-            ?>
-        </div>
+            $html.= '<label class="order">';
+            $html.=anchor('site/products/detail/' . $row[field('proId')] , 'Details','class="btn"');
+            $html.='</label>';
+            $html.= '</div>';
+
+            $html.='</div>';
+            if ($i == 4) {
+                $i = 0;
+                echo '<div class="row-fluid span12">';
+                echo $html;
+                echo '</div>';
+                $html = '';
+            }
+        }
+        if ($i < 4 && $i > 0) {
+            echo '<div class="row-fluid span12">';
+            echo $html;
+            echo '</div>';
+            $html = '';
+        }
+        ?>
+
         <div class="pager"><?php echo $this->pagination->create_links(); ?></div>
     </div>
     <div class="span4">

@@ -10,43 +10,43 @@ $lang['edit']='កែប្រែ';
 $lang['require']='<span class="require">*</span>';
 $lang['description']='ពិស្តារ';
 $lang['field']='Field (s)';
-$lang['save']='Save';
-$lang['update']='Update';
-$lang['cancel']='Cancel';
-$lang['price']='Price';
-$lang['qty']='Quantity';
-$lang['name']='Name';
-$lang['value']='Value';
+$lang['save']='រក្សាទុក';
+$lang['update']='កែប្រែ';
+$lang['cancel']='មិនយក';
+$lang['price']='តម្លៃ';
+$lang['qty']='ចំនួន';
+$lang['name']='ឈ្មោះ';
+$lang['value']='តម្លៃ';
 $lang['find_us']='ស្វែងរកយើង';
-$lang['hide']='Hide';
-$lang['show']='Show';
-$lang['photo']='Photo (s)';
-$lang['main_photo']='Main Photo';
+$lang['hide']='លាក់';
+$lang['show']='បង្ហាញ';
+$lang['photo']='រូបភាព';
+$lang['main_photo']='រូបភាពមេ';
 $lang['pro_details']='មើលលំអិត';
 
 
 // Category
-$lang['cate_name']='Category Name';
+$lang['cate_name']='ឈ្មោះប្រភេទ';
 
 // Group
-$lang['group_name']='Group Name';
+$lang['group_name']='ឈ្មោះក្រុម';
 
 // Product
-$lang['pro_name']='Product Name';
+$lang['pro_name']='ឈ្មោះផលិតផល';
 //Tea
-$lang['tea_name']='Tea Title';
-$lang['tea_lang']='Language';
+$lang['tea_name']='ចំនងជើង';
+$lang['tea_lang']='ភាសារ';
 // Menu
 $lang['men_category']='ប្រភេទ';
 $lang['men_product']='ផលិតផល';
 $lang['men_group']='ក្រុម';
 $lang['men_slideshow']='Slideshow';
-$lang['men_content']='Home Page';
+$lang['men_content']='ទំព័រដើម';
 //Tea Related knowledge
 $lang['related_knowledge']='ចំណេះដឹងទូទៅ';
 $lang['related_product'] = 'ផលិតផលស្រដៀងៗ';
 $lang['men_tearelated']='ទំនាកទំនងតែ';
-$lang['men_teaknowledge']='Tea Related Knowledge';
+$lang['men_teaknowledge']='ចំណេះដឹងអំពីតែ';
 $lang['men_status']='Tea Status';
 $lang['men_about']="អំពីយើង";
 $lang['men_abo_status']='About Status';
