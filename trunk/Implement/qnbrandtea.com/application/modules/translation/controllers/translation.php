@@ -8,7 +8,8 @@ class Translation extends Admin_Controller {
         $formdata['itemId'] = $this->input->post('itemId');
         $formdata['langTitle'] = $this->input->post('langTitle');
         
-        $myData = unserialize($data);
+        $myData = unserialize(base64_decode($data));
+//        die(base64_decode($data));
         $formdata['items'] = $myData['data'];
         $this->load->view($myData['view'], $formdata);
     }
