@@ -90,6 +90,14 @@ table.event tr th, table.event tr td {
     margin:10px 0px;
 }
 
+.product-home .product .pro-name {
+	margin-top:3px;	
+}
+
+.product-home .product .price {
+	padding-top:0;	
+}
+
 [class*="span"] {
     margin-left: 0;
 }
