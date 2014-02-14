@@ -11,7 +11,6 @@ class Products extends Base_Controller {
         $this->load->helper('facebook');
         // Load language
         $this->load->helper('checklang');
-        
     }
 
     public function index() {
@@ -51,6 +50,10 @@ class Products extends Base_Controller {
      */
     public function getPhoto($proId, $limit = 0) {
         return $this->mod_product_front->getProPhoto($proId, $limit);
+    }
+
+    public function getMainPhoto($proId) {
+        return $this->mod_product_front->getMainPhoto($proId);
     }
 
     /**

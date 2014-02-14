@@ -105,6 +105,13 @@ class Mod_product_front extends CI_Model {
         $limit != 0 ? $this->db->limit($limit) : '';
         return $this->db->get();
     }
+    public function getMainPhoto($id){
+        $this->db->select('*')
+                ->from(table('photo'))
+                ->where(field('isMainPhoto'), 1)
+                ->where(field('proId'), $id);
+        return $this->db->get();
+    }
 
     /**
      * Get all using categories
