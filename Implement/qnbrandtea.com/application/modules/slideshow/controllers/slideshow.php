@@ -3,7 +3,7 @@
 class Slideshow extends Admin_Controller {
 	
 	public function __construct(){
-        $this->load->model(array('mod_slideshow', 'slideshow/mod_category'));
+        $this->load->model(array('mod_slideshow', 'slideshow/mod_category','translation/mod_translation'));
 		$this->lang->load('dany_english', 'english');
 	}
 
@@ -19,6 +19,8 @@ class Slideshow extends Admin_Controller {
 
         $this->pagination->initialize($config);
 		$data['slideshow'] = $this->mod_slideshow->getSlideshow($this->uri->segment(3), $config['per_page']);
+		
+        $data['langs'] = $this->mod_translation->getLanguages();
 		
 		$data['title']="Slidesow Management - List";
 		$data['page']='slideshow/list';
@@ -161,4 +163,29 @@ class Slideshow extends Admin_Controller {
 		$data = array('image'=>'');			
 		echo json_encode($data);
 	}
+    /**
+     * Translation
+     */
+    public function slideshow_translation($itemId, $lanId) {
+		$sliDes = $this->input->post('description');		
+		$action =$this->input->post('action');
+		if($this->mod_slideshow->translate($itemId, $lanId, $sliDes, $action)){
+			$this->session->set_userdata('ms', $this->lang->line('ms_success'));
+			redirect('slideshow');
+		}
+        
+        $data['title'] = "Translate";
+        $data['page'] = 'slideshow_translation';
+        $data['action'] = 'Translate';
+        if ($this->input->post('lan_title')) {
+            $data['langTitle'] = $this->input->post('lan_title');
+            $data['itemId']=$this->input->post('item_id');
+            $data['langId']=$this->input->post('lang_id');
+            $data['items']=$this->input->post('item_data');
+        }else{
+            redirect('slideshow');
+        }
+        
+        $this->load->view('masterpage/master', $data);
+    }
 }
