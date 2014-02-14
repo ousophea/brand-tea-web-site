@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="span3 content-item" style="padding-top:0;">
-                <h3 class="page-head" style="margin-left:0;margin-right:0;">Support</h3>
+                <h3 class="page-head" style="margin-left:0;margin-right:0;"><?php echo $this->lang->line('support'); ?></h3>
                 <br />
                 <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/phone_support.png" width="60" /> <?php echo $this->lang->line('phone_support'); ?></div>
                 <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/tea_logo.png" width="60" /> Lorem ipsum</div>
@@ -26,8 +26,7 @@
         </div> 
         <div style="clear:both;padding:15px;">
         	<div class="span6">
-            	<h3><?php echo $this->lang->line('home_products'); ?></h3>
-                <hr />
+            	<h3 class="page-head" style="margin-left:0;margin-right:0;"><?php echo $this->lang->line('men_product'); ?></h3>
                 <div class="span6 product-home">
 				<?php 
                     foreach ($products->result_array() as $row): 
@@ -52,9 +51,8 @@
             </div>
         	<div class="span5" style="padding-left:20px;">
             	<div>
-                    <h3>&gt; <?php echo $this->lang->line('men_teaknowledge'); ?></h3>
-                    <hr>
-                  
+                    <h3 class="page-head" style="margin-left:0;margin-right:0;"><?php echo $this->lang->line('men_teaknowledge'); ?></h3>
+                    
                     <table width="100%" border="0" class="event tea_related">
                     <?php
 					if(isset($teas) && $teas->num_rows() >  0):

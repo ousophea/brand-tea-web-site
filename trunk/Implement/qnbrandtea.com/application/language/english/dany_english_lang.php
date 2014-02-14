@@ -7,10 +7,10 @@ $lang['delete'] = 'Delete';
 $lang['no'] = 'N&ordm;';
 $lang['image'] = 'Image';
 $lang['action'] = 'Actions';
+$lang['support'] = 'Support';
 $lang['sli_category'] = 'Display on Page';
 
 $lang['home_sli_category'] = 'Slideshow Category';
-$lang['home_products'] = 'Products';
 
 
 $lang['ms_require'] = 'Please enter require field!';
