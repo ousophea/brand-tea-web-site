@@ -11,9 +11,9 @@
                 	<?php echo $home->row()->cont_description; ?>
                 </div>
             </div>
-            <div class="span3 content-item">
-                <h3>Support</h3>
-                <hr>
+            <div class="span3 content-item" style="padding-top:0;">
+                <h3 class="page-head" style="margin-left:0;margin-right:0;">Support</h3>
+                <br />
                 <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/phone_support.png" width="60" /> <?php echo $this->lang->line('phone_support'); ?></div>
                 <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/tea_logo.png" width="60" /> Lorem ipsum</div>
                 <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/tea.png" width="60" /> Lorem ipsum</div>
@@ -26,8 +26,8 @@
         </div> 
         <div style="clear:both;padding:15px;">
         	<div class="span6">
-            	<h3>&gt; Products</h3>
-                <hr>
+            	<h3><?php echo $this->lang->line('home_products'); ?></h3>
+                <hr />
                 <div class="span6 product-home">
 				<?php 
                     foreach ($products->result_array() as $row): 
@@ -41,11 +41,11 @@
                 ?>
                         <div class="product">
                             <p><?php echo img($att); ?></p>
-                            <p><?php echo $row[field('proName')]; ?></p>
+                            <p class="pro-name"><?php echo br(6).$row[field('proName')]; ?></p>
                             <?php if($price['hide_show'] != 'hide'): ?>
                             <p class="price"><?php echo $this->lang->line('currency'), $price['price']; ?></p>
                             <?php endif; ?>
-                            <p><a href="#">/ <?php echo anchor('site/products/detail/' . $row[field('proId')], 'Details'); ?> /</a></p>
+                            <p>/ <?php echo anchor('site/products/detail/' . $row[field('proId')], 'Details'); ?> /</p>
                         </div>
                 <?php endforeach; ?>
                 </div>

@@ -24,6 +24,7 @@ if (!function_exists('table')) {
         $table['proLang'] = 'product_languages';
         $table['catLang'] = 'category_languages';
         $table['groLang'] = 'group_languages';
+        $table['conLang'] = 'content_languages';
         $table['about'] = 'about';
         $table['contact'] = 'contact';
         if (array_key_exists($key, $table)) {

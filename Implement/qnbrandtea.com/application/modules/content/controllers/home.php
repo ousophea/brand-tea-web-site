@@ -6,7 +6,7 @@ class Home extends Admin_Controller {
         if (!$this->checkSession()) {
             redirect('authentication/login');
         }
-        $this->load->model('mod_content');
+        $this->load->model(array('mod_content','translation/mod_translation'));
 		$this->lang->load('dany_english', 'english');
 	}
 
@@ -16,7 +16,8 @@ class Home extends Admin_Controller {
 	}
 	
 	public function listHome(){
-		$data['home'] = $this->mod_content->getContent(1);
+		$data['home'] = $this->mod_content->getEnContent(1);
+        $data['langs'] = $this->mod_translation->getLanguages();
 		
 		$data['title']="Content Management - Home page";
 		$data['page']='home/list';
@@ -43,7 +44,7 @@ class Home extends Admin_Controller {
 			}
 		}
 		
-		$data['home'] = $this->mod_content->getContent(1);
+		$data['home'] = $this->mod_content->getEnContent(1);
 		
 		$data['title']="Content Management - Edit home page";
 		$data['page']='home/edit';
@@ -59,4 +60,33 @@ class Home extends Admin_Controller {
         }
     }
 	
+    /**
+     * Translation
+     */
+    public function home_translation($itemId, $lanId) {
+		$this->form_validation->set_rules('txt_name', 'Page Title', 'trim|required|max_length[50]');
+		$this->form_validation->set_rules('txt_description', 'Description', 'trim|required');
+        if ($this->form_validation->run() == TRUE) {
+            $conName = $this->input->post('txt_name');
+            $conDes = $this->input->post('txt_description');
+            $action =$this->input->post('action');
+            if($this->mod_content->translate($itemId, $lanId, $conName, $conDes, $action)){
+                $this->session->set_userdata('ms', $this->lang->line('ms_success'));
+                redirect('content/home');
+            }
+        }
+        $data['title'] = "Translate";
+        $data['page'] = 'home_translation';
+        $data['action'] = 'Translate';
+        if ($this->input->post('lan_title')) {
+            $data['langTitle'] = $this->input->post('lan_title');
+            $data['itemId']=$this->input->post('item_id');
+            $data['langId']=$this->input->post('lang_id');
+            $data['items']=$this->input->post('item_data');
+        }else{
+            redirect('content/home');
+        }
+        
+        $this->load->view('masterpage/master', $data);
+    }
 }

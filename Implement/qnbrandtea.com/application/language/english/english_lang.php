@@ -23,6 +23,7 @@ $lang['show']='Show';
 $lang['photo']='Photo (s)';
 $lang['main_photo']='Main Photo';
 $lang['pro_details']='View Product Details';
+$lang['title'] = 'Title';
 
 // Category
 $lang['cate_name']='Category Name';
