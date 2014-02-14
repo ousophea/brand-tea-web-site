@@ -46,58 +46,69 @@
 
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
-                            <li class="active"><?php echo anchor('site/home',$this->lang->line('men_home')); ?></li>
-                            <li><?php echo anchor('site/about',$this->lang->line('men_about')); ?></li>
-                            <li><?php echo anchor('site/products',$this->lang->line('men_product')); ?></li>
-                            <li><?php echo anchor('site/service',$this->lang->line('men_service')); ?></li>
-                            <li><?php echo anchor('site/tearelated',$this->lang->line('men_tearelated')); ?></li>
-                            <li><?php echo anchor('site/contact',$this->lang->line('men_contact')); ?></li>
+                            <li class="active"><?php echo anchor('site/home', $this->lang->line('men_home')); ?></li>
+                            <li><?php echo anchor('site/about', $this->lang->line('men_about')); ?></li>
+                            <li><?php echo anchor('site/products', $this->lang->line('men_product')); ?></li>
+                            <li><?php echo anchor('site/service', $this->lang->line('men_service')); ?></li>
+                            <li><?php echo anchor('site/tearelated', $this->lang->line('men_tearelated')); ?></li>
+                            <li><?php echo anchor('site/contact', $this->lang->line('men_contact')); ?></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
         </div>
         <div class="container well">
-                
-        	<?php include('slideshow.php'); ?>
+
+            <?php include('slideshow.php'); ?>
             <?php $this->load->view($page); ?>
-            
+            <div class="row-fluid">
+                <div class="span12 text-center" style="text-align: center;">
+                    <span class='st_facebook_large' displayText='Facebook'></span>
+                    <span class='st_googleplus_large' displayText='Google +'></span>
+                    <span class='st_twitter_large' displayText='Tweet'></span>
+                    <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                    <span class='st_pinterest_large' displayText='Pinterest'></span>
+                    <span class='st_email_large' displayText='Email'></span>
+                    <span class='st_sharethis_large' displayText='ShareThis'></span>
+                </div>
+            </div>
             <div class="span12" style="padding:0 15px;max-width: 910px;" id="footer-info">
-            	<br><hr>
-            	<div class="span3">
-                	<h3>INFORMATION</h3>
+                <br><hr>
+
+                <div class="span3">
+                    <h3>INFORMATION</h3>
                     <ul>
-                    	<li><a href="#">Sitemap</a></li>
-                    	<li><a href="#">Logal Notice</a></li>
-                    	<li><a href="#">Terms and Condictions</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                        <li><a href="#">Logal Notice</a></li>
+                        <li><a href="#">Terms and Condictions</a></li>
                     </ul>
                 </div>
-            	<div class="span3">
-                	<h3>OUR OFFERS</h3>
+                <div class="span3">
+                    <h3>OUR OFFERS</h3>
                     <ul>
-                    	<li><a href="#">Products</a></li>
-                    	<li><a href="#">Services</a></li>
-                    	<li><?php echo anchor('site/tearelated',$this->lang->line('men_tearelated')); ?></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><?php echo anchor('site/tearelated', $this->lang->line('men_tearelated')); ?></li>
                     </ul>
                 </div>
-            	<div class="span3">
-                	<h3>MY ACCOUNT</h3>
+                <div class="span3">
+                    <h3>MY ACCOUNT</h3>
                     <ul>
-                    	<li><a href="#">My order</a></li>
-                    	<li><a href="#">My addresses</a></li>
-                    	<li><a href="#">My Personal info</a></li>
-                    	<li><a href="#">My credit slips</a></li>
-                    	<li><a href="#">My vouchers</a></li>
+                        <li><a href="#">My order</a></li>
+                        <li><a href="#">My addresses</a></li>
+                        <li><a href="#">My Personal info</a></li>
+                        <li><a href="#">My credit slips</a></li>
+                        <li><a href="#">My vouchers</a></li>
 
                     </ul>
                 </div>
-            	<div class="span3">
-                	<h3>CONTACT US</h3>
+                <div class="span3">
+                    <h3>CONTACT US</h3>
                     <ul>
-                    	<li><a href="#">#82, St.371, Phnom Penh, Cambodia</a></li>
-                    	<li><a href="#">Tel: (+855)99 999 999</a></li>
-                    	<li><a href="#">Fax: (+855)99 999 999</a></li>
-                    	<li><a href="#">Email: info@qnbrandtea.com</a></li>
+                        <li><a href="#">#82, St.371, Phnom Penh, Cambodia</a></li>
+                        <li><a href="#">Tel: (+855)99 999 999</a></li>
+                        <li><a href="#">Fax: (+855)99 999 999</a></li>
+                        <li><a href="#">Email: info@qnbrandtea.com</a></li>
                     </ul>
                 </div>
                 <div class="clear"></div>
@@ -106,12 +117,12 @@
         <footer class="footer">
             <div class="container">
                 <ul class="footer-menu">
-                    <li><?php echo anchor('site/home',$this->lang->line('men_home')); ?></li>
-                    <li><?php echo anchor('site/about',$this->lang->line('men_about')); ?></li>
+                    <li><?php echo anchor('site/home', $this->lang->line('men_home')); ?></li>
+                    <li><?php echo anchor('site/about', $this->lang->line('men_about')); ?></li>
                     <li><a href="#">Product</a></li>
                     <li><a href="#">Services</a></li>
-                    <li><?php echo anchor('site/tearelated',$this->lang->line('men_tearelated')); ?></li>
-                    <li><?php echo anchor('site/contact',$this->lang->line('men_contact')); ?></li>
+                    <li><?php echo anchor('site/tearelated', $this->lang->line('men_tearelated')); ?></li>
+                    <li><?php echo anchor('site/contact', $this->lang->line('men_contact')); ?></li>
                 </ul>
             </div>
         </footer>
@@ -141,7 +152,12 @@
         })
     </script>
     <script>
-    //    $Z$t3_starter("$Z$t3");
+        //    $Z$t3_starter("$Z$t3");
     </script>
+    <!--Share this-->
+    <script type="text/javascript">var switchTo5x = true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({publisher: "f9d9cdbf-9fa5-4708-8fae-2cf714dcfda1", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+    <!--End Share this-->
 </body>
 </html>
