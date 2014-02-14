@@ -50,7 +50,6 @@
         </script>
         <script type="text/javascript" src="<?php echo base_url(); ?>addon/tinymce/js/tinymce/plugins/filemanager/plugin.min.js"></script>
         <!--End TinyMCE-->
-
     </head>
     <body>
 
@@ -84,7 +83,7 @@
                             </ul>                         
                         </li>
                         <li class="upp"><?php echo anchor('group', $this->lang->line('men_group')); ?>
-                           <ul>
+                            <ul>
                                 <li>&#8250; <?php echo anchor('group/addnew', $this->lang->line('men_add_new')); ?></li>
                             </ul> 
                         </li>
@@ -93,7 +92,7 @@
                                 <li>&#8250; <?php echo anchor('slideshow/addnew', $this->lang->line('men_add_new')); ?></li>
                                 <li>&#8250; <?php echo anchor('slideshow/category/listcat', $this->lang->line('men_slide_cat')); ?></li>
                                 <li>&#8250; <?php echo anchor('slideshow/category/addnew', $this->lang->line('men_add_new_slide_cat')); ?></li>
-                                
+
                             </ul> 
                         </li>
 
@@ -115,93 +114,93 @@
                         </li>
                         <li class="upp"><?php echo anchor('contact', $this->lang->line('men_contact')); ?>
                         </li>
-                        
+
                     </ul>
                 </div>
             </div>
 
             <div id="content">
-<!--                <div id="sidebar">
-                    <div class="box">
-                        <div class="h_title">&#8250; Product</div>
-                        <ul id="home">
-                            <li class="b1"><a class="icon page" href="">Show all products</a></li>
-                                                        <li class="b2"><a class="icon report" href="">Reports</a></li>
-                            <li class="b1"><a class="icon add_page" href="">Add product</a></li>
-                            <li class="b2"><a class="icon config" href="">Site config</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="box">
-                        <div class="h_title">&#8250; Category</div>
-                        <ul>
-                            <li class="b1"><a class="icon page" href="">Show all categories</a></li>
-                            <li class="b2"><a class="icon add_page" href="">Add category</a></li>
-                                                        <li class="b1"><a class="icon photo" href="">Add new gallery</a></li>
-                                                        <li class="b2"><a class="icon category" href="">Categories</a></li>
-                        </ul>
-                    </div>
-                    <div class="box">
-                        <div class="h_title">&#8250; Group</div>
-                        <ul>
-                            <li class="b1"><a class="icon page" href="">Show all groups</a></li>
-                            <li class="b2"><a class="icon add_page" href="">Add group</a></li>
-                                                        <li class="b1"><a class="icon photo" href="">Add new gallery</a></li>
-                                                        <li class="b2"><a class="icon category" href="">Categories</a></li>
-                        </ul>
-                    </div>
-                    <div class="box">
-                        <div class="h_title">&#8250; Users</div>
-                        <ul>
-                            <li class="b1"><a class="icon users" href="">Show all users</a></li>
-                            <li class="b2"><a class="icon add_user" href="">Add new user</a></li>
-                            <li class="b1"><a class="icon block_users" href="">Lock users</a></li>
-                        </ul>
-                    </div>
-                    <div class="box">
-                        <div class="h_title">&#8250; Slideshow</div>
-                        <ul>
-                            <li class="b1"><a class="icon page" href="<?php echo site_url('slideshow/listslide'); ?>">Show all slideshow</a></li>
-                            <li class="b2"><a class="icon add_page" href="<?php echo site_url('slideshow/addnew'); ?>">Add new slideshow</a></li>
-                            <li class="b1"><a class="icon page" href="<?php echo site_url('slideshow/category/listcat'); ?>">Show category</a></li>
-                            <li class="b2"><a class="icon add_page" href="<?php echo site_url('slideshow/category/addnew'); ?>">Add new category</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="box">
-                        <div class="h_title">&#8250; Tearelated</div>
-                        <ul>
-                            <li class="b1"><a class="icon page" href="<?php echo site_url('tearelated/listtea'); ?>">Show all tearelated</a></li>
-                            <li class="b2"><a class="icon add_page" href="<?php echo site_url('tearelated/addnewtea'); ?>">Add new Tearelated</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="box">
-                        <div class="h_title">&#8250; Home Page</div>
-                        <ul>
-                            <li class="b1"><a class="icon page" href="<?php echo site_url('content/home/listhome'); ?>">Home Page</a></li>
-                        </ul>
-                    </div>
-                    <div class="box">
-                        <div class="h_title">&#8250; About</div>
-                        <ul>
-                            <li class="b1"><a class="icon page" href="<?php echo site_url('about/listabout'); ?>">About Page</a></li>	
-                        </ul>
-                    </div>
-                    <div class="box">
-                        <div class="h_title">&#8250; Contact</div>
-                        <ul>
-                            <li class="b1"><a class="icon page" href="<?php echo site_url('contact/listcontact'); ?>">Contact Page</a></li>		
-                        </ul>
-                    </div>
-                                        <div class="box">
-                                            <div class="h_title">&#8250; Settings</div>
-                                            <ul>
-                                                <li class="b1"><a class="icon config" href="">Site configuration</a></li>
-                                                <li class="b2"><a class="icon contact" href="">Contact Form</a></li>
-                                            </ul>
-                                        </div>
-                </div>-->
+                <!--                <div id="sidebar">
+                                    <div class="box">
+                                        <div class="h_title">&#8250; Product</div>
+                                        <ul id="home">
+                                            <li class="b1"><a class="icon page" href="">Show all products</a></li>
+                                                                        <li class="b2"><a class="icon report" href="">Reports</a></li>
+                                            <li class="b1"><a class="icon add_page" href="">Add product</a></li>
+                                            <li class="b2"><a class="icon config" href="">Site config</a></li>
+                                        </ul>
+                                    </div>
+                
+                                    <div class="box">
+                                        <div class="h_title">&#8250; Category</div>
+                                        <ul>
+                                            <li class="b1"><a class="icon page" href="">Show all categories</a></li>
+                                            <li class="b2"><a class="icon add_page" href="">Add category</a></li>
+                                                                        <li class="b1"><a class="icon photo" href="">Add new gallery</a></li>
+                                                                        <li class="b2"><a class="icon category" href="">Categories</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="box">
+                                        <div class="h_title">&#8250; Group</div>
+                                        <ul>
+                                            <li class="b1"><a class="icon page" href="">Show all groups</a></li>
+                                            <li class="b2"><a class="icon add_page" href="">Add group</a></li>
+                                                                        <li class="b1"><a class="icon photo" href="">Add new gallery</a></li>
+                                                                        <li class="b2"><a class="icon category" href="">Categories</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="box">
+                                        <div class="h_title">&#8250; Users</div>
+                                        <ul>
+                                            <li class="b1"><a class="icon users" href="">Show all users</a></li>
+                                            <li class="b2"><a class="icon add_user" href="">Add new user</a></li>
+                                            <li class="b1"><a class="icon block_users" href="">Lock users</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="box">
+                                        <div class="h_title">&#8250; Slideshow</div>
+                                        <ul>
+                                            <li class="b1"><a class="icon page" href="<?php echo site_url('slideshow/listslide'); ?>">Show all slideshow</a></li>
+                                            <li class="b2"><a class="icon add_page" href="<?php echo site_url('slideshow/addnew'); ?>">Add new slideshow</a></li>
+                                            <li class="b1"><a class="icon page" href="<?php echo site_url('slideshow/category/listcat'); ?>">Show category</a></li>
+                                            <li class="b2"><a class="icon add_page" href="<?php echo site_url('slideshow/category/addnew'); ?>">Add new category</a></li>
+                                        </ul>
+                                    </div>
+                
+                                    <div class="box">
+                                        <div class="h_title">&#8250; Tearelated</div>
+                                        <ul>
+                                            <li class="b1"><a class="icon page" href="<?php echo site_url('tearelated/listtea'); ?>">Show all tearelated</a></li>
+                                            <li class="b2"><a class="icon add_page" href="<?php echo site_url('tearelated/addnewtea'); ?>">Add new Tearelated</a></li>
+                                        </ul>
+                                    </div>
+                
+                                    <div class="box">
+                                        <div class="h_title">&#8250; Home Page</div>
+                                        <ul>
+                                            <li class="b1"><a class="icon page" href="<?php echo site_url('content/home/listhome'); ?>">Home Page</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="box">
+                                        <div class="h_title">&#8250; About</div>
+                                        <ul>
+                                            <li class="b1"><a class="icon page" href="<?php echo site_url('about/listabout'); ?>">About Page</a></li>	
+                                        </ul>
+                                    </div>
+                                    <div class="box">
+                                        <div class="h_title">&#8250; Contact</div>
+                                        <ul>
+                                            <li class="b1"><a class="icon page" href="<?php echo site_url('contact/listcontact'); ?>">Contact Page</a></li>		
+                                        </ul>
+                                    </div>
+                                                        <div class="box">
+                                                            <div class="h_title">&#8250; Settings</div>
+                                                            <ul>
+                                                                <li class="b1"><a class="icon config" href="">Site configuration</a></li>
+                                                                <li class="b2"><a class="icon contact" href="">Contact Form</a></li>
+                                                            </ul>
+                                                        </div>
+                                </div>-->
                 <div id="main">
                     <!--                    <div class="half_w half_left">
                                             <div class="h_title">Visits statistics</div>
@@ -413,6 +412,5 @@
                 </div>
             </div>
         </div>
-
     </body>
 </html>
