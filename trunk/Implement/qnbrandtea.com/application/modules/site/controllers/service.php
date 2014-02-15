@@ -9,8 +9,6 @@ class Service extends Base_Controller {
         parent::__construct();
         $this->load->model(array('content/mod_content'));
         //$this->load->helper('facebook');
-        // Load language
-        $this->load->helper('checklang');
     }
 
     public function index() {

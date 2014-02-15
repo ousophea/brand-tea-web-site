@@ -17,7 +17,7 @@
                 <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/phone_support.png" width="60" /> <?php echo $this->lang->line('phone_support'); ?></div>
                 <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/tea_logo.png" width="60" /> Lorem ipsum</div>
                 <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/tea.png" width="60" /> Lorem ipsum</div>
-                <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/ticket.png" width="60" /> Email Support</div>
+                <div class="support"><img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/ticket.png" width="60" /> <?php echo $this->lang->line('email_support'); ?></div>
             </div>
         </div>  
         
@@ -44,7 +44,7 @@
                             <?php if($price['hide_show'] != 'hide'): ?>
                             <p class="price"><?php echo $this->lang->line('currency'), $price['price']; ?></p>
                             <?php endif; ?>
-                            <p>/ <?php echo anchor('site/products/detail/' . $row[field('proId')], 'Details'); ?> /</p>
+                            <p>/ <?php echo anchor('site/products/detail/' . $row[field('proId')], $this->lang->line('detail')); ?> /</p>
                         </div>
                 <?php endforeach; ?>
                 </div>
@@ -64,7 +64,7 @@
 					else: 
 					?>
                       <tr>
-                        <td>No data display!</td>
+                        <td><?php echo $this->lang->line('ms_no_data_display'); ?></td>
                       </tr>
 					<?php endif; ?>
                     </table>
