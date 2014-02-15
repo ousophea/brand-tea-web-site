@@ -6,8 +6,6 @@ class Home extends Base_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model(array('products/mod_product_front', 'content/mod_content', 'tearelated/mod_tea_front'));
-        // Load language
-        $this->load->helper('checklang');
     }
 	
 	public function index()
