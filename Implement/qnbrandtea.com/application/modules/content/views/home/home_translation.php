@@ -43,10 +43,13 @@ endforeach;
 <script type="text/javascript">
 tinymce.init({
     selector: "textarea",
+	external_filemanager_path:'<?php echo base_url(); ?>addon/tinymce/js/tinymce/plugins/filemanager/',
+	relative_urls: false,
+	remove_script_host: false,
     plugins: [
         "advlist autolink lists link image charmap preview anchor",
         "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste"
+        "insertdatetime media table contextmenu paste filemanager"
     ],
     toolbar: "insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
 });
