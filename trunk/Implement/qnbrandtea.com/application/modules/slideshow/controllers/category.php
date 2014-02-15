@@ -3,6 +3,9 @@
 class Category extends Admin_Controller {
 	
 	public function __construct(){
+        if (!$this->checkSession()) {
+            redirect('authentication/login');
+        }
         $this->load->model(array('slideshow/mod_category', 'mod_slideshow'));
 		$this->lang->load('dany_english', 'english');
 	}

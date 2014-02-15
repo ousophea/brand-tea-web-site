@@ -3,6 +3,9 @@
 class Slideshow extends Admin_Controller {
 	
 	public function __construct(){
+        if (!$this->checkSession()) {
+            redirect('authentication/login');
+        }
         $this->load->model(array('mod_slideshow', 'slideshow/mod_category','translation/mod_translation'));
 		$this->lang->load('dany_english', 'english');
 	}
