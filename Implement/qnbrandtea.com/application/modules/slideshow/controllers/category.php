@@ -93,4 +93,12 @@ class Category extends Admin_Controller {
 		}
         redirect('slideshow/category/');
     }
+	
+    public function checkSession() {
+        if ($this->session->userdata('admin')) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
 }
