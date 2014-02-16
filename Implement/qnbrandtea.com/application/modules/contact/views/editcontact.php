@@ -21,9 +21,25 @@ foreach ($contact->result_array() as $con) {
     <tr> 
         <td width="100" valign="middle">
              <label for="tea-2"><?php echo $this->lang->line('men_contact'); ?></label>
-             <?php echo form_textarea('txt_contact', $this->input->post('txt_contact') ? $this->input->post('txt_contact') : $con[field('conDes')], 'class="tinyMCE"'); ?>          
+             <?php echo form_textarea('txt_contact', $this->input->post('txt_contact') ? $this->input->post('txt_contact') : $con[field('conDes')]); ?>          
         </td>
     </tr>
 </table>
 <?php } ?>
 </form>
+
+
+<script type="text/javascript">
+tinymce.init({
+    selector: "textarea",
+	external_filemanager_path:'<?php echo base_url(); ?>addon/tinymce/js/tinymce/plugins/filemanager/',
+	relative_urls: false,
+	remove_script_host: false,
+    plugins: [
+        "advlist autolink lists link image charmap preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste filemanager"
+    ],
+    toolbar: "insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+});
+</script>
