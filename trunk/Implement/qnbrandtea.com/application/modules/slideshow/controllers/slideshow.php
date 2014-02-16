@@ -166,6 +166,14 @@ class Slideshow extends Admin_Controller {
 		$data = array('image'=>'');			
 		echo json_encode($data);
 	}
+	
+    public function checkSession() {
+        if ($this->session->userdata('admin')) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
     /**
      * Translation
      */
