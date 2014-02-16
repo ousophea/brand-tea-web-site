@@ -13,7 +13,7 @@
     <div style="clear:both"></div>
 </div>
  <!--<ul class='tabs'>
-			<li><a href='#tab2'>English</a></li>
+	<li><a href='#tab2'>English</a></li>
 </ul>-->
 <?php
 foreach ($about->result_array() as $abo) {
@@ -22,25 +22,26 @@ foreach ($about->result_array() as $abo) {
 ?>
 <table cellspacing="0"> 
     <tr> 
-        <td width="100" valign="middle">
+        <td width="100%" valign="middle">
              <label for="tea-2"><?php echo $this->lang->line('men_about'); ?></label>
-             <?php echo form_textarea('txt_about', $this->input->post('txt_about') ? $this->input->post('txt_about') : $abo[field('conDes')], 'class="tinyMCE"'); ?>          
+             <?php echo form_textarea('txt_about', $this->input->post('txt_about') ? $this->input->post('txt_about') : $abo[field('conDes')]); ?>          
         </td>
     </tr>	
 </table>
 <?php } ?>
 </form>
-<!--tynimce
-	<script type="text/javascript">
-	tinymce.init({
-		selector: "textarea",
-		width: 850,
-        height: 300,
-		plugins: [
-			"advlist autolink lists link image charmap preview anchor",
-			"searchreplace visualblocks code fullscreen",
-			"insertdatetime media table contextmenu paste"
-		],
-		toolbar: "insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-	});
-	</script>-->
+
+<script type="text/javascript">
+tinymce.init({
+    selector: "textarea",
+	external_filemanager_path:'<?php echo base_url(); ?>addon/tinymce/js/tinymce/plugins/filemanager/',
+	relative_urls: false,
+	remove_script_host: false,
+    plugins: [
+        "advlist autolink lists link image charmap preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste filemanager"
+    ],
+    toolbar: "insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+});
+</script>
