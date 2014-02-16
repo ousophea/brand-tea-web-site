@@ -6,6 +6,6 @@ class Base_Controller extends MX_Controller {
         parent::__construct();
         $this->load->model(array('slideshow/mod_slideshow'));
         // Load language
-        $this->load->helper('checklang');
+        $this->load->helper(array('checklang', 'text', 'facebook'));
     }
 }
