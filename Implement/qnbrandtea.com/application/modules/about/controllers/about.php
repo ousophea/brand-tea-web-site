@@ -4,12 +4,12 @@ class About extends Admin_Controller {
 
     public function __construct() {
         parent::__construct();
-        //if ($this->checkSession()) {
-        //  redirect('authentication/login');
-        // }
-        $this->load->model(array('mod_about', 'content/mod_content'));
+        if (!$this->checkSession()) {
+          redirect('authentication/login');
+         }
+        //$this->load->model(array('mod_about', 'content/mod_content'));
+         $this->load->model(array( 'content/mod_content','translation/mod_translation'));
     }
-
     public function index() {
         $this->listabout();
     }
@@ -19,7 +19,8 @@ class About extends Admin_Controller {
      * By Thary
      */
     public function listabout() {
-        $data['about'] = $this->mod_content->getContent(2);
+        $data['about'] = $this->mod_content->getEnContent(2);
+        $data['langs'] = $this->mod_translation->getLanguages();
         $data['title'] = "About us";
         $data['page'] = 'listabout';
         $data['action'] = 'View About us';
@@ -43,20 +44,41 @@ class About extends Admin_Controller {
                 $this->session->set_userdata('ms', $this->lang->line('ms_error'));
             }
         }
-        $data['about'] = $this->mod_about->getAbout($this->uri->segment(3));
+        $data['about'] = $this->mod_content->getEnContent(2);
         $this->load->view('masterpage/master', $data);
     }
-
-    // Delete tea related knowledge
-    public function delete() {
-        $id = $this->uri->segment(3);
-
-        if ($this->mod_tearelated->delete($id) > 0) {
-            $this->session->set_userdata('ms', 'Success!');
-        } else {
-            $this->session->set_userdata('ms', 'Delete fail, please try again!');
+public function about_translation($itemId, $lanId) {
+		$this->form_validation->set_rules('txt_name', 'Page Title', 'trim|required|max_length[50]');
+		$this->form_validation->set_rules('txt_description', 'Description', 'trim|required');
+        if ($this->form_validation->run() == TRUE) {
+            $conName = $this->input->post('txt_name');
+            $conDes = $this->input->post('txt_description');
+            $action =$this->input->post('action');
+            if($this->mod_content->translate($itemId, $lanId, $conName, $conDes, $action)){
+                $this->session->set_userdata('ms', $this->lang->line('ms_success'));
+                redirect('about');
+            }
         }
-        redirect('tearelated');
+        $data['title'] = "Translate";
+        $data['page'] = 'services_translation';
+        $data['action'] = 'Translate';
+        if ($this->input->post('lan_title')) {
+            $data['langTitle'] = $this->input->post('lan_title');
+            $data['itemId']=$this->input->post('item_id');
+            $data['langId']=$this->input->post('lang_id');
+            $data['items']=$this->input->post('item_data');
+        }else{
+            redirect('about');
+        }
+        
+        $this->load->view('masterpage/master', $data);
+    }
+   public function checkSession() {
+        if ($this->session->userdata('admin')) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
 
 }
