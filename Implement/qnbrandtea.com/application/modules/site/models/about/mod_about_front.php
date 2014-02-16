@@ -19,7 +19,6 @@ class Mod_about_front extends CI_Model {
         $this->db->join(table('language'), table('content') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
         $this->db->where(field('lanDes'), $this->lang->line('lang'))
                 ->where(field('conId'), 2);
-        
         return $this->db->get();
     }
 
