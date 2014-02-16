@@ -13,12 +13,17 @@ class Home extends Base_Controller {
 		$data['slideshow'] = $this->mod_slideshow->getSlideshowByCatId(1);
 		$data['home'] = $this->mod_content->getContent(1);
 		
-        $config['per_page'] = 9;
+        $config['base_url'] = base_url() . $this->uri->segment(1) . '/' . $this->uri->segment(2) . '/allproducts/';
+        $config['total_rows'] = $this->mod_product_front->getAllProNum();
+        $config['per_page'] = 12;
         $config['uri_segment'] = 4;
-		$data['products'] = $this->mod_product_front->getProduct($this->uri->segment(4), $config['per_page']);
-        $data['teas'] = $this->mod_tea_front->getTea($this->uri->segment(4), $config['per_page']);
+
+        $this->pagination->initialize($config);
+		
+		$data['products'] = $this->mod_product_front->getProduct($this->uri->segment(5), $config['per_page']);
+        $data['teas'] = $this->mod_tea_front->getTea($this->uri->segment(4), 9);
 		$data['title']="Welcome to Tea home page";
-		$data['page']='home';
+		$data['page']='home/home';
 		$data['action']='Dashboard';
 		$this->load->view('master',$data);
 	}
