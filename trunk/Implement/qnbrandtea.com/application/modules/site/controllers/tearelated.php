@@ -9,29 +9,27 @@ class Tearelated extends Base_Controller {
         parent::__construct();
         $this->load->model('tearelated/mod_tea_front');
         $this->load->helper('text');
-        // Load language
-        $this->load->helper('checklang');
+         $this->load->helper('facebook');
     }
 
     public function index() {
         $this->allteas();
     }
-
     public function allteas() {
-         $data['slideshow'] = $this->mod_slideshow->getSlideshowByCatId(5);
+        $data['slideshow'] = $this->mod_slideshow->getSlideshowByCatId(5);
         $config['base_url'] = base_url() . $this->uri->segment(1) . '/' . $this->uri->segment(2) . '/allteas/';
         $config['total_rows'] = $this->mod_tea_front->getAllTeaNum();
-        $config['per_page'] = 5;
+        $config['per_page'] = 9;
         $config['uri_segment'] = 4;
-
+        //$data['langs'] = $this->mod_translation->getLanguages();
         $this->pagination->initialize($config);
 
         // Get tea knowledge
         $data['teas'] = $this->mod_tea_front->getTea($this->uri->segment(4), $config['per_page']);
 
-        $data['title'] = "Tea Related Knowledge";
+        $data['title'] = $this->lang->line('men_teaknowledge');
         $data['page'] = 'tearelated/tearelated';
-        $data['action'] = 'Tea Related Knowledge';
+        $data['action'] = $this->lang->line('men_teaknowledge');
         $this->load->view('master', $data);
     }
 
@@ -40,15 +38,16 @@ class Tearelated extends Base_Controller {
      * @param int $teaId
      */
     public function detail($teaId = 0) {
+        $data['slideshow'] = $this->mod_slideshow->getSlideshowByCatId(5);
         if ($teaId == 0) {
             redirect($this->uri->segment(1) . '/' . $this->uri->segment(2));
             exit();
         }
         $data['teas'] = $this->mod_tea_front->getTeaDetails($this->uri->segment(4));
-
-        $data['title'] = "Tea Related Knowledge Detail";
+        
+        $data['title'] = $this->lang->line('men_teaknowledge');
         $data['page'] = 'tearelated/detail';
-        $data['action'] = 'View Tea Related Knowledge Details';
+        $data['action'] = $this->lang->line('men_detail_tea');
         $this->load->view('master', $data);
     }
 
