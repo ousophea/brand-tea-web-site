@@ -61,7 +61,9 @@ $lang['men_add_new']="Add New";
 $lang['men_slide_cat']="Slide Category";
 $lang['men_add_new_slide_cat']="New Category Slide";
 $lang['men_dashboard']="Dashboard";
-
+//Slideshow
+$lang['men_new_slideshow']="New Slideshow";
+$lang['men_view_slideshow']='View Slideshows';
 
 
 

@@ -89,9 +89,10 @@
                         </li>
                         <li class="upp"><?php echo anchor('slideshow', $this->lang->line('men_slideshow')); ?>
                             <ul>
-                                <li>&#8250; <?php echo anchor('slideshow/addnew', $this->lang->line('men_add_new')); ?></li>
-                                <li>&#8250; <?php echo anchor('slideshow/category/listcat', $this->lang->line('men_slide_cat')); ?></li>
-                                <li>&#8250; <?php echo anchor('slideshow/category/addnew', $this->lang->line('men_add_new_slide_cat')); ?></li>
+                                <li>&#8250; <?php echo anchor('slideshow/addnew', $this->lang->line('men_new_slideshow')); ?></li>
+                                <li>&#8250; <?php echo anchor('slideshow', $this->lang->line('men_view_slideshow')); ?></li>
+                                <!--<li>&#8250; <?php //echo anchor('slideshow/category/listcat', $this->lang->line('men_slide_cat')); ?></li>
+                                <li>&#8250; <?php //echo anchor('slideshow/category/addnew', $this->lang->line('men_add_new_slide_cat')); ?></li>-->
 
                             </ul> 
                         </li>
