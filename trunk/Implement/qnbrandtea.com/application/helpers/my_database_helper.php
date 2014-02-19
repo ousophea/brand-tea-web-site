@@ -21,6 +21,7 @@ if (!function_exists('table')) {
         $table['slideshow'] = 'slideshow';
         $table['sli_category'] = 'sli_categories';
         $table['tearelated'] = 'tearelated';
+        $table['teaLang'] = 'tearelated_languages';
         $table['proLang'] = 'product_languages';
         $table['catLang'] = 'category_languages';
         $table['groLang'] = 'group_languages';
@@ -91,15 +92,18 @@ if (!function_exists('field')) {
         $field['sliCatId'] = 'sli_cat_id';
         $field['sliDes'] = 'sli_description';
         //Tea
-
-
         $field['sliCatId'] = 'sli_cat_id';
         $field['sliCatName'] = 'sli_cat_name';
 
-
         $field['teaId'] = 'tea_id';
+        $field['tealId'] = 'teal_id';
         $field['teaTitle'] = 'tea_title';
         $field['teaDesc'] = 'tea_description';
+
+        $field['tealTitle'] = 'teal_title';
+        $field['tealDesc'] = 'teal_description';
+        $field['tealStatus'] = 'teal_status';
+
         $field['teaStatus'] = 'tea_status';
         //About
         $field['aboId'] = 'abo_id';
@@ -116,11 +120,11 @@ if (!function_exists('field')) {
         $field['calId'] = 'cal_id';
         $field['grlId'] = 'grl_id';
 
-      
-		//Contact
-		$field['contactId']='con_id';
-		$field['contactDesc'] ='con_description';
-		$field['contactStatus']='con_status';
+
+        //Contact
+        $field['contactId'] = 'con_id';
+        $field['contactDesc'] = 'con_description';
+        $field['contactStatus'] = 'con_status';
         if (array_key_exists($key, $field)) {
             return $field[$key];
         } else {
