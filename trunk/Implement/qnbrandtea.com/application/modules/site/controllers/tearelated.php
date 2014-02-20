@@ -43,8 +43,13 @@ class Tearelated extends Base_Controller {
             redirect($this->uri->segment(1) . '/' . $this->uri->segment(2));
             exit();
         }
-        $data['teas'] = $this->mod_tea_front->getTeaDetails($this->uri->segment(4));
-        
+		$config['base_url'] = base_url() . $this->uri->segment(1) . '/' . $this->uri->segment(2) . '/detail/';
+        $config['total_rows'] = $this->mod_tea_front->getAllTeaNum();
+        $config['per_page'] = 9;
+        $config['uri_segment'] =5;
+        $this->pagination->initialize($config);
+        $data['detail'] = $this->mod_tea_front->getTeaDetails($this->uri->segment(4));
+        $data['teas'] = $this->mod_tea_front->getTea($this->uri->segment(5),  $config['per_page'] );
         $data['title'] = $this->lang->line('men_teaknowledge');
         $data['page'] = 'tearelated/detail';
         $data['action'] = $this->lang->line('men_detail_tea');
