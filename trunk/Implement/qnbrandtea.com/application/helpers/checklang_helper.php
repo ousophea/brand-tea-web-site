@@ -12,6 +12,7 @@ if (!function_exists('loadLang')) {
             $ci->lang->load('dany_khmer', 'khmer');
         } else if ($ci->input->cookie('language') == 'ch') {
             $ci->lang->load('chiness', 'chiness');
+            $ci->lang->load('dany_chiness', 'chiness');
         }
     }
 
