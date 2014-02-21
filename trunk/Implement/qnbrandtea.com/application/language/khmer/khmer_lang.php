@@ -47,6 +47,7 @@ $lang['related_knowledge']='ចំណេះដឹងទូទៅ';
 $lang['related_product'] = 'ផលិតផលស្រដៀងៗ';
 $lang['men_tearelated']='ទំនាកទំនងតែ';
 $lang['men_teaknowledge']='ចំណេះដឹងអំពីតែ';
+$lang['men_detail_tea']='បង្ហាញលំអិតចំណេះដឹងទាក់ទងនឹង តែ ';
 $lang['men_status']='Tea Status';
 $lang['men_about']="អំពីយើង";
 $lang['men_abo_status']='About Status';
