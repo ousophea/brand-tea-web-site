@@ -48,22 +48,21 @@ $lang['related_knowledge']='Related Knowledge';
 $lang['related_product'] = 'Related Product';
 $lang['men_tearelated']='Tea Related';
 $lang['men_teaknowledge']='Tea Related Knowledge';
+$lang['men_detail_tea']='View Tea Related Knowledge Detail';
 $lang['men_status']='Tea Status';
 //About us
 $lang['men_about']="About us";
 $lang['men_abo_status']='About Status';
 $lang['men_follow']='FOLLOW US';
 $lang['men_location']='Location';
-$lang['men_skype']='Skype Conatact';
+$lang['men_skype']='Skype Contact';
 $lang['men_contact']="Contact";
 $lang['men_service']="Service";
 $lang['men_add_new']="Add New";
 $lang['men_slide_cat']="Slide Category";
 $lang['men_add_new_slide_cat']="New Category Slide";
 $lang['men_dashboard']="Dashboard";
-//Slideshow
-$lang['men_new_slideshow']="New Slideshow";
-$lang['men_view_slideshow']='View Slideshows';
+
 
 
 
