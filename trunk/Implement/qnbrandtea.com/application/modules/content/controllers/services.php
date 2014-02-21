@@ -7,7 +7,6 @@ class Services extends Admin_Controller {
             redirect('authentication/login');
         }
         $this->load->model(array('mod_content','translation/mod_translation'));
-		$this->lang->load('dany_english', 'english');
 	}
 
 	public function index()

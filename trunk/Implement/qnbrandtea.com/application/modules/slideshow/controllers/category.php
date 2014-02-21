@@ -7,7 +7,6 @@ class Category extends Admin_Controller {
             redirect('authentication/login');
         }
         $this->load->model(array('slideshow/mod_category', 'mod_slideshow'));
-		$this->lang->load('dany_english', 'english');
 	}
 
 	public function index()

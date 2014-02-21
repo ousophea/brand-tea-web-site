@@ -63,6 +63,9 @@ $lang['men_slide_cat']="Slide Category";
 $lang['men_add_new_slide_cat']="New Category Slide";
 $lang['men_dashboard']="Dashboard";
 
+//Slideshow
+$lang['men_new_slideshow']="New Slideshow";
+$lang['men_view_slideshow']='View Slideshows';
 
 
 
@@ -74,4 +77,25 @@ $lang['ms_confirm_delete']='Are you sure want to remove?\n Data can not return b
 $lang['ms_no_record_found']='No record found!';
 
 
+// ----------------------------------------
 
+$lang['search'] = 'Search';
+$lang['delete'] = 'Delete';
+$lang['detail'] = 'Details';
+
+# ---- Slideshow Management ---- #
+$lang['no'] = 'N&ordm;';
+$lang['image'] = 'Image';
+$lang['action'] = 'Actions';
+$lang['support'] = 'Support';
+$lang['sli_category'] = 'Display on Page';
+
+$lang['home_sli_category'] = 'Slideshow Category';
+
+
+$lang['ms_require'] = 'Please enter require field!';
+$lang['ms_error_inuse'] = 'Data is in use!';
+$lang['ms_no_data_display'] = 'No data display!';
+
+$lang['phone_support'] = 'Phone Support';
+$lang['email_support'] = 'Email Support';
