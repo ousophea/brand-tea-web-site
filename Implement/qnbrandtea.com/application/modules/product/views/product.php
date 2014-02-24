@@ -16,7 +16,7 @@
                 'data'=> serialize($pros->result_array())
             );
             ?>
-            <label style="display: none" class="translation_rule"><?php echo serialize($rules); ?></label>
+            <label style="display: none" class="translation_rule"><?php echo base64_encode(serialize($rules)); ?></label>
         </div>
     </div>
 

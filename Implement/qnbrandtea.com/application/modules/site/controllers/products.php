@@ -7,7 +7,7 @@ class Products extends Base_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->model('products/mod_product_front');
+        $this->load->model(array('products/mod_product_front','tearelated/mod_tea_front'));
         $this->load->helper('facebook');
         // Load language
         $this->load->helper('checklang');
@@ -65,6 +65,7 @@ class Products extends Base_Controller {
             redirect($this->uri->segment(1) . '/' . $this->uri->segment(2));
             exit();
         }
+        
         $data['pros'] = $this->mod_product_front->getPro($this->uri->segment(4));
 
         $data['cats'] = $this->mod_product_front->getAllCats();
@@ -84,6 +85,9 @@ class Products extends Base_Controller {
         } else {
             return '';
         }
+    }
+    public function getTeaRelated($teaId){
+        return $this->mod_tea_front->getTeaDetails($teaId);
     }
 
     public function category($catId = 0) {

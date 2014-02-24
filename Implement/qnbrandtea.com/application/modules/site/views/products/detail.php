@@ -65,7 +65,7 @@ foreach ($pros->result_array() as $row) {
                         $fields = unserialize($row[field('proField')]);
                         $html = '';
                         $k = 0;
-                        if(is_array($fields['label'])) {
+                        if (is_array($fields['label'])) {
                             foreach ($fields['label'] as $field) {
                                 $html .='<label><b>' . $fields['label'][$k] . '</b> : ' . $fields['field'][$k] . '</label>';
                                 $k++;
@@ -90,6 +90,24 @@ foreach ($pros->result_array() as $row) {
                             <?php echo $row[field('proDes')]; ?>
                         </div>
                         <div class="tab-pane" id="reated-knowledge">
+                            <?php
+                            $sTea = unserialize($row[field('proRelated')]);
+                            if(is_array($sTea) && count($sTea)>0){
+                                echo '<ol class="tea">';
+                                foreach($sTea as $teaId){
+                                    $teas = Products::getTeaRelated($teaId);
+                                    foreach($teas->result_array() as $tea){
+                                        echo '<li>';
+                                        echo anchor('site/tearelated/detail/'.$teaId,$tea[field('teaTitle')],'title="Details"').'<br />';
+                                        $short = $tea[field('teaDesc')];
+                                        $short = mb_substr ($short,0 ,200).'...';
+                                        echo $short;
+                                        echo '</li>';
+                                    }
+                                }
+                                echo '</ol>';
+                            }            
+                            ?>
                             <h1>Orange</h1>
                             <p>orange orange orange orange orange</p>
                         </div>

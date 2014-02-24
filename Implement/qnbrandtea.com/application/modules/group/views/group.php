@@ -18,7 +18,7 @@ $this->session->unset_userdata('ms');
                     'data' => serialize($gros->result_array())
                 );
                 ?>
-                <label style="display: none" class="translation_rule"><?php echo serialize($rules); ?></label>
+                <label style="display: none" class="translation_rule"><?php echo base64_encode(serialize($rules)); ?></label>
             </div>
         </div>
 
