@@ -27,9 +27,9 @@
 <table class="tablesorter" cellspacing="0"> 
     <thead> 
         <tr> 
-            <th  width="50">Translate</th>
+            <th  width="10">T</th>
             <th  width="50">Nº</th> 
-            <th>Title</th> 
+            <th colspan="2">Title</th> 
             <th>Price</th>
             <th>Quantity</th> 
             <th>Action</th>
@@ -48,6 +48,10 @@
                 <td><input type="checkbox" name="ch_translate" value="<?php echo $pro[field('proId')] ?>" class="ch_translate" /></td>
                 <td><?php echo $i;?></td> 
                 <td><?php echo $pro[field('proName')];?></td> 
+                <td width="100" id="translate-<?php echo $pro[field('proId')];?>">
+                    <input type="hidden" value="<?php echo table('proLang');?>" name="table-translate-<?php echo $pro[field('proId')];?>" />
+                    <input type="hidden" value="<?php echo field('proId');?>" name="field-translate-<?php echo $pro[field('proId')];?>" />
+                </td>
                 <td><?php echo $price['price'];?> [<?php echo $price['hide_show'] ?>]</td> 
                 
                 <td width="100"><?php echo $qty['qty']; ?> [<?php echo $qty['hide_show'] ?>]</td>

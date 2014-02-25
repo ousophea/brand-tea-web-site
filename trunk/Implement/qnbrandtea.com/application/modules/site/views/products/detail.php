@@ -108,8 +108,6 @@ foreach ($pros->result_array() as $row) {
                                 echo '</ol>';
                             }            
                             ?>
-                            <h1>Orange</h1>
-                            <p>orange orange orange orange orange</p>
                         </div>
 
                     </div>
