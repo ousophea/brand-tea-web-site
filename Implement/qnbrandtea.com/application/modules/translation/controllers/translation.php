@@ -27,7 +27,13 @@ class Translation extends Admin_Controller {
         $ref = $this->input->server('HTTP_REFERER', TRUE);
         redirect($ref);
     }
+    function getLang(){
+        $this->load->model('mod_translation');
+        $itemId = $this->input->post('itemId');
+        $table = $this->input->post('table');
+        $where = $this->input->post('foreinkey');
+//        echo $itemId;
+        echo $this->mod_translation->generateHtml($table, $where, $itemId);
+    }
 
 }
-
-?>

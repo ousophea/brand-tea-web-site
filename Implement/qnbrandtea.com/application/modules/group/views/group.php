@@ -30,7 +30,7 @@ $this->session->unset_userdata('ms');
             <tr> 
                 <th  width="10">T</th> 
                 <th  width="20">Nº</th> 
-                <th>Name</th> 
+                <th colspan="2">Name</th> 
                 <th>Description</th>
                 <th>Category</th> 
                 <th>Action</th>
@@ -46,6 +46,10 @@ $this->session->unset_userdata('ms');
                     <td><input type="checkbox" name="ch_translate" value="<?php echo $gro[field('groId')] ?>" class="ch_translate" /></td>
                     <td><?php echo $i; ?></td> 
                     <td><?php echo $gro[field('groName')]; ?></td> 
+                    <td width="100" id="translate-<?php echo $gro[field('groId')]; ?>">
+                        <input type="hidden" value="<?php echo table('groLang'); ?>" name="table-translate-<?php echo $gro[field('groId')]; ?>" />
+                        <input type="hidden" value="<?php echo field('groId'); ?>" name="field-translate-<?php echo $gro[field('groId')]; ?>" />
+                    </td>
                     <td><?php echo $gro[field('groDes')]; ?></td> 
                     <td width="100"><?php echo $gro[field('catName')]; ?></td>
                     <td width="100" align="center">

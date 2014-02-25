@@ -1,8 +1,9 @@
 <div id="translation_form">
     <div class="holder">
-        <div class="sub-title"> <?php echo $this->session->userdata('ms') ? $this->session->userdata('ms') : '';
-$this->session->unset_userdata('ms');
-?>
+        <div class="sub-title"> <?php
+            echo $this->session->userdata('ms') ? $this->session->userdata('ms') : '';
+            $this->session->unset_userdata('ms');
+            ?>
             <div class="translation">
                 <?php
                 echo form_open('translation/translate', 'translate');
@@ -30,7 +31,7 @@ $this->session->unset_userdata('ms');
             <tr> 
                 <th  width="10">T</th>
                 <th  width="25">Nº</th> 
-                <th>Name</th> 
+                <th colspan="2">Name</th> 
                 <th>Description</th>
                 <th  width="150">Field</th> 
                 <th>Action</th>
@@ -46,23 +47,27 @@ $this->session->unset_userdata('ms');
                     <td><input type="checkbox" name="ch_translate" value="<?php echo $cat[field('catId')] ?>" class="ch_translate" /></td>
                     <td><?php echo $i; ?></td> 
                     <td><?php echo $cat[field('catName')]; ?></td> 
+                    <td width="100" id="translate-<?php echo $cat[field('catId')]; ?>">
+                        <input type="hidden" value="<?php echo table('catLang'); ?>" name="table-translate-<?php echo $cat[field('catId')]; ?>" />
+                        <input type="hidden" value="<?php echo field('catId'); ?>" name="field-translate-<?php echo $cat[field('catId')]; ?>" />
+                    </td>
                     <td><?php echo $cat[field('catDes')]; ?></td> 
                     <td width="100">
                         <?php
                         $fields = unserialize($cat[field('catField')]);
-                        if (is_array($fields['label']) && count($fields['label'])>0) {
+                        if (is_array($fields['label']) && count($fields['label']) > 0) {
 //                        print_r($fields);
                             $k = 0;
-                            
+
                             foreach ($fields['label'] as $field) {
 //                            print_r($field);
                                 ?>
                                 <div>
-                                    <?php 
+                                    <?php
                                     echo 'Label: ';
                                     echo $fields['label'][$k];
-                                    echo '<br />'.$this->lang->line('value').': ';
-                                    echo $fields['field'][$k],'<br /><br />';
+                                    echo '<br />' . $this->lang->line('value') . ': ';
+                                    echo $fields['field'][$k], '<br /><br />';
                                     ?>
                                 </div>
                                 <?php
