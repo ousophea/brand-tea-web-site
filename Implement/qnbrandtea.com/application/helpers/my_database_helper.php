@@ -29,6 +29,8 @@ if (!function_exists('table')) {
         $table['sliLang'] = 'slideshow_languages';
         $table['about'] = 'about';
         $table['contact'] = 'contact';
+        $table['service'] = 'services';
+        $table['serLang'] = 'services_languages';
         if (array_key_exists($key, $table)) {
             return $table[$key];
         } else {
@@ -119,6 +121,13 @@ if (!function_exists('field')) {
 
         $field['calId'] = 'cal_id';
         $field['grlId'] = 'grl_id';
+		
+		// Services
+        $field['serId'] = 'ser_id';
+        $field['selId'] = 'sel_id';
+        $field['serTitle'] = 'ser_title';
+        $field['serDesc'] = 'ser_description';
+        $field['serStatus'] = 'ser_status';
 
 
         //Contact
