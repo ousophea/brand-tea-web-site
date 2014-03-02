@@ -23,6 +23,7 @@ $lang['show']='Show';
 $lang['photo']='Photo (s)';
 $lang['main_photo']='Main Photo';
 $lang['pro_details']='View Product Details';
+$lang['ser_details']='View Service Details';
 
 // Category
 $lang['cate_name']='Category Name';
@@ -52,6 +53,7 @@ $lang['men_abo_status']='About Status';
 $lang['men_follow']='FOLLOW US';
 $lang['men_contact']="Contact";
 $lang['men_service']="Service";
+$lang['men_new_service']='New Service';
 
 //Slideshow
 $lang['men_new_slideshow']="New Slideshow";

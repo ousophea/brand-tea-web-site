@@ -69,7 +69,7 @@
                             <li class="home"><?php echo anchor('site/home', $this->lang->line('men_home')); ?></li>
                             <li class="about"><?php echo anchor('site/about', $this->lang->line('men_about')); ?></li>
                             <li class="products"><?php echo anchor('site/products', $this->lang->line('men_product')); ?></li>
-                            <li class="service"><?php echo anchor('site/service', $this->lang->line('men_service')); ?></li>
+                            <li class="services"><?php echo anchor('site/services', $this->lang->line('men_service')); ?></li>
                             <li class="tearelated"><?php echo anchor('site/tearelated', $this->lang->line('men_tearelated')); ?></li>
                             <li class="contact"><?php echo anchor('site/contact', $this->lang->line('men_contact')); ?></li>
                         </ul>
@@ -139,8 +139,8 @@
                 <ul class="footer-menu">
                     <li><?php echo anchor('site/home', $this->lang->line('men_home')); ?></li>
                     <li><?php echo anchor('site/about', $this->lang->line('men_about')); ?></li>
-                    <li><?php echo anchor('site/about', $this->lang->line('men_product')); ?></li>
-                    <li><?php echo anchor('site/about', $this->lang->line('men_service')); ?></li>
+                    <li><?php echo anchor('site/products', $this->lang->line('men_product')); ?></li>
+                    <li><?php echo anchor('site/services', $this->lang->line('men_service')); ?></li>
                     <li><?php echo anchor('site/tearelated', $this->lang->line('men_tearelated')); ?></li>
                     <li><?php echo anchor('site/contact', $this->lang->line('men_contact')); ?></li>
                 </ul>
