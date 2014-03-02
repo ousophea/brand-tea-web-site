@@ -23,6 +23,7 @@ $lang['show']='បង្ហាញ';
 $lang['photo']='រូបភាព';
 $lang['main_photo']='រូបភាពមេ';
 $lang['pro_details']='មើលលំអិត';
+$lang['ser_details']='មើលសម្អិត';
 
 
 // Category
@@ -55,6 +56,7 @@ $lang['men_follow']='FOLLOW US';
 $lang['men_contact']="ទំទាក់ទំនង";
 $lang['men_service']="សេវាកម្ម";
 $lang['men_home']="ទំព័រដើម";
+$lang['men_new_service']='បង្កើតសេវាកម្មថ្មី';
 
 //Slideshow
 $lang['men_new_slideshow']="New Slideshow";

@@ -24,6 +24,7 @@ $lang['photo']='Photo (s)';
 $lang['main_photo']='Main Photo';
 $lang['pro_details']='View Product Details';
 $lang['title'] = 'Title';
+$lang['ser_details']='View Service Details';
 
 // Category
 $lang['cate_name']='Category Name';
@@ -62,6 +63,7 @@ $lang['men_add_new']="Add New";
 $lang['men_slide_cat']="Slide Category";
 $lang['men_add_new_slide_cat']="New Category Slide";
 $lang['men_dashboard']="Dashboard";
+$lang['men_new_service']='New Service';
 
 //Slideshow
 $lang['men_new_slideshow']="New Slideshow";
