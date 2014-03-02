@@ -83,9 +83,40 @@ class Product extends Admin_Controller {
                 $this->configResizePhoto($this->photo['photo']);
             }
 
-            
+
             if ($this->mod_product->addNew($proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $serielizeFields, $this->photo, $relatedKnowledge)) {
-                $this->session->set_userdata('ms', $this->lang->line('ms_success'));
+                if ($this->input->post('posttofacebook') == 'yes') {
+                    // Connect Facebook
+                    $user = $this->facebook->getUser();
+                    if ($user) {
+                        try {
+                            $msg = array(
+                                'picture' => base_url().'uploads/products/250x250/'.$this->photo['main_photo'][0]['file_name'],
+                                'message' => $proName,
+                                'link' => base_url().'site/products/detail/'.$this->mod_product->getInsertId(),
+                                'name' => $proName,
+                                'description' => $proDec
+                            );
+                            $url = '/254309528060101/feed';
+                            $result = $this->facebook->api($url, 'POST', $msg);
+                            if (!$result) {
+                                $this->session->set_userdata('ms', 'Can not post to facebook!');
+                            }
+                        } catch (FacebookApiException $e) {
+                            echo $e->facebook->getMessage();
+                        }
+                    }else{
+//                        print_r($this->photo['main_photo']);
+//                        echo base_url().'uploads/products/250x250/'.$this->photo['main_photo'][0]['file_name'].'<br />';
+//                        echo $proName.'<br />';
+//                        echo  base_url().'site/products/detail/'.$this->mod_product->getInsertId().'<br />';
+//                        echo $proDec.'<br />';
+                        echo 'You are not login! ';
+                        echo '<a href="'.$this->facebook->getLoginUrl().'">Login</a>';
+                        die();
+                    }
+                }
+                $this->session->userdata('ms') ? $this->session->set_userdata('ms', $this->session->userdata('ms') . ' ' . $this->lang->line('ms_success')) : $this->session->set_userdata('ms', $this->lang->line('ms_success'));
                 $this->photo = '';
                 redirect($this->uri->segment(1));
                 exit();
@@ -272,33 +303,32 @@ class Product extends Admin_Controller {
     public function product_translation($id, $lanId) {
         $this->form_validation->set_rules('txt_pro_name', 'Product Name', 'trim|required|max_length[100]');
         $this->form_validation->set_rules('txt_pro_dec', 'Description', 'trim|required|max_length[5000]');
-        
+
         if ($this->form_validation->run() == TRUE) {
-            $proName =$this->input->post('txt_pro_name');
-            $proDes =$this->input->post('txt_pro_dec');
+            $proName = $this->input->post('txt_pro_name');
+            $proDes = $this->input->post('txt_pro_dec');
             $fields = $this->input->post('field');
             $labels = $this->input->post('label');
             $hideShows = $this->input->post('hide_show');
             $serielizeFields = serialize(array('label' => $labels, 'field' => $fields, 'hide_show' => $hideShows));
-            $action =$this->input->post('action');
-            if($this->mod_product->translate($id, $lanId, $proName, $proDes, $serielizeFields, $action)){
+            $action = $this->input->post('action');
+            if ($this->mod_product->translate($id, $lanId, $proName, $proDes, $serielizeFields, $action)) {
                 $this->session->set_userdata('ms', $this->lang->line('ms_success'));
                 redirect('product');
             }
-            
         }
         $data['title'] = "Translate";
         $data['page'] = 'product_translation';
         $data['action'] = 'Translate';
         if ($this->input->post('lan_title')) {
             $data['langTitle'] = $this->input->post('lan_title');
-            $data['itemId']=$this->input->post('pro_id');
-            $data['langId']=$this->input->post('lang_id');
-            $data['items']=$this->input->post('pro_data');
-        }else{
+            $data['itemId'] = $this->input->post('pro_id');
+            $data['langId'] = $this->input->post('lang_id');
+            $data['items'] = $this->input->post('pro_data');
+        } else {
             redirect('product');
         }
-        
+
         $this->load->view('masterpage/master', $data);
     }
 

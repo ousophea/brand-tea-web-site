@@ -10,6 +10,9 @@
         <?php echo form_submit('save', $this->lang->line('save'), 'class="add"'); ?>
         <?php echo anchor($this->uri->segment(1), $this->lang->line('cancel'), 'class="button cancel"'); ?>
     </div>
+    <div class="">
+       <label for="posttofacebook"> <input type="checkbox" name="posttofacebook" id="posttofacebook" value="yes" /> Post to facebook</label>
+    </div>
     <div style="clear:both"></div>
 </div>
 <div style="float: left; width: 50%;">

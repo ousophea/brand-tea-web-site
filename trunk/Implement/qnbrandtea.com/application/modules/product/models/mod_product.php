@@ -1,7 +1,7 @@
 <?php
 
 class mod_product extends CI_Model {
-
+    public $proId=0;
     public function addNew($proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $fields, $photos, $relatedKnowledge) {
         $data = array(
             field('proName') => $proName,
@@ -16,6 +16,7 @@ class mod_product extends CI_Model {
         );
         if ($this->db->insert(table('product'), $data)) {
             $proId = $this->db->insert_id();
+            $this->proId=$proId;
             if ($this->addNewPhoto($proId, $photos['main_photo'], 1,'addnew') && $this->addNewPhoto($proId, $photos['photo'])) {
                 return TRUE;
             } else {
@@ -23,6 +24,10 @@ class mod_product extends CI_Model {
             }
         }
         return FALSE;
+    }
+    
+    public function getInsertId(){
+        return $this->proId;
     }
 
     public function addNewPhoto($proId, $photos, $mainPhoto = 0, $action='update') {
