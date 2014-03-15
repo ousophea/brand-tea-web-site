@@ -88,4 +88,62 @@ class Home extends Admin_Controller {
         
         $this->load->view('masterpage/master', $data);
     }
+	
+	
+	public function uploadImage(){
+		$config['upload_path'] = SLIDESHOW_IMAGE_PATH;
+		$config['allowed_types'] = 'jpg|jpeg|JPEG|JPG';
+		$config['max_size']	= '1000';	
+	
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload('image'))
+		{			
+			echo '<script>alert("Image does not supported, only .jpeg, .jpg are allowed!");</script>';
+		//	$this->session->set_userdata('ms', $this->upload->display_errors());	
+		} else {				
+			$image = $this->upload->data();
+			$imageName = $image['file_name'];
+			echo '<script>$("#img-preview").html("");</script>';
+			echo '<img src="' . base_url() . SLIDESHOW_IMAGE_PATH . $imageName . '" id="cropbox" />';
+			echo '<script>crop_image();</script>';
+		}
+	}
+	
+	public function cropImage(){	
+		
+		if($this->input->post('x')){
+			$x = $this->input->post('x');
+			$y = $this->input->post('y');
+			$w = $this->input->post('w');
+			$h = $this->input->post('h');
+			$image = $this->input->post('image');			
+			$ext = end(explode(".", $image));		// get file extension
+			$file_name = current(explode(".", $image));	// get file name withoud extension
+			
+			$targ_w = 950;
+			$targ_h = 185;
+			$jpeg_quality = 100;
+			$suf = '';
+			$new_img = "tea-banner.jpg"; //$file_name . $suf . '.' . $ext;
+		
+			$src = SLIDESHOW_IMAGE_PATH . $image;
+			$dist = SLIDESHOW_IMAGE_PATH . $new_img;
+			$img_r = imagecreatefromjpeg($src);
+			$dst_r = imagecreatetruecolor( $targ_w, $targ_h );
+		
+			imagecopyresampled($dst_r,$img_r,0,0,$x,$y, $targ_w, $targ_h, $w, $h);		
+			header('Content-type: image/jpeg');
+			if(imagejpeg($dst_r,$dist,$jpeg_quality))
+				@unlink(SLIDESHOW_IMAGE_PATH . $image);
+			else
+				$new_img = $image;
+			
+			$data = array('image'=>$new_img);			
+			echo json_encode($data);
+			return;
+		}	
+		$data = array('image'=>'');			
+		echo json_encode($data);
+	}
 }

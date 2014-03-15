@@ -15,7 +15,7 @@
         
         <div class="row-fluid">
             <div style="padding:0 15px;">
-                <img src="<?php echo base_url() . FRONTEND_TEMPLATE; ?>img/content/tea-banner.png" width="100%" alt="">
+                <img src="<?php echo base_url() . SLIDESHOW_IMAGE_PATH; ?>tea-banner.jpg" width="100%" alt="">
             </div>
         </div> 
     	<div class="clear" style="height:15px;"></div>
