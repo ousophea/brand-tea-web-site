@@ -3,6 +3,11 @@
 		.slide .carousel-inner .carousel-caption {
 			bottom: -266px;	
 		}
+		.slide .carousel-inner .carousel-caption p {
+			font-family:GungsuhChe;
+			font-size:22px;
+			color:#DAC412;
+		}
 	</style>
 	<!--Start Carousel-->
           <div id="myCarousel" class="carousel slide">
