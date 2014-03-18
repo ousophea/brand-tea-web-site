@@ -90,14 +90,16 @@ class Product extends Admin_Controller {
                     $user = $this->facebook->getUser();
                     if ($user) {
                         try {
+//                            echo base_url().'uploads/products/250x250/'.$this->photo['main_photo'][0]['file_name'];
+//                            die();
                             $msg = array(
-                                'picture' => base_url().'uploads/products/250x250/'.$this->photo['main_photo'][0]['file_name'],
+                                'picture' => base_url().'uploads/products/'.$this->photo['main_photo'][0]['file_name'],
                                 'message' => $proName,
                                 'link' => base_url().'site/products/detail/'.$this->mod_product->getInsertId(),
                                 'name' => $proName,
-                                'description' => $proDec
+                                'description' => strip_tags($proDec)
                             );
-                            $url = '/254309528060101/feed';
+                            $url = '/1475054486043458/feed';
                             $result = $this->facebook->api($url, 'POST', $msg);
                             if (!$result) {
                                 $this->session->set_userdata('ms', 'Can not post to facebook!');
@@ -112,7 +114,7 @@ class Product extends Admin_Controller {
 //                        echo  base_url().'site/products/detail/'.$this->mod_product->getInsertId().'<br />';
 //                        echo $proDec.'<br />';
                         echo 'You are not login! ';
-                        echo '<a href="'.$this->facebook->getLoginUrl().'">Login</a>';
+                        echo '<a href="'.$this->facebook->getLoginUrl(array('scope'=>'manage_pages, publish_stream', 'redirect-uri'=>'http://qnbrandtea.com/beta/index.php')).'">Login</a>';
                         die();
                     }
                 }

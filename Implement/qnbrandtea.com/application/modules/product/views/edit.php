@@ -113,7 +113,8 @@
                         'src' => 'uploads/products/100x100/' . $row[field('phoUrl')]
                     );
                     if ($row[field('isMainPhoto')] == 0) {
-                        echo '<br />' . img($att) . '<input class="button remove" type="button" value="Remove" />';
+//                        echo '<br />' . img($att) . '<input class="button remove" type="button" value="Remove" />';
+                        echo '<label class="./uploads/products/' . $row[field('phoUrl')] . '" id=' . $row[field('phoId')] . '>' . img($att) . '<input class="button remove" type="button" value="Remove" /></label>';
                     }
                 }
                 ?>
