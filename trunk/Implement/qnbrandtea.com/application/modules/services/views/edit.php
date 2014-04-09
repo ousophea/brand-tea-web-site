@@ -1,4 +1,4 @@
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form action="<?php echo site_url('services/edit/'.$this->uri->segment(3)); ?>" method="post">
 <div class="holder">
     <div class="sub-title">
         <?php
