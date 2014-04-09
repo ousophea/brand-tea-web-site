@@ -1,4 +1,4 @@
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form action="<?php echo site_url('content/services/edit'); ?>" method="post">
 <input type="hidden" name="txt_id" value="<?php echo $services->row()->cont_id; ?>" />
 <div class="holder">
     <div class="sub-title red">
