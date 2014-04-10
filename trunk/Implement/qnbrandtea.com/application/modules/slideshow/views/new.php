@@ -17,7 +17,7 @@
 	<?php echo $this->lang->line('image'); ?>: <input type="file" name="image" id="image" /> 
     </div>
 	</form>
-    <form id="edit-frm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <form id="edit-frm" action="<?php echo site_url('slideshow/addnew'); ?>" method="post">
         <input type="hidden" id="x" name="x" />
         <input type="hidden" id="y" name="y" />
         <input type="hidden" id="w" name="w" />
