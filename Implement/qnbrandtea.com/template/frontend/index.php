@@ -28,25 +28,29 @@
         <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
 
         <style type="text/css">
-        <?php
-        if ($this->uri->segment(2)) {
-            echo '.'.$this->uri->segment(2).'{ text-decoration: underline;color: #DE9D27;}';
-        }  else {
-            echo '.home{text-decoration: underline; color: #DE9D27;}';
-        }
-        // Check cookie
-        if($this->input->cookie('language') == 'kh'){
-            ?>
             @font-face{
                 font-family: 'khmer-bokor';
-                src: url('<?php echo base_url().FRONTEND_TEMPLATE; ?>fonts/KhmerOSbokor.ttf');
+                src: url('<?php echo base_url() . FRONTEND_TEMPLATE; ?>fonts/KhmerOSbokor.ttf');
             }
-            ul.nav li a{
-                font-family: 'khmer-bokor'!important;
-            } 
             <?php
-        }
-        ?>
+            if ($this->uri->segment(2)) {
+                echo '.' . $this->uri->segment(2) . '{ text-decoration: underline;color: #DE9D27;}';
+            } else {
+                echo '.home{text-decoration: underline; color: #DE9D27;}';
+            }
+// Check cookie
+            if ($this->input->cookie('language') == 'kh') {
+                ?>
+                @font-face{
+                    font-family: 'khmer-bokor';
+                    src: url('<?php echo base_url() . FRONTEND_TEMPLATE; ?>fonts/KhmerOSbokor.ttf');
+                }
+                ul.nav li a{
+                    font-family: 'khmer-bokor'!important;
+                } 
+                <?php
+            }
+            ?>
         </style>
     </head>
 
@@ -96,34 +100,62 @@
                 <br><hr>
 
                 <div class="span3">
-                    <h3>INFORMATION</h3>
+                    <!--                    <h3>Shop Main</h3>-->
+                    <h3><?php echo $this->lang->line('product_to_shop'); ?></h3>
                     <ul>
-                        <li><a href="#">Sitemap</a></li>
-                        <li><a href="#">Logal Notice</a></li>
-                        <li><a href="#">Terms and Condictions</a></li>
-                    </ul>
-                </div>
-                <div class="span3">
-                    <h3>OUR OFFERS</h3>
-                    <ul>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><?php echo anchor('site/tearelated', $this->lang->line('men_tearelated')); ?></li>
-                    </ul>
-                </div>
-                <div class="span3">
-                    <h3>MY ACCOUNT</h3>
-                    <ul>
-                        <li><a href="#">My order</a></li>
-                        <li><a href="#">My addresses</a></li>
-                        <li><a href="#">My Personal info</a></li>
-                        <li><a href="#">My credit slips</a></li>
-                        <li><a href="#">My vouchers</a></li>
+                        <?php
+                        $cats = $this->mod_global->getAllCats(4);
 
+                        foreach ($cats->result_array() as $row) {
+                            ?>
+                                    <!--<li><a href="#"><?php echo $cat[field('catName')]; ?></a></li>-->
+                        <li class="category-item"><?php echo anchor('site/products/category/' . $row[field('catId')], subString($row[field('catName')],20)); ?></li>
+
+                            <?php
+                        }
+                        ?>
                     </ul>
                 </div>
                 <div class="span3">
-                    <h3>CONTACT US</h3>
+                    <h3><?php echo $this->lang->line('top_product'); ?></h3>
+
+                    <ul>
+                        <?php
+                        $groups = $this->mod_global->getAllGros(4, "cate_name LIKE '%tea%'");
+
+                        foreach ($groups->result_array() as $row) {
+                            ?>
+                                <!--<li><a href="#"><?php echo $grop[field('groName')]; ?></a></li>-->
+                            <li class="group-item">
+                                    <?php echo anchor('site/products/group/' . $row[field('groId')], subString($row[field('groName')],20)); ?>
+                                <?php // echo substr($row[field('proName')], 0, 12) . '...'; ?>
+                            </li>
+
+                            <?php
+                        }
+                        ?>
+
+     <!--<li><?php echo anchor('site/tearelated', $this->lang->line('men_tearelated')); ?></li>-->
+                    </ul>
+                </div>
+                <div class="span3">
+                    <h3><?php echo $this->lang->line('customer_service'); ?></h3>
+                    <ul>
+                        <?php
+                        $service = $this->mod_global->getService(4);
+
+                        foreach ($service->result_array() as $row) {
+                            ?>
+
+                            <li><?php echo anchor('site/services/detail/' . $row[field('serId')], subString($row[field('serTitle')],20)); ?></li>
+
+                            <?php
+                        }
+                        ?>
+                    </ul>
+                </div>
+                <div class="span3">
+                    <h3><?php echo $this->lang->line('customer_info'); ?></h3>
                     <ul>
                         <li><a href="#">#82, St.371, Phnom Penh, Cambodia</a></li>
                         <li><a href="#">Tel: (+855)99 999 999</a></li>

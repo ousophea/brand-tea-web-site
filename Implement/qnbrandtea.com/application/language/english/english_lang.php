@@ -101,3 +101,9 @@ $lang['ms_no_data_display'] = 'No data display!';
 
 $lang['phone_support'] = 'Phone Support';
 $lang['email_support'] = 'Email Support';
+
+
+$lang['product_to_shop'] ='Product to Shop';
+$lang['top_product'] = "Top Product";
+$lang['customer_service'] = "Customer Service";
+$lang['customer_info']="Customer Info";

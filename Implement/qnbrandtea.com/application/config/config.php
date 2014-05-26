@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/tea/Implement/qnbrandtea.com/';
+$config['base_url']	= 'http://localhost/brand-tea-web-site/Implement/qnbrandtea.com/';
 
 /*
 |--------------------------------------------------------------------------
