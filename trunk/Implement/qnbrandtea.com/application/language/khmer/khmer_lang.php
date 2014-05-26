@@ -92,3 +92,8 @@ $lang['ms_no_data_display'] = 'មិន​មានទិន្ន័យ!';
 
 $lang['phone_support'] = 'តាមទូរស័ព្ទ';
 $lang['email_support'] = 'តាមសារអេឡិចត្រូនិ​ច';
+
+$lang['product_to_shop'] ='ផលិតផល';
+$lang['top_product'] = "ផលិតផលសំខាន់ៗ";
+$lang['customer_service'] = "សេវាកម្មផ្សេងៗ";
+$lang['customer_info']="ទំនាក់ទំនងមកយើង";

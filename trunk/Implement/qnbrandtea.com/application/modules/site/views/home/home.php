@@ -35,13 +35,14 @@
         
                     $photo = Products::getMainPhoto($row[field('proId')])->result_array();
                     $att = array(
-                        'src' => PRODUCT_PHOTO_PATH . '250x250/' . $photo[0][field('phoUrl')],
-                        'width' => 110,
+                        'src' => PRODUCT_PHOTO_PATH . '100x100/' . $photo[0][field('phoUrl')],
+                        'width' => 120,
+                        'height'=>100,
                         'class' => 'img'
                     );
                     $html.= '<div class="photo">' . img($att) . '</div>';
                     $html.= '<div class="content">';
-                    $html.= $row[field('proName')];
+                    $html.= subString($row[field('proName')],15);
                     $price = unserialize($row[field('proPrice')]);
                     if ($price['hide_show'] != 'hide') {
                         $html.= '<label class="price">' . $this->lang->line('currency') . $price['price'] . '</label>';

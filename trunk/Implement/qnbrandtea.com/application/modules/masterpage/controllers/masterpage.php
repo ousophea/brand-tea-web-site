@@ -10,7 +10,10 @@ class Masterpage extends MX_Controller {
         } else if ($this->input->cookie('language') == 'ch') {
             $this->lang->load('chiness', 'chiness');
         }
+
     }
+  
+    
 
 }
 
