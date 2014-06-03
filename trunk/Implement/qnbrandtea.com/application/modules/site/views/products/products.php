@@ -26,11 +26,9 @@
                                     <img src='<?php echo base_url() . PRODUCT_PHOTO_PATH . '250x250/' . $photo[0][field('phoUrl')]; ?>' style="height: 90px;" class="img" alt="">
                                 </a>
                             </div>
-                                <?php $photo = Products::getMainPhoto($row[field('proId')])->result_array(); ?>
-                                <img src='<?php echo PRODUCT_PHOTO_PATH . '100x100/' . $photo[0][field('phoUrl')]; ?>' width='100'  class="img" alt=""></div>
 
                             <div class="content">
-                                <?php echo subString($row[field('proName')], 15); ?>
+                                <?php echo substr($row[field('proName')], 0, 12) . '...'; ?>
                                 <label class="price"><?php
                                     $price = unserialize($row[field('proPrice')]);
                                     echo $this->lang->line('currency') . $price['price'];
@@ -76,14 +74,13 @@
 
                 $photo = Products::getMainPhoto($row[field('proId')])->result_array();
                 $att = array(
-                    'src' => PRODUCT_PHOTO_PATH . '100x100/' . $photo[0][field('phoUrl')],
-                    'width' => 120,
-                    'height'=>100,
+                    'src' => PRODUCT_PHOTO_PATH . '250x250/' . $photo[0][field('phoUrl')],
+                    'width' => 110,
                     'class' => 'img'
                 );
                 $html.= '<div class="photo">' . img($att) . '</div>';
                 $html.= '<div class="content">';
-                $html.= subString($row[field('proName')],15);
+                $html.= substr($row[field('proName')], 0, 12) . '...';
 //            $html.= $row[field('proName')];
                 $price = unserialize($row[field('proPrice')]);
                 if ($price['hide_show'] != 'hide') {
