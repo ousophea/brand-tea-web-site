@@ -23,22 +23,32 @@ class Products extends Base_Controller {
     public function viewProducts() {
         $data['slideshow'] = $this->mod_slideshow->getSlideshowByCatId(3);
 
-        $config['base_url'] = base_url() . $this->uri->segment(1) . '/' . $this->uri->segment(2) . '/allproducts/';
-        $config['total_rows'] = $this->mod_product_front->getAllProNum();
-        $config['per_page'] = 9;
-        $config['uri_segment'] = 4;
+
 
         if ($this->input->post('q') && $this->input->post('q') != '') {
-            $data['q'] = $this->mod_product_front->searchProducts();
+            
+            // if not search
+            $config['base_url'] = base_url() . $this->uri->segment(1) . '/' . $this->uri->segment(2) . '/index/';
+            $config['per_page'] = 9;
+            $config['uri_segment'] = 4;
+            $config['total_rows'] = $this->mod_product_front->searchNumRows();
+            $this->pagination->initialize($config);
+            $data['q'] = $this->mod_product_front->searchProducts($this->uri->segment(4), $config['per_page']);
+            
         } else {
 
             // if not search
+            $config['base_url'] = base_url() . $this->uri->segment(1) . '/' . $this->uri->segment(2) . '/allproducts/';
+            $config['total_rows'] = $this->mod_product_front->getAllProNum();
+            $config['per_page'] = 9;
+            $config['uri_segment'] = 4;
             $this->pagination->initialize($config);
+            $data['pros'] = $this->mod_product_front->getProduct($this->uri->segment(4), $config['per_page']);
         }
 
 
         // Get product
-        $data['pros'] = $this->mod_product_front->getProduct($this->uri->segment(4), $config['per_page']);
+        
 
 
         $data['cats'] = $this->mod_product_front->getAllCats();

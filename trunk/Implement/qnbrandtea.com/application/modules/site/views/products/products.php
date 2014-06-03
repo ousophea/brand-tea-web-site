@@ -6,23 +6,29 @@
         <?php if (!empty($q)) { ?>
             <?php if ($q->num_rows() > 0) { ?>
 
-                <h3 class="page-head">Search Result <?php echo $q->num_rows(); ?></h3>
+                <h3 class="page-head">Search Result for <?php echo '"' . $this->input->post('q') . '"'; ?>, <?php echo $q->num_rows(); ?></h3>
                 <br />
-                <div class="row-fluid span12">
-                    <div class="span12" style="float: left;">
-                        <form method="post" action="<?php echo base_url(); ?>site/products">
-                            <div class="input-append" id="search" style="text-align: left;">
-                                <input style="width: 80%;" name="q" type="text" placeholder="<?php echo $this->lang->line('search'); ?>..." />
+                <div class="row-fluid">
+                    <div class="span12">
+                        <form method="post" action="<?php echo base_url(); ?>site/products" style="padding-bottom: 28px;">
+                            <div class="input-append" id="search" style="text-align: left; float: right;margin-right: -4px;">
+                                <input name="q" type="text" value="<?php echo set_value('q'); ?>" placeholder="<?php echo $this->lang->line('search'); ?>..." />
                                 <button class="btn" type="submit" style="font-size:12px"><?php echo $this->lang->line('search'); ?></button>
                             </div>
                         </form>
                     </div>
                     <?php foreach ($q->result_array() as $row) { ?>
 
-                        <div class="span3">
+                        <div class="span3" title="<?php echo $row[field('proName')]; ?>">
                             <div class="photo">
+                                <a href="<?php echo base_url() . 'site/products/detail/' . $row[field('proId')] ?>">
+                                    <?php $photo = Products::getMainPhoto($row[field('proId')])->result_array(); ?>
+                                    <img src='<?php echo base_url() . PRODUCT_PHOTO_PATH . '250x250/' . $photo[0][field('phoUrl')]; ?>' style="height: 90px;" class="img" alt="">
+                                </a>
+                            </div>
                                 <?php $photo = Products::getMainPhoto($row[field('proId')])->result_array(); ?>
                                 <img src='<?php echo PRODUCT_PHOTO_PATH . '100x100/' . $photo[0][field('phoUrl')]; ?>' width='100'  class="img" alt=""></div>
+
                             <div class="content">
                                 <?php echo subString($row[field('proName')], 15); ?>
                                 <label class="price"><?php
@@ -40,18 +46,19 @@
 
             <?php } else { ?>
 
-                <h3 class="page-head">Search Result <?php echo $q->num_rows(); ?></h3>
+                <h3 class="page-head">Search Result for <?php echo '"' . $this->input->post('q') . '"'; ?>, <?php echo $q->num_rows(); ?></h3>
                 <br />
-                <div class="span12" style="float: left;">
-                    <form method="post" action="<?php echo base_url(); ?>site/products">
-                        <div class="input-append" id="search" style="text-align: left;">
-                            <input style="width: 80%;" name="q" type="text" placeholder="<?php echo $this->lang->line('search'); ?>..." />
-                            <button class="btn" type="submit" style="font-size:12px"><?php echo $this->lang->line('search'); ?></button>
-                        </div>
-                    </form>
-                    <p>No result found</p>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <form method="post" action="<?php echo base_url(); ?>site/products">
+                            <div class="input-append" id="search" style="text-align: left; float: right;margin-right: -4px;">
+                                <input name="q" value="<?php echo set_value('q'); ?>" type="text" placeholder="<?php echo $this->lang->line('search'); ?>..." />
+                                <button class="btn" type="submit" style="font-size:12px"><?php echo $this->lang->line('search'); ?></button>
+                            </div>
+                        </form>
+                        <p style="padding-left: 20px; color: red; position: relative; top: 20px;">No result found, please try again</p>
+                    </div>
                 </div>
-
             <?php } ?>
         <?php } else { ?>
 
