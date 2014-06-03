@@ -345,11 +345,14 @@ class Mod_product_front extends CI_Model {
         return $this->db->get()->row_array();
     }
 
-    function searchProducts() {
+    function searchProducts($end, $start) {
         $keyowrds = explode(" ", $this->input->post("q"));
+        
         $this->db->from(table('product'));
         $this->db->join(table('group'), table('group') . '.' . field('groId') . '=' . table('product') . '.' . field('groId'));
         $this->db->join(table('category'), table('category') . '.' . field('catId') . '=' . table('group') . '.' . field('catId'));
+        
+        $this->db->limit($start, $end);
         foreach ($keyowrds as $key => $value) {
             $this->db->or_like('pro_name', $value);
             $this->db->or_like('pro_price', $value);
@@ -367,6 +370,35 @@ class Mod_product_front extends CI_Model {
             $this->db->or_like('cate_fields', $value);
         }
         return $this->db->get();
+    }
+
+    function searchNumRows() {
+        $keyowrds = explode(" ", $this->input->post("q"));
+        
+        
+        $this->db->from(table('product'));
+        $this->db->join(table('group'), table('group') . '.' . field('groId') . '=' . table('product') . '.' . field('groId'));
+        $this->db->join(table('category'), table('category') . '.' . field('catId') . '=' . table('group') . '.' . field('catId'));
+       
+        
+        foreach ($keyowrds as $key => $value) {
+            $this->db->or_like('pro_name', $value);
+            $this->db->or_like('pro_price', $value);
+            $this->db->or_like('pro_qty', $value);
+            $this->db->or_like('pro_fields', $value);
+            $this->db->or_like('pro_related', $value);
+            $this->db->or_like('pro_des', $value);
+            $this->db->or_like('pro_knowledge_related', $value);
+
+            $this->db->or_like('gro_name', $value);
+            $this->db->or_like('gro_description', $value);
+
+            $this->db->or_like('cate_name', $value);
+            $this->db->or_like('cate_description', $value);
+            $this->db->or_like('cate_fields', $value);
+        }
+        $data = $this->db->get();
+        return $data->num_rows();
     }
 
 }
