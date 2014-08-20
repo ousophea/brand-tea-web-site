@@ -1,4 +1,6 @@
 <?php
+
+       
 // Language code
 $lang['lang']='kh'; // Do not change this
 $lang['currency']='$';
@@ -46,13 +48,15 @@ $lang['men_content']='ទំព័រដើម';
 //Tea Related knowledge
 $lang['related_knowledge']='ចំណេះដឹងទូទៅ';
 $lang['related_product'] = 'ផលិតផលស្រដៀងៗ';
-$lang['men_tearelated']='ទំនាកទំនងតែ';
+$lang['men_tearelated']='ចំណេះដឹងអំពីតែ';
 $lang['men_teaknowledge']='ចំណេះដឹងអំពីតែ';
 $lang['men_detail_tea']='បង្ហាញលំអិតចំណេះដឹងទាក់ទងនឹង តែ ';
 $lang['men_status']='Tea Status';
 $lang['men_about']="អំពីយើង";
 $lang['men_abo_status']='About Status';
+
 $lang['men_follow']='FOLLOW US';
+$lang['men_footter']="Footter Menu ";
 $lang['men_contact']="ទំទាក់ទំនង";
 $lang['men_service']="សេវាកម្ម";
 $lang['men_home']="ទំព័រដើម";
@@ -74,7 +78,7 @@ $lang['ms_no_record_found']='No record found!';
 // --------------------------------------
 $lang['search'] = 'ស្វែងរក';
 $lang['delete'] = 'លុប';
-$lang['detail'] = 'លម្អិត';
+$lang['detail'] = ' លម្អិត';
 
 # ---- Slideshow Management ---- #
 $lang['no'] = 'ល.រ.';
@@ -90,10 +94,30 @@ $lang['ms_require'] = 'Please enter require field!';
 $lang['ms_error_inuse'] = 'Data is in use!';
 $lang['ms_no_data_display'] = 'មិន​មានទិន្ន័យ!';
 
-$lang['phone_support'] = 'តាមទូរស័ព្ទ';
-$lang['email_support'] = 'តាមសារអេឡិចត្រូនិ​ច';
+//==========Site bar right Suppot============
+$lang['phone_support'] = ' លេខសេវាកម្មបម្រើអតិថិជន ';
+$lang['feedback_support'] = ' មតិយោបរបស់លោកអ្នក ';
+$lang['tea_support'] = ' ចំណោះដឹងអំពីតែ ';
+$lang['shop_support'] = ' ទំនិញថ្មី ';
 
-$lang['product_to_shop'] ='ផលិតផល';
-$lang['top_product'] = "ផលិតផលសំខាន់ៗ";
-$lang['customer_service'] = "សេវាកម្មផ្សេងៗ";
-$lang['customer_info']="ទំនាក់ទំនងមកយើង";
+//============Footer===============
+//$lang['product_to_shop'] ='ផលិតផល';
+$lang['product_to_shop'] = getMn(2,9); //khmer lanquage and menu 1
+//$lang['top_product'] = "ផលិតផលសំខាន់ៗ";
+$lang['top_product'] = getMn(2,10); //khmer lanquage and menu 1
+//$lang['customer_service'] = "សេវាកម្មផ្សេងៗ";
+$lang['customer_service'] = getMn(2,15); //khmer lanquage and menu 1
+//$lang['customer_info']="ទំនាក់ទំនងមកយើង";
+$lang['customer_info']= getMn(2,16); //khmer lanquage and menu 1
+
+
+//==========Breadcrumb URL
+$lang["home"]=" ទំព័រដើម";
+$lang["products"]=" ផលិតផល";
+$lang['tearelated']=" ទំនាក់ទំនងតែ";
+$lang['services']=" សេវាកម្ម";
+$lang['contact']=" ទំទាក់ទំនង";
+$lang['about']=" អំពីយើង";
+$lang['category'] = ' ប្រភេទ';
+$lang['group']=' ឈ្មោះក្រុម';
+$lang['details']=' លម្អិត';

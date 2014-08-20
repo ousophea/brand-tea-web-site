@@ -55,7 +55,12 @@ class Product extends Admin_Controller {
         $this->form_validation->set_rules('txt_pro_qty', 'Quantity', 'trim|required|numeric');
         $this->form_validation->set_rules('txt_pro_dec', 'Description', 'trim|required|max_length[5000]');
         $this->form_validation->set_rules('dro_gro_name', 'Group', 'trim|required');
-//        $this->form_validation->set_rules('main_photo', 'Main Photo', 'required');
+
+  
+          $this->form_validation->set_rules('main_photo[]', 'Document', 'trim|xss_clean');
+        
+
+//        $this->form_validation->set_rules('main_photo[]', 'Main Photo', 'required');
 
 
         if ($this->form_validation->run() == TRUE) {
@@ -93,9 +98,9 @@ class Product extends Admin_Controller {
 //                            echo base_url().'uploads/products/250x250/'.$this->photo['main_photo'][0]['file_name'];
 //                            die();
                             $msg = array(
-                                'picture' => base_url().'uploads/products/'.$this->photo['main_photo'][0]['file_name'],
+                                'picture' => base_url() . 'uploads/products/' . $this->photo['main_photo'][0]['file_name'],
                                 'message' => $proName,
-                                'link' => base_url().'site/products/detail/'.$this->mod_product->getInsertId(),
+                                'link' => base_url() . 'site/products/detail/' . $this->mod_product->getInsertId(),
                                 'name' => $proName,
                                 'description' => strip_tags($proDec)
                             );
@@ -107,14 +112,14 @@ class Product extends Admin_Controller {
                         } catch (FacebookApiException $e) {
                             echo $e->facebook->getMessage();
                         }
-                    }else{
+                    } else {
 //                        print_r($this->photo['main_photo']);
 //                        echo base_url().'uploads/products/250x250/'.$this->photo['main_photo'][0]['file_name'].'<br />';
 //                        echo $proName.'<br />';
 //                        echo  base_url().'site/products/detail/'.$this->mod_product->getInsertId().'<br />';
 //                        echo $proDec.'<br />';
                         echo 'You are not login! ';
-                        echo '<a href="'.$this->facebook->getLoginUrl(array('scope'=>'manage_pages, publish_stream', 'redirect-uri'=>'http://qnbrandtea.com/beta/index.php')).'">Login</a>';
+                        echo '<a href="' . $this->facebook->getLoginUrl(array('scope' => 'manage_pages, publish_stream', 'redirect-uri' => 'http://qnbrandtea.com/beta/index.php')) . '">Login</a>';
                         die();
                     }
                 }
@@ -146,6 +151,7 @@ class Product extends Admin_Controller {
         $this->form_validation->set_rules('txt_pro_qty', 'Quantity', 'trim|required|numeric');
         $this->form_validation->set_rules('txt_pro_dec', 'Description', 'trim|required|max_length[5000]');
         $this->form_validation->set_rules('dro_gro_name', 'Group', 'trim|required');
+//        $this->form_validation->set_rules('main_photo[]', 'Document', 'trim|xss_clean');
 
 
         if ($this->form_validation->run() == TRUE) {

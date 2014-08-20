@@ -1,7 +1,7 @@
 <div style="height: 10px;"></div>
 <div class="row-fluid">
 
-    <h3 class="page-head"><?php echo $action; ?></h3>    
+    <h3 id="location" class="page-head"><?php echo $action; ?></h3>    
     <?php
     echo br(1);
     foreach ($contact->result_array() as $con) {

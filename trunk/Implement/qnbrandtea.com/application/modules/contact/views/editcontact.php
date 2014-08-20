@@ -1,5 +1,5 @@
-
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<?php echo form_open($this->uri->segment(1) . '/' . $this->uri->segment(2) . '/' . $this->uri->segment(3)); ?>
+<!--<form action="<?php // echo $_SERVER['PHP_SELF']; ?>" method="post">-->
 <div class="holder">
     <div class="sub-title">
         <?php
@@ -26,8 +26,8 @@ foreach ($contact->result_array() as $con) {
     </tr>
 </table>
 <?php } ?>
-</form>
-
+<!--</form>-->
+<?php echo form_close(); ?>
 
 <script type="text/javascript">
 tinymce.init({

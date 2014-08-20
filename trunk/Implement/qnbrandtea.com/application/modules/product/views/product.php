@@ -1,10 +1,14 @@
 <div id="translation_form">
     <div class="holder">
 
-        <div class="sub-title" style=""> <?php
+        <div class="sub-title" style=""> 
+            <div class="sub_title_text">
+            <?php
+        
             echo $this->session->userdata('ms') ? $this->session->userdata('ms') : '';
             $this->session->unset_userdata('ms');
-            ?><br />
+            ?>
+            </div><br />
             <div style="width: 80%; margin: 0 auto; border: none; border-left: 5px solid #E66222; background: #efefef; padding: 10px;">
                 <?php
                 // Connect Facebook

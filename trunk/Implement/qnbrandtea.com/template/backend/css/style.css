@@ -372,6 +372,12 @@ table .chb{
     max-width: 1160px;
     width: 100%;
 }
+
+/*#==================Sub title==============*/
+.sub_title_text{
+    padding-left:20px;
+    color: #89B755;
+}
 #footer a{
     color: #939393;
     font-weight: bold;
@@ -408,4 +414,11 @@ table .chb{
 }
 .require{
     color: #f00!important;
+}
+.fot_men{
+    margin-left: 10px!important;
+}
+.menu_title span{
+    margin-right: 82px!important;
+    margin-left: 10px;
 }

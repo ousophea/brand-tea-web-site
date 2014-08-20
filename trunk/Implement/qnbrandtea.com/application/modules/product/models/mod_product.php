@@ -30,7 +30,7 @@ class mod_product extends CI_Model {
         return $this->proId;
     }
 
-    public function addNewPhoto($proId, $photos, $mainPhoto = 0, $action='update') {
+    public function addNewPhoto($proId, $photos, $mainPhoto = NULL, $action='update') {
         if ($mainPhoto == 1 && $action=='update') {
             $this->db->where(field('proId'), $proId);
             $this->db->where(field('isMainPhoto'), 1);
@@ -52,15 +52,15 @@ class mod_product extends CI_Model {
                     field('isMainPhoto') => $mainPhoto
                 );
             }
-//            if (count($photos) > 0)
+            if (count($photos) > 0)
             return $this->db->insert_batch(table('photo'), $data);
-//            else
-//                return TRUE;
+            else
+                return TRUE;
         }
     }
 
     public function update($proId, $proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $fields, $photos = '', $relatedKnowledge) {
-        print_r($photos['photo']);
+//        print_r($photos['photo']);
         $mainUpdate = FALSE;
         $newPhoto = FALSE;
         if (count($photos['main_photo']) > 0)

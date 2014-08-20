@@ -88,7 +88,7 @@
         <tr>
             <td>
                 <label>Main Photos <small>(Choose how many photos you want)</small></label>
-                <?php echo form_upload('main_photo[]', '', ' accept="image/gif,image/jpeg,image/png"'), '<br />'; ?>
+                <?php echo form_upload('main_photo', '', ' accept="image/gif,image/jpeg,image/png"'), '<br />'; ?>
                 <?php
                 foreach ($photos->result_array() as $row) {
                     $att = array(
@@ -106,7 +106,7 @@
         <tr>
             <td>
                 <label>Photos <small>(Choose how many photos you want)</small></label>
-                <?php echo form_upload('photo[]', '', 'multiple="multiple" accept="image/gif,image/jpeg,image/png"'), '<br />'; ?>
+                <?php echo form_upload('photo', '', 'multiple="multiple" accept="image/gif,image/jpeg,image/png"'), '<br />'; ?>
                 <?php
                 foreach ($photos->result_array() as $row) {
                     $att = array(

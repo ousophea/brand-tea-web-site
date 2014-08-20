@@ -1,12 +1,13 @@
 <div id="translation_form">
     <div class="holder">
-        <div class="sub-title"> <?php
-            echo $this->session->userdata('ms') ? $this->session->userdata('ms') : '';
-            $this->session->unset_userdata('ms');
-            ?>
-            
+        <div class="sub-title">
+            <div class="sub_title_text"> <?php
+echo $this->session->userdata('ms') ? $this->session->userdata('ms') : '';
+$this->session->unset_userdata('ms');
+?>
+            </div>
             <div class="translation">
-            	 <?php
+                <?php
                 echo form_open('translation/translate', 'translate');
                 $opts[' '] = '--Translate--';
                 foreach ($langs->result_array() as $lang) {

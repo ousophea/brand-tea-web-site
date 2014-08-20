@@ -75,12 +75,13 @@
                 $photo = Products::getMainPhoto($row[field('proId')])->result_array();
                 $att = array(
                     'src' => PRODUCT_PHOTO_PATH . '250x250/' . $photo[0][field('phoUrl')],
-                    'width' => 110,
+                    'width' => 120,
+                    'height'=>100,
                     'class' => 'img'
                 );
                 $html.= '<div class="photo">' . img($att) . '</div>';
                 $html.= '<div class="content">';
-                $html.= substr($row[field('proName')], 0, 12) . '...';
+                $html.= subString($row[field('proName')],15);
 //            $html.= $row[field('proName')];
                 $price = unserialize($row[field('proPrice')]);
                 if ($price['hide_show'] != 'hide') {
