@@ -11,6 +11,7 @@ class Category extends Admin_Controller {
 
     public function index() {
         $this->viewCategory();
+  
     }
 
     /**

@@ -62,7 +62,7 @@ echo '<input  type="hidden" value="show" name="qty_hide_show" /> ', $this->lang-
                 ?>
                 <label for="gro"><?php echo $this->lang->line('men_category'), $this->lang->line('require'); ?><small> (Category's name --> Group's name)</small></label>
                 <?php
-                echo form_dropdown('dro_gro_name', $options, $this->input->post('dro_gro_name') ? $this->input->post('dro_gro_name') : ' ', 'id="gro"');
+                echo form_dropdown('dro_gro_name', $options, $this->input->post('dro_gro_name') ? $this->input->post('dro_gro_name') : ' ', 'id="gro" required="required"');
                 ?>
             </td>
         </tr>
@@ -75,7 +75,7 @@ echo '<input  type="hidden" value="show" name="qty_hide_show" /> ', $this->lang-
         <tr>
             <td>
                 <label><?php echo $this->lang->line('main_photo'), $this->lang->line('require'); ?> <small>(Choose main photo)</small></label>
-<?php echo form_upload('main_photo[]', '', ' accept="image/gif,image/jpeg,image/png" class="pro_photo"'); ?>
+<?php echo form_upload('main_photo[]', '', ' accept="image/gif,image/jpeg,image/png" class="pro_photo" required'); ?>
             </td>
         </tr>
 

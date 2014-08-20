@@ -60,6 +60,7 @@ $lang['men_skype']='Skype Contact';
 $lang['men_contact']="Contact";
 $lang['men_service']="Service";
 $lang['men_add_new']="Add New";
+$lang['men_footter']="Menu Footter";
 $lang['men_slide_cat']="Slide Category";
 $lang['men_add_new_slide_cat']="New Category Slide";
 $lang['men_dashboard']="Dashboard";
@@ -99,11 +100,29 @@ $lang['ms_require'] = 'Please enter require field!';
 $lang['ms_error_inuse'] = 'Data is in use!';
 $lang['ms_no_data_display'] = 'No data display!';
 
+//==========Site bar right Suppot============
 $lang['phone_support'] = 'Phone Support';
-$lang['email_support'] = 'Email Support';
+$lang['feedback_support'] = 'Your Feedback';
+$lang['tea_support'] = 'Tea Knowledge';
+$lang['shop_support'] = 'New Product';
 
-
-$lang['product_to_shop'] ='Product to Shop';
+//============Footer===============
+$lang['product_to_shop'] ='1';
+//$lang['product_to_shop'] = getMn(1,9); //khmer lanquage and menu 1
 $lang['top_product'] = "Top Product";
 $lang['customer_service'] = "Customer Service";
 $lang['customer_info']="Customer Info";
+//$lang['product_to_shop'] = getMn(1,9); //khmer lanquage and menu 1
+//$lang['top_product'] = getMn(1,10); //khmer lanquage and menu 1
+//$lang['customer_service'] = getMn(1,15); //khmer lanquage and menu 1
+//$lang['customer_info']= getMn(1,16); //khmer lanquage and menu 1
+
+//==========Breadcrumb URL
+$lang["home"]="Home";
+$lang["products"]="Product";
+$lang['tearelated']='Tea Related';
+$lang['services']="Service";
+$lang['contact']="Contact";
+$lang['about']="About";
+$lang['category'] = 'Category';
+$lang['group']='Group';

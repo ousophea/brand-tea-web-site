@@ -119,6 +119,8 @@
                         </li>
                         <li class="upp"><?php echo anchor('contact', $this->lang->line('men_contact')); ?>
                         </li>
+                          <li class="upp"><?php echo anchor('menu', $this->lang->line('men_footter')); ?>
+                        </li>
 
                     </ul>
                 </div>

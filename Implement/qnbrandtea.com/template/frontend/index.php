@@ -26,6 +26,9 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
         <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+        
+        <!-- Light box style-->
+        <link href="<?php echo base_url() . FRONTEND_TEMPLATE; ?>css/lightview/lightview.css" rel="stylesheet"  />
 
         <style type="text/css">
             @font-face{
@@ -84,7 +87,12 @@
         </div>
         <div class="container well">
 
-            <?php include('slideshow.php'); ?>
+            <?php include('slideshow.php'); 
+            echo "<div class='url_breadcrumb'>";
+            echo simpleway(array(1,4));
+            echo "</div>"
+            ?>
+            
             <?php $this->load->view($page); ?>
             <div class="row-fluid">
                 <div class="span12 text-center" style="text-align: center;">
@@ -102,7 +110,10 @@
 
                 <div class="span3">
                     <!--                    <h3>Shop Main</h3>-->
-                    <h3><?php echo $this->lang->line('product_to_shop'); ?></h3>
+                    <h3><?php 
+                    echo getMn(9);
+//                    echo $this->lang->line('product_to_shop'); 
+                    ?></h3>
                     <ul>
                         <?php
                         $cats = $this->mod_global->getAllCats(4);
@@ -118,7 +129,8 @@
                     </ul>
                 </div>
                 <div class="span3">
-                    <h3><?php echo $this->lang->line('top_product'); ?></h3>
+                    <h3><?php 
+                    echo getMn(10); ?></h3>
 
                     <ul>
                         <?php
@@ -140,7 +152,8 @@
                     </ul>
                 </div>
                 <div class="span3">
-                    <h3><?php echo $this->lang->line('customer_service'); ?></h3>
+                   <h3><?php 
+                    echo getMn(15); ?></h3>
                     <ul>
                         <?php
                         $service = $this->mod_global->getService(4);
@@ -156,12 +169,14 @@
                     </ul>
                 </div>
                 <div class="span3">
-                    <h3><?php echo $this->lang->line('customer_info'); ?></h3>
+                    <h3><?php 
+                    echo getMn(16); ?></h3>
                     <ul>
-                        <li><a href="#">#82, St.371, Phnom Penh, Cambodia</a></li>
-                        <li><a href="#">Tel: (+855)99 999 999</a></li>
-                        <li><a href="#">Fax: (+855)99 999 999</a></li>
-                        <li><a href="#">Email: info@qnbrandtea.com</a></li>
+                        <li><?php echo anchor('site/contact',"#735, Monivong Blvd, Phnom Penh, Cambodia"); ?></li>
+                        
+                         <li><?php echo anchor('site/contact',"Tel: (+855) 015 699 399"); ?></li>
+                          <li><?php echo anchor('site/contact',"Fax: (+855) 015 699 399"); ?></li>
+                        <li> <?php echo mailto('info@qnbrandtea.com', "Email:info@qnbrandtea.com"); ?> </li>
                     </ul>
                 </div>
                 <div class="clear"></div>
@@ -171,11 +186,12 @@
             <div class="container">
                 <ul class="footer-menu">
                     <li><?php echo anchor('site/home', $this->lang->line('men_home')); ?></li>
-                    <li><?php echo anchor('site/about', $this->lang->line('men_about')); ?></li>
+                    
                     <li><?php echo anchor('site/products', $this->lang->line('men_product')); ?></li>
                     <li><?php echo anchor('site/services', $this->lang->line('men_service')); ?></li>
                     <li><?php echo anchor('site/tearelated', $this->lang->line('men_tearelated')); ?></li>
                     <li><?php echo anchor('site/contact', $this->lang->line('men_contact')); ?></li>
+                    <li><?php echo anchor('site/about', $this->lang->line('men_about')); ?></li>
                 </ul>
                 <span style="color: #fff; font-size: 10px;"> &copy; Q.N Brand Tea</span>
             </div>

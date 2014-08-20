@@ -13,33 +13,54 @@ foreach ($pros->result_array() as $row) {
                 $photos = Products::getPhoto($row[field('proId')], 0)->result_array();
                 echo '<div class="photo span6">';
                 $t = 0;
+                //=========Photo gallary=====================
                 foreach ($photos as $photo) {
 
                     if ($t == 0) {
                         $t = 1;
-                        $att = array(
-                            'src' => PRODUCT_PHOTO_PATH . '250x250/' . $photo[field('phoUrl')],
-                            'class' => 'img',
-                            'data-zoom-image' => base_url() . PRODUCT_PHOTO_PATH . $photo[field('phoUrl')],
-                            'id' => 'img_view'
-                        );
-                        echo '<div style="width:100%; text-align: center;">', img($att), '</div>';
+//                        $att = array(
+//                            'src' => PRODUCT_PHOTO_PATH . '250x250/' . $photo[field('phoUrl')],
+//                            'class' => 'img',
+//                            'data-zoom-image' => base_url() . PRODUCT_PHOTO_PATH . $photo[field('phoUrl')],
+//                            'id' => 'img_view'
+//                        );
+                        $src = base_url() . PRODUCT_PHOTO_PATH . '250x250/' . $photo[field('phoUrl')];
+                        echo '<div style="width:100%; text-align: center;">';
+
+                        echo "<a href='" . base_url() . PRODUCT_PHOTO_PATH . $photo[field("phoUrl")] . "' 
+     class='lightview'
+     data-lightview-group='example'>
+    <img      width ='250'     height = '250'  src='$src' id='img_view' alt=''/>
+  </a>";
+
+//                        echo '<img id="img_view" src="'.PRODUCT_PHOTO_PATH.'250x250/'.$photo[field("phoUrl")].'" data-zoom-image="'.base_url() . PRODUCT_PHOTO_PATH . $photo[field("phoUrl")].'"/> ';
+//                        echo '<img id="img_view" src="http://localhost/brand-tea-web-site/Implement/qnbrandtea.com/uploads/products/100x100/1386_2.jpg" data-zoom-image="http://localhost/brand-tea-web-site/Implement/qnbrandtea.com/uploads/products/100x100/1386_2.jpg"/> ';
+
+                        echo '</div>';
                         echo '<div style="width:100%;">&nbsp;</div>';
                         echo '<div id="myGal">'; // Open gallery tag
                     }
                     $att = array(
                         'src' => PRODUCT_PHOTO_PATH . '100x100/' . $photo[field('phoUrl')],
                         'width' => 50,
-                        'class' => 'img'
+                        'height' => 50,
+                        'class' => 'img',
+                        'id' => 'img_views',
+                        'title' => base_url() . PRODUCT_PHOTO_PATH . $photo[field('phoUrl')],
+                        'alt' => base_url() . PRODUCT_PHOTO_PATH . '250x250/' . $photo[field('phoUrl')]
+                        
                     );
-                    echo '<a href="#" data-image="' . base_url() . PRODUCT_PHOTO_PATH . '250x250/' . $photo[field('phoUrl')] . '" data-zoom-image="' . base_url() . PRODUCT_PHOTO_PATH . $photo[field('phoUrl')] . '">';
+                    echo '<a href="#" data-image="' . base_url() . PRODUCT_PHOTO_PATH . '250x250/' . $photo[field('phoUrl')] . '" >';
                     echo img($att) . nbs();
                     echo '</a>';
                 }
+
+//                //===============End Photo gallery=============
+
                 echo '</div>'; // Close div gallery
                 echo '</div>';
                 ?>
-                <div class="span5">
+                <div id="product_detail" class="span5">
                     <p class="title"><?php echo $row[field('proName')]; ?></p>
                     <p>
                         <?php
@@ -92,21 +113,21 @@ foreach ($pros->result_array() as $row) {
                         <div class="tab-pane" id="reated-knowledge">
                             <?php
                             $sTea = unserialize($row[field('proRelated')]);
-                            if(is_array($sTea) && count($sTea)>0){
+                            if (is_array($sTea) && count($sTea) > 0) {
                                 echo '<ol class="tea">';
-                                foreach($sTea as $teaId){
+                                foreach ($sTea as $teaId) {
                                     $teas = Products::getTeaRelated($teaId);
-                                    foreach($teas->result_array() as $tea){
+                                    foreach ($teas->result_array() as $tea) {
                                         echo '<li>';
-                                        echo anchor('site/tearelated/detail/'.$teaId,$tea[field('teaTitle')],'title="Details"').'<br />';
+                                        echo anchor('site/tearelated/detail/' . $teaId, $tea[field('teaTitle')], 'title="Details"') . '<br />';
                                         $short = $tea[field('teaDesc')];
-                                        $short = mb_substr ($short,0 ,200).'...';
+                                        $short = mb_substr($short, 0, 200) . '...';
                                         echo $short;
                                         echo '</li>';
                                     }
                                 }
                                 echo '</ol>';
-                            }            
+                            }
                             ?>
                         </div>
 
@@ -140,6 +161,9 @@ foreach ($pros->result_array() as $row) {
 ?>
 <script src='<?php echo base_url() ?>addon/image-zooming/jquery-1.8.3.min.js'></script>
 <script src='<?php echo base_url() ?>addon/image-zooming/jquery.elevatezoom.js'></script>
+
+<script src='<?php echo base_url() ?>addon/lightview/lightview.js'></script>
+
 <style type="text/css">
     /*set a border on the images to prevent shifting*/
     #myGal img{border:2px solid white;}
@@ -148,21 +172,29 @@ foreach ($pros->result_array() as $row) {
     .myActive img{border:2px solid #333 !important;}
 </style>
 <script type="text/javascript">
-//initiate the plugin and pass the id of the div containing gallery images
-    jQuery("#img_view").elevateZoom({
-        scrollZoom: true,
-        responsive: true,
-        gallery: 'myGal',
-        cursor: 'pointer',
-        galleryActiveClass: 'myActive',
-        imageCrossfade: true,
-        loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'
+    
+    jQuery(".img").bind("click",function(){
+        jQuery('#img_view').attr('src',this.alt);
+        jQuery('.lightview').attr('href',this.title);
     });
-
-//pass the images to Fancybox
-//    jQuery("#img_view").bind("click", function(e) {
-//        var ez = jQuery('#img_view').data('elevateZoom');
-//        $.fancybox(ez.getGalleryList());
-//        return false;
-//    });
+    //initiate the plugin and pass the id of the div containing gallery images
+    //        jQuery("#img_view").elevateZoom({
+    //            scrollZoom: false,
+    //            responsive: true,
+    //            gallery: 'myGal',
+    //            cursor: 'pointer',
+    //            galleryActiveClass: 'myActive',
+    //            imageCrossfade: false
+    ////            loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'
+    //        });
+        
+        
+    //    jQuery("#img_view").elevateZoom({constrainType:"height", constrainSize:274, zoomType: "lens", containLensZoom: true, gallery:'gallery_01', cursor: 'pointer', galleryActiveClass: "active"}); 
+    //    //pass the images to Fancybox 
+    //    jQuery("#img_view").bind("click", function(e) { 
+    //        var ez = jQuery('#img_view').data('elevateZoom');	
+    //        jQuery.fancybox(ez.getGalleryList()); 
+    //        return false; 
+    //    }); 
+    
 </script>
