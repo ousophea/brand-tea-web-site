@@ -47,9 +47,9 @@ $lang['men_services']='Services';
 //Tea Related knowledge
 $lang['related_knowledge']='Related Knowledge';
 $lang['related_product'] = 'Related Product';
-$lang['men_tearelated']='Tea Related';
-$lang['men_teaknowledge']='Tea Related Knowledge';
-$lang['men_detail_tea']='View Tea Related Knowledge Detail';
+$lang['men_tearelated']='Tea Knowledge';
+$lang['men_teaknowledge']='Tea Knowledge';
+$lang['men_detail_tea']='View Tea Knowledge Detail';
 $lang['men_status']='Tea Status';
 //About us
 $lang['men_about']="About us";

@@ -14,7 +14,7 @@
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jcrop/js/jquery.Jcrop.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . BACKEND_TEMPLATE; ?>js/jquery.wallform.js"></script>
-        
+
         <script type="text/javascript">
             jQuery(document).ready(function($) {
                 $(".box .h_title").not(this).next("ul").hide("normal");
@@ -72,55 +72,46 @@
                     <ul>
                         <li class="upp"><?php echo anchor('admin', $this->lang->line('men_dashboard')); ?>
                         </li>
-                        <li class="upp"><?php echo anchor('product', $this->lang->line('men_product')); ?>
-                            <ul>
-                                <li>&#8250; <?php echo anchor('product/addnew', $this->lang->line('men_add_new')); ?></li>
-                            </ul>
-                        </li>
-                        <li class="upp"><?php echo anchor('category', $this->lang->line('men_category')); ?>
-                            <ul>
-                                <li>&#8250; <?php echo anchor('category/addnew', $this->lang->line('men_add_new')); ?></li>
-                            </ul>                         
-                        </li>
-                        <li class="upp"><?php echo anchor('group', $this->lang->line('men_group')); ?>
-                            <ul>
-                                <li>&#8250; <?php echo anchor('group/addnew', $this->lang->line('men_add_new')); ?></li>
-                            </ul> 
-                        </li>
-                        <li class="upp"><?php echo anchor('slideshow', $this->lang->line('men_slideshow')); ?>
-                            <ul>
-                                <li>&#8250; <?php echo anchor('slideshow/addnew', $this->lang->line('men_new_slideshow')); ?></li>
-                                <li>&#8250; <?php echo anchor('slideshow', $this->lang->line('men_view_slideshow')); ?></li>
-                                <!--<li>&#8250; <?php //echo anchor('slideshow/category/listcat', $this->lang->line('men_slide_cat')); ?></li>
-                                <li>&#8250; <?php //echo anchor('slideshow/category/addnew', $this->lang->line('men_add_new_slide_cat')); ?></li>-->
-
-                            </ul> 
-                        </li>
-
-                        <li class="upp"><?php echo anchor('tearelated', $this->lang->line('men_tearelated')); ?>
-                            <ul>
-                                <li>&#8250; <?php echo anchor('tearelated/addnewtea', $this->lang->line('men_add_new')); ?></li>
-                            </ul> 
-                        </li>
-
                         <li class="upp"><?php echo anchor('content/home', $this->lang->line('men_home')); ?>
-                            <!--                            <ul>
-                                                            <li>&#8250; <a href="">Show all uses</a></li>
-                                                            <li>&#8250; <a href="">Add new user</a></li>
-                                                            <li>&#8250; <a href="">Lock users</a></li>
-                                                        </ul>-->
-                        </li>
-                        <li class="upp"><?php echo anchor('services', $this->lang->line('men_services')); ?>
-                            <ul>
-                                <li>&#8250; <?php echo anchor('services/addnew', $this->lang->line('men_new_service')); ?></li>
-                            </ul>    
-                        </li>
-                        <li class="upp"><?php echo anchor('about', $this->lang->line('men_about')); ?>
-                        </li>
-                        <li class="upp"><?php echo anchor('contact', $this->lang->line('men_contact')); ?>
-                        </li>
-                          <li class="upp"><?php echo anchor('menu', $this->lang->line('men_footter')); ?>
-                        </li>
+
+                            <li class="upp"><?php echo anchor('category', $this->lang->line('men_category')); ?>
+                                <ul>
+                                    <li>&#8250; <?php echo anchor('category/addnew', $this->lang->line('men_add_new')); ?></li>
+                                </ul>                         
+                            </li>
+
+                            <li class="upp"><?php echo anchor('group', $this->lang->line('men_group')); ?>
+                                <ul>
+                                    <li>&#8250; <?php echo anchor('group/addnew', $this->lang->line('men_add_new')); ?></li>
+                                </ul> 
+                            </li>
+                            <li class="upp"><?php echo anchor('product', $this->lang->line('men_product')); ?>
+                                <ul>
+                                    <li>&#8250; <?php echo anchor('product/addnew', $this->lang->line('men_add_new')); ?></li>
+                                </ul>
+                            </li>
+                            <li class="upp"><?php echo anchor('services', $this->lang->line('men_services')); ?>
+                                <ul>
+                                    <li>&#8250; <?php echo anchor('services/addnew', $this->lang->line('men_new_service')); ?></li>
+                                </ul>    
+                            </li>
+
+                            <li class="upp"><?php echo anchor('tearelated', $this->lang->line('men_tearelated')); ?>
+                                <ul>
+                                    <li>&#8250; <?php echo anchor('tearelated/addnewtea', $this->lang->line('men_add_new')); ?></li>
+                                </ul> 
+                            </li>
+                            <li class="upp"><?php echo anchor('contact', $this->lang->line('men_contact')); ?></li>
+                            <li class="upp"><?php echo anchor('about', $this->lang->line('men_about')); ?> </li>
+
+                            <li class="upp"><?php echo anchor('slideshow', $this->lang->line('men_slideshow')); ?>
+                                <ul>
+                                    <li>&#8250; <?php echo anchor('slideshow/addnew', $this->lang->line('men_new_slideshow')); ?></li>
+                                    <li>&#8250; <?php echo anchor('slideshow', $this->lang->line('men_view_slideshow')); ?></li>
+
+                                </ul> 
+                            </li>
+                            <li class="upp"><?php echo anchor('menu', $this->lang->line('men_footter')); ?></li>
 
                     </ul>
                 </div>
