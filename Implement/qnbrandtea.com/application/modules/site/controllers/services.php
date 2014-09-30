@@ -25,11 +25,11 @@ class Services extends Base_Controller {
         $this->pagination->initialize($config);
 
         // Get tea knowledge
-        $data['services'] = $this->mod_service_front->getTea($this->uri->segment(4), $config['per_page']);
+        $data['teas'] = $this->mod_tea_front->getTea($this->uri->segment(4), $config['per_page']);
 
-        $data['title'] = $this->lang->line('men_service');
-        $data['page'] = 'services/list';
-        $data['action'] = $this->lang->line('men_service');
+        $data['title'] = $this->lang->line('men_teaknowledge');
+        $data['page'] = 'tearelated/tearelated';
+        $data['action'] = $this->lang->line('men_teaknowledge');
         $this->load->view('master', $data);
     }
 

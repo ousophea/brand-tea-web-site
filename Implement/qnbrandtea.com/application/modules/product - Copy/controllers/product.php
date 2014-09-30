@@ -175,7 +175,6 @@ class Product extends Admin_Controller {
                 $this->configResizePhoto($this->photo['photo']);
             }
             if (!$this->uploadPhoto('main_photo')) {
-//                echo "Not photot upload"; exit();
                 $this->photo['main_photo'] = array();
             } else {
                 // Resize image
@@ -236,7 +235,7 @@ class Product extends Admin_Controller {
         $this->load->library('upload');
         $config = array(// takes an array of initialization options
             "upload_path" => "./uploads/products/",
-            "overwrite" => TRUE,
+            "overwrite" => FALSE,
             "allowed_types" => "gif|jpg|png"
         );
         $this->upload->initialize($config);

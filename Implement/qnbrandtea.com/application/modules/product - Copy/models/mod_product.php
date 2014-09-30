@@ -59,7 +59,7 @@ class mod_product extends CI_Model {
         }
     }
 
-    public function update($proId, $proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $fields, $photos = NULL, $relatedKnowledge) {
+    public function update($proId, $proName, $proPrice, $proQty, $proDec, $proRelated, $groId, $fields, $photos = '', $relatedKnowledge) {
 //        print_r($photos['photo']);
         $mainUpdate = FALSE;
         $newPhoto = FALSE;
