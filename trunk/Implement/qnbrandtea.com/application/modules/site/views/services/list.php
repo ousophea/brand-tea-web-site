@@ -6,7 +6,7 @@
             <div class="row-fluid span12" style="margin-left:3%;"">
                 <?php
                 $i = 1;
-                foreach ($services->result_array() as $row) {
+                foreach ($service->result_array() as $row) {
                     $tea_desc = $row[field('serDesc')];
                     ?>
                     <?php

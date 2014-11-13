@@ -19,8 +19,6 @@ class Mod_tea_front extends CI_Model {
         $this->db->select('*');
         $this->db->limit($perPage, $start);
         $this->db->from(table('tearelated'));
-//        $this->db->join(table('language'), table('tearelated') . '.' . field('langId') . '=' . table('language') . '.' . field('langId'));
-//        $this->db->where(field('lanDes'), $this->lang->line('lang'));
 
         if ($this->input->cookie('language')) {
             $this->db->join(table('teaLang'), table('teaLang') . '.' . field('teaId') . '=' . table('tearelated') . '.' . field('teaId'));
